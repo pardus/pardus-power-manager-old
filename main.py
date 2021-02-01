@@ -41,7 +41,7 @@ class Main:
 	 echo 0 > /sys/devices/system/cpu/cpufreq/boost
 
 	 # Disable network powersave
-	 for foo in $(/sys/class/net) ; 
+	 for foo in $(ls /sys/class/net) ; 
 	 do echo auto > /sys/class/net/$foo/device/power/control
 	 done
 
@@ -55,7 +55,7 @@ class Main:
 	 do echo min_power > $foo;
 	 done
 
-	 # Select Ondemand CPU Governor
+	 # Select Powersave CPU Governor
 	 for foo in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor;
 	 do echo powersave > $foo;
 	 done
@@ -96,7 +96,7 @@ class Main:
 	 echo 1 > /sys/devices/system/cpu/cpufreq/boost
 
 	 # Disable network powersave
-	 for foo in $(/sys/class/net) ; 
+	 for foo in $(ls /sys/class/net) ; 
 	 do echo auto > /sys/class/net/$foo/device/power/control
 	 done
 
@@ -110,9 +110,9 @@ class Main:
 	 do echo med_power_with_dipm > $foo;
 	 done
 
-	 # Select Ondemand CPU Governor
-	 for foo in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor;
-	 do echo powersave > $foo;
+	 # Select Powersave CPU Governor
+	 for foo in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
+	 echo powersave > $foo ;
 	 done
 
 	 # Activate PCI autosuspend
@@ -149,7 +149,7 @@ class Main:
 	 echo 1 > /sys/devices/system/cpu/cpufreq/boost
 
 	 # Disable network powersave
-	 for foo in $(/sys/class/net) ; 
+	 for foo in $(ls /sys/class/net) ; 
 	 do echo on > /sys/class/net/$foo/device/power/control
 	 done
 
@@ -164,8 +164,8 @@ class Main:
 	 done
 
 	 # CPU Governor: Performance
-	 for foo in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor;
-	 do echo performance > $foo;
+	 for foo in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
+	  echo performance > $foo;
 	 done 
 
 

@@ -1,0 +1,16 @@
+Source: pardus-power-manager
+Section: utils
+Priority: optional
+Maintainer: Ali Rıza KESKİN <ali.riza.keskin@pardus.org.tr>
+Build-Depends: make
+Standards-Version: 4.3.0
+Homepage: https://pardus.org.tr
+
+Package: pardus-power-manager
+Architecture: all
+Depends: ${misc:Depends},
+         libc6,
+         python3 (>=3.5),
+         python3-gi
+Description: Pardus power manager.
+ Pardus power manager.

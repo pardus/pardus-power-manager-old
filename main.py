@@ -41,6 +41,7 @@ class Main:
         
     def make_default(self,widget):
         open("/usr/lib/pardus/power-manager/default","w").write(self.current_mode)
+        self.keep.set_sensitive(False)
 
     def update_ui(self):
         open("/run/pardus-powersave","w").write(self.current_mode)
@@ -50,6 +51,7 @@ class Main:
             self.status.set_label("Current Mode: Balanced")
         if self.current_mode=="performance":
             self.status.set_label("Current Mode: Performance")
+        self.keep.set_sensitive(True)
 
     def powersave_event(self,widget):
         self.run("bash profiles/powersave.sh")

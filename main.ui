@@ -52,8 +52,8 @@
                       <object class="GtkImage">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="pixbuf">powersave.svg</property>
                         <property name="pixel-size">64</property>
-                        <property name="icon-name">0ad</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -96,8 +96,8 @@
                       <object class="GtkImage">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="pixbuf">balanced.svg</property>
                         <property name="pixel-size">64</property>
-                        <property name="icon-name">0ad</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -140,8 +140,8 @@
                       <object class="GtkImage">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="pixbuf">performance.svg</property>
                         <property name="pixel-size">64</property>
-                        <property name="icon-name">0ad</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>

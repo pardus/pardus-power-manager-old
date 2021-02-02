@@ -1,0 +1,4 @@
+#!/bin/bash
+xhost +
+pkexec sh -c "DISPLAY=$DISPLAY python3 /usr/lib/pardus/power-manager/main.py"
+xhost -

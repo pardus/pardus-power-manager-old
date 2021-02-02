@@ -9,6 +9,7 @@ class Main:
 
     def __init__(self):
         self.builder=Gtk.Builder()
+        os.chdir("/usr/lib/pardus/power-manager/")
         self.builder.add_from_file("main.ui")
         self.window = self.builder.get_object("window")
         self.powersave=self.builder.get_object("powersave")

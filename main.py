@@ -15,6 +15,7 @@ class Main:
         self.powersave=self.builder.get_object("powersave")
         self.balanced=self.builder.get_object("balanced")
         self.performance=self.builder.get_object("performance")
+        self.mode=self.builder.get_object("mode")
 
         self.signal_connect()
         self.update_ui()
@@ -33,6 +34,11 @@ class Main:
         
     def update_ui(self):
         self.run("tlp start")
+        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
+            self.current_mode=os.readlink("/etc/tlp.d/99-pardus.conf").split("/")[-1].split(".")[0]
+        else:
+            self.current_mode="unknown"
+        self.mode.set_label("Current mode: "+self.current_mode)
 
     def powersave_event(self,widget):
         self.run("rm -f /etc/tlp.d/99-pardus.conf")

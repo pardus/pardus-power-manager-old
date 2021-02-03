@@ -2,20 +2,39 @@
 import os, sys, subprocess, requests
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import GLib, Gio, Gtk
+gi.require_version("GdkPixbuf", "2.0")
+from gi.repository import GLib, Gio, Gtk, Gdk
 
 
 class Main:
 
     def __init__(self):
+
+        self.profiles=["xpowersave","powersave","balanced","performance","xperformance"]
         self.builder=Gtk.Builder()
         os.chdir("/usr/lib/pardus/power-manager/")
+        cssProvider = Gtk.CssProvider()
+        cssProvider.load_from_path("main.css")
         self.builder.add_from_file("main.ui")
+        screen = Gdk.Screen.get_default()
+        styleContext = Gtk.StyleContext()
+        styleContext.add_provider_for_screen(screen, cssProvider,
+                                     Gtk.STYLE_PROVIDER_PRIORITY_USER)
         self.window = self.builder.get_object("window")
+        self.xpowersave=self.builder.get_object("Xpowersave")
         self.powersave=self.builder.get_object("powersave")
         self.balanced=self.builder.get_object("balanced")
         self.performance=self.builder.get_object("performance")
+        self.xperformance=self.builder.get_object("Xperformance")
         self.mode=self.builder.get_object("mode")
+        self.scale = self.builder.get_object("scale")
+        adjustment = self.builder.get_object("adjustment1")
+
+        adjustment.set_lower(1.0)
+        adjustment.set_upper(5.0)
+        adjustment.set_step_increment(1.0)
+
+        self.scale.set_draw_value(True)
 
         self.signal_connect()
         self.update_ui()
@@ -23,8 +42,10 @@ class Main:
     def signal_connect(self):
         self.window.connect("destroy",Gtk.main_quit)
         self.powersave.connect("clicked",self.powersave_event)
+        self.xpowersave.connect("clicked",self.xpowersave_event)
         self.balanced.connect("clicked",self.balanced_event)
         self.performance.connect("clicked",self.performance_event)
+        self.xperformance.connect("clicked",self.xperformance_event)
 
     def start(self):
         self.window.show_all()
@@ -46,6 +67,12 @@ class Main:
         self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
         self.update_ui()
 
+    def xpowersave_event(self,widget):
+        self.run("rm -f /etc/tlp.d/99-pardus.conf")
+        self.current_mode="xpowersave"
+        self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
+        self.update_ui()
+
 
     def balanced_event(self,widget):
         self.run("rm -f /etc/tlp.d/99-pardus.conf")
@@ -56,6 +83,12 @@ class Main:
     def performance_event(self,widget):
         self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="performance"
+        self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
+        self.update_ui()
+
+    def xperformance_event(self,widget):
+        self.run("rm -f /etc/tlp.d/99-pardus.conf")
+        self.current_mode="xperformance"
         self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
         self.update_ui()
 

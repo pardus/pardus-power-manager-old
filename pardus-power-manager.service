@@ -1,9 +1,0 @@
-[Unit]
-Description=Pardus power manager service
-StartLimitIntervalSec=0
-[Service]
-Type=simple
-ExecStart=/bin/bash /usr/lib/pardus/power-manager/profile.sh
-
-[Install]
-WantedBy=multi-user.target

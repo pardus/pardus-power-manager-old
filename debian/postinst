@@ -1,2 +1,2 @@
 #!/bin/bash
-systemctl enable pardus-power-manager
+ln -s ../../usr/lib/pardus/power-manager/tlp/balanced.conf /etc/tlp.d/99-pardus.conf

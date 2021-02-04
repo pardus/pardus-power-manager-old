@@ -5,7 +5,6 @@ import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version("GdkPixbuf", "2.0")
 from gi.repository import GLib, Gio, Gtk, Gdk
-
 try:
     import socket
 
@@ -14,7 +13,15 @@ try:
 except socket.error as e:
     error_code = e.args[0]
     error_string = e.args[1]
-    print("Process already running (%d:%s ). Exiting" % (error_code, error_string))
+    dialog = Gtk.MessageDialog(
+                transient_for=Gtk.Window(),
+                flags=0,
+                message_type=Gtk.MessageType.INFO,
+                buttons=Gtk.ButtonsType.OK,
+                text="Process already running in background.",
+            )
+    dialog.run()
+    dialog.destroy()
     sys.exit(0)
 
 
@@ -181,29 +188,36 @@ class Main:
         self.menu = Gtk.Menu()
 
         show = Gtk.MenuItem()
-        show.set_label("Open Settings")
+        show.set_label("View")
         show.connect("activate", self.start)
         self.menu.append(show)
 
+        menu_profile=Gtk.MenuItem()
+        self.menu.append(menu_profile)
+        self.submenu_profile=Gtk.Menu()
+        menu_profile.set_label("Power")
+        menu_profile.set_submenu(self.submenu_profile)
+
+
         self.a = Gtk.MenuItem()
         self.a.connect("activate", self.xpowersave_event)
-        self.menu.append(self.a)
+        self.submenu_profile.append(self.a)
 
         self.b = Gtk.MenuItem()
         self.b.connect("activate", self.powersave_event)
-        self.menu.append(self.b)
+        self.submenu_profile.append(self.b)
 
         self.c = Gtk.MenuItem()
         self.c.connect("activate", self.balanced_event)
-        self.menu.append(self.c)
+        self.submenu_profile.append(self.c)
 
         self.d = Gtk.MenuItem()
         self.d.connect("activate", self.performance_event)
-        self.menu.append(self.d)
+        self.submenu_profile.append(self.d)
 
         self.e = Gtk.MenuItem()
         self.e.connect("activate", self.xperformance_event)
-        self.menu.append(self.e)
+        self.submenu_profile.append(self.e)
 
         quit = Gtk.MenuItem()
         quit.set_label("Quit")

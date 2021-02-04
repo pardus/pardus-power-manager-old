@@ -70,7 +70,7 @@ class Main:
         self.balanced.connect("clicked",self.balanced_event)
         self.performance.connect("clicked",self.performance_event)
         self.xperformance.connect("clicked",self.xperformance_event)
-        self.scale.connect("button-release-event",self.scale_event)
+        self.scale.connect("value-changed",self.scale_event)
         self.modeset.connect("clicked",self.modeset_event)
 
 
@@ -136,7 +136,7 @@ class Main:
         if self.current_mode=="xperformance":
             self.e.set_label("[Extreme Performance]")
 
-    def scale_event(self,x,y):
+    def scale_event(self,widget):
         if not self.scale_event_enable:
             return
         value=int(self.scale.get_value())-1
@@ -154,27 +154,27 @@ class Main:
 
     def xpowersave_event(self,widget):
         self.current_mode="xpowersave"
-        self.run("pkexec python3 /usr/lib/pardus/power-manager/setprofile.py 20 xpowersave")
+        self.run("pkexec /usr/lib/pardus/power-manager/setprofile.py 20 xpowersave")
         self.update_ui()
 
     def powersave_event(self,widget):
         self.current_mode="powersave"
-        self.run("pkexec python3 /usr/lib/pardus/power-manager/setprofile.py 40 powersave")
+        self.run("pkexec /usr/lib/pardus/power-manager/setprofile.py 40 powersave")
         self.update_ui()
 
     def balanced_event(self,widget):
         self.current_mode="balanced"
-        self.run("pkexec python3 /usr/lib/pardus/power-manager/setprofile.py 60 balanced")
+        self.run("pkexec /usr/lib/pardus/power-manager/setprofile.py 60 balanced")
         self.update_ui()
 
     def performance_event(self,widget):
         self.current_mode="performance"
-        self.run("pkexec python3 /usr/lib/pardus/power-manager/setprofile.py 80 performance")
+        self.run("pkexec /usr/lib/pardus/power-manager/setprofile.py 80 performance")
         self.update_ui()
 
     def xperformance_event(self,widget):
         self.current_mode="xperformance"
-        self.run("pkexec python3 /usr/lib/pardus/power-manager/setprofile.py 100 xperformance")
+        self.run("pkexec /usr/lib/pardus/power-manager/setprofile.py 100 xperformance")
         self.update_ui()
 
     def right_click_event(self, icon, button, time):

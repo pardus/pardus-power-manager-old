@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import os,sys
 
 def set_backlight(percent=100):
@@ -10,7 +11,7 @@ def set_profile(name):
     if os.path.exists("/etc/tlp.d/99-pardus.conf"):
         run("rm -fv /etc/tlp.d/99-pardus.conf")
     run("ln -fvs ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(name))
-    run("tlp start")
+    run("tlp start &")
 
 def run(cmd):
     return os.system(cmd)

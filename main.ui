@@ -10,7 +10,7 @@
   <object class="GtkWindow" id="window">
     <property name="can-focus">False</property>
     <property name="resizable">False</property>
-    <property name="default-width">777</property>
+    <property name="default-width">620</property>
     <property name="default-height">255</property>
     <child>
       <object class="GtkBox">
@@ -384,6 +384,7 @@ performance</property>
               <object class="GtkSeparator">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="margin-top">13</property>
               </object>
               <packing>
                 <property name="expand">False</property>

@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-import os, sys, subprocess, requests
+import os
+if os.getuid() != 0:
+    print("You must be root!")
+    exit(1)
+import sys, subprocess, requests
 import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version("GdkPixbuf", "2.0")
@@ -9,7 +13,6 @@ from gi.repository import GLib, Gio, Gtk, Gdk
 class Main:
 
     def __init__(self):
-
         self.profiles=["xpowersave","powersave","balanced","performance","xperformance"]
         self.builder=Gtk.Builder()
         os.chdir("/usr/lib/pardus/power-manager/")

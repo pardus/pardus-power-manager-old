@@ -87,7 +87,6 @@ class Main:
         for i in os.listdir("/sys/class/backlight/"):
             max_brightness=int(open("/sys/class/backlight/"+i+"/max_brightness","r").read())
             brightness=int(max_brightness*percent/100)
-            print(brightness)
             os.system("echo {} > /sys/class/backlight/{}/brightness".format(brightness,i))
         
     def update_ui(self):

@@ -10,7 +10,7 @@
   <object class="GtkWindow" id="window">
     <property name="can-focus">False</property>
     <property name="default-width">620</property>
-    <property name="default-height">240</property>
+    <property name="default-height">253</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
@@ -21,6 +21,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="show-tabs">False</property>
+            <property name="show-border">False</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
@@ -335,7 +336,17 @@ performance</property>
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkButton" id="modeset">
+                    <property name="label" translatable="yes">Core</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
                 </child>
                 <child>
                   <placeholder/>
@@ -358,7 +369,7 @@ performance</property>
             </child>
           </object>
           <packing>
-            <property name="expand">False</property>
+            <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">0</property>
           </packing>
@@ -383,12 +394,17 @@ performance</property>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">end</property>
                 <property name="label" translatable="yes">TÜBİTAK ULAKBİM | 2021</property>
+                <attributes>
+                  <attribute name="weight" value="thin"/>
+                </attributes>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="padding">5</property>
+                <property name="padding">7</property>
                 <property name="pack-type">end</property>
                 <property name="position">1</property>
               </packing>
@@ -407,16 +423,11 @@ performance</property>
       <object class="GtkHeaderBar">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="title" translatable="yes">Pardus Power Management</property>
+        <property name="title" translatable="yes">Power Manager</property>
         <property name="spacing">0</property>
         <property name="show-close-button">True</property>
         <child>
-          <object class="GtkButton" id="modeset">
-            <property name="label" translatable="yes">Core</property>
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">True</property>
-          </object>
+          <placeholder/>
         </child>
       </object>
     </child>

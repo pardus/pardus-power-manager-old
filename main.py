@@ -36,6 +36,7 @@ class Main:
 
         self.scale.set_draw_value(True)
 
+        self.scale_event_enable=False
         self.signal_connect()
         self.update_ui()
 
@@ -46,6 +47,7 @@ class Main:
         self.balanced.connect("clicked",self.balanced_event)
         self.performance.connect("clicked",self.performance_event)
         self.xperformance.connect("clicked",self.xperformance_event)
+        self.scale.connect("value-changed",self.scale_event)
 
     def start(self):
         self.window.show_all()
@@ -54,12 +56,30 @@ class Main:
         os.system(cmd)
         
     def update_ui(self):
-        self.run("tlp start")
+        self.run("tlp start &")
         if os.path.exists("/etc/tlp.d/99-pardus.conf"):
             self.current_mode=os.readlink("/etc/tlp.d/99-pardus.conf").split("/")[-1].split(".")[0]
         else:
             self.current_mode="unknown"
         self.mode.set_label("Current mode: "+self.current_mode)
+        self.scale_event_enable = False
+        self.scale.set_value(self.profiles.index(self.current_mode)+1)
+        self.scale_event_enable = True
+
+    def scale_event(self,widget):
+        if not self.scale_event_enable:
+            return
+        value=int(widget.get_value())-1
+        if value == 0:
+            self.xpowersave_event(None)
+        elif value == 1:
+            self.powersave_event(None)
+        elif value == 2:
+            self.balanced_event(None)
+        elif value == 3:
+            self.performance_event(None)
+        elif value == 4:
+            self.xperformance_event(None)
 
     def powersave_event(self,widget):
         self.run("rm -f /etc/tlp.d/99-pardus.conf")

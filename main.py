@@ -56,7 +56,19 @@ class Main:
         self.window.show_all()
 
     def run(self,cmd):
-        os.system(cmd)
+        if os.system(cmd) != 0:
+            dialog = Gtk.MessageDialog(
+                transient_for=self.window,
+                flags=0,
+                message_type=Gtk.MessageType.INFO,
+                buttons=Gtk.ButtonsType.OK,
+                text="Failed to run command",
+            )
+            dialog.format_secondary_text(
+                cmd
+            )
+            dialog.run()
+            dialog.destroy()
         
     def update_ui(self):
         self.run("tlp start &")
@@ -85,32 +97,37 @@ class Main:
             self.xperformance_event(None)
 
     def powersave_event(self,widget):
-        self.run("rm -f /etc/tlp.d/99-pardus.conf")
+        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
+            self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="powersave"
         self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
         self.update_ui()
 
     def xpowersave_event(self,widget):
-        self.run("rm -f /etc/tlp.d/99-pardus.conf")
+        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
+            self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="xpowersave"
         self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
         self.update_ui()
 
 
     def balanced_event(self,widget):
-        self.run("rm -f /etc/tlp.d/99-pardus.conf")
+        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
+            self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="balanced"
         self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
         self.update_ui()
 
     def performance_event(self,widget):
-        self.run("rm -f /etc/tlp.d/99-pardus.conf")
+        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
+            self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="performance"
         self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
         self.update_ui()
 
     def xperformance_event(self,widget):
-        self.run("rm -f /etc/tlp.d/99-pardus.conf")
+        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
+            self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="xperformance"
         self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
         self.update_ui()

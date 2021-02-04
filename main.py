@@ -69,13 +69,20 @@ class Main:
             )
             dialog.run()
             dialog.destroy()
+
+    def set_backlight(self,percent=100):
+        for i in os.listdir("/sys/class/backlight/"):
+            max_brightness=int(open("/sys/class/backlight/"+i+"/max_brightness","r").read())
+            brightness=int(max_brightness*percent/100)
+            print(brightness)
+            os.system("echo {} > /sys/class/backlight/{}/brightness".format(brightness,i))
         
     def update_ui(self):
         self.run("tlp start &")
         if os.path.exists("/etc/tlp.d/99-pardus.conf"):
             self.current_mode=os.readlink("/etc/tlp.d/99-pardus.conf").split("/")[-1].split(".")[0]
         else:
-            self.current_mode="unknown"
+            self.current_mode="balanced"
         self.mode.set_label("Current mode: "+self.current_mode)
         self.scale_event_enable = False
         self.scale.set_value(self.profiles.index(self.current_mode)+1)
@@ -96,25 +103,28 @@ class Main:
         elif value == 4:
             self.xperformance_event(None)
 
-    def powersave_event(self,widget):
-        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
-            self.run("rm -f /etc/tlp.d/99-pardus.conf")
-        self.current_mode="powersave"
-        self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
-        self.update_ui()
 
     def xpowersave_event(self,widget):
         if os.path.exists("/etc/tlp.d/99-pardus.conf"):
             self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="xpowersave"
         self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
+        self.set_backlight(20)
         self.update_ui()
 
+    def powersave_event(self,widget):
+        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
+            self.run("rm -f /etc/tlp.d/99-pardus.conf")
+        self.current_mode="powersave"
+        self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
+        self.set_backlight(40)
+        self.update_ui()
 
     def balanced_event(self,widget):
         if os.path.exists("/etc/tlp.d/99-pardus.conf"):
             self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="balanced"
+        self.set_backlight(60)
         self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
         self.update_ui()
 
@@ -122,6 +132,7 @@ class Main:
         if os.path.exists("/etc/tlp.d/99-pardus.conf"):
             self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="performance"
+        self.set_backlight(80)
         self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
         self.update_ui()
 
@@ -129,6 +140,7 @@ class Main:
         if os.path.exists("/etc/tlp.d/99-pardus.conf"):
             self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="xperformance"
+        self.set_backlight(100)
         self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
         self.update_ui()
 

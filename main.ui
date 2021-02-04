@@ -9,8 +9,9 @@
   </object>
   <object class="GtkWindow" id="window">
     <property name="can-focus">False</property>
-    <property name="default-width">620</property>
-    <property name="default-height">253</property>
+    <property name="resizable">False</property>
+    <property name="default-width">777</property>
+    <property name="default-height">255</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>

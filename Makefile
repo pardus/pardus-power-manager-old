@@ -8,6 +8,7 @@ install:
 	install main.css $(DESTDIR)/usr/lib/pardus/power-manager/
 	install main.py $(DESTDIR)/usr/lib/pardus/power-manager/
 	install main.ui $(DESTDIR)/usr/lib/pardus/power-manager/
+	install setprofile.py $(DESTDIR)/usr/lib/pardus/power-manager/
 	install *.svg $(DESTDIR)/usr/lib/pardus/power-manager/
 	mkdir -p $(DESTDIR)/usr/bin || true
 	ln -s ../lib/pardus/power-manager/main.py $(DESTDIR)/usr/bin/pardus-power-manager || true

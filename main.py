@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 import os
-if os.getuid() != 0:
-    print("You must be root!")
-    exit(1)
 import sys, subprocess, requests
 import gi
 gi.require_version('Gtk', '3.0')
@@ -30,6 +27,11 @@ class Main:
         self.status_icon.set_from_stock(Gtk.STOCK_HOME)
         self.status_icon.connect("popup-menu", self.right_click_event)
         self.win_opened=False
+        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
+            self.current_mode=os.readlink("/etc/tlp.d/99-pardus.conf").split("/")[-1].split(".")[0]
+        else:
+            self.current_mode="balanced"
+
 
 
     def create_win(self):
@@ -68,7 +70,7 @@ class Main:
         self.balanced.connect("clicked",self.balanced_event)
         self.performance.connect("clicked",self.performance_event)
         self.xperformance.connect("clicked",self.xperformance_event)
-        self.scale.connect("value-changed",self.scale_event)
+        self.scale.connect("button-release-event",self.scale_event)
         self.modeset.connect("clicked",self.modeset_event)
 
 
@@ -109,19 +111,14 @@ class Main:
             nb.set_current_page(0)
             widget.set_label("Core")
 
-    def set_backlight(self,percent=100):
-        for i in os.listdir("/sys/class/backlight/"):
-            max_brightness=int(open("/sys/class/backlight/"+i+"/max_brightness","r").read())
-            brightness=int(max_brightness*percent/100)
-            os.system("echo {} > /sys/class/backlight/{}/brightness".format(brightness,i))
         
     def update_ui(self):
-        self.run("tlp start &")
-        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
-            self.current_mode=os.readlink("/etc/tlp.d/99-pardus.conf").split("/")[-1].split(".")[0]
-        else:
-            self.current_mode="balanced"
-
+            self.mode.set_label("Current mode: "+self.current_mode)
+            self.scale_event_enable = False
+            self.scale.set_value(self.profiles.index(self.current_mode)+1)
+            self.scale_event_enable = True
+      
+    def update_menu(self):
         self.a.set_label("Extreme Powersave")
         self.b.set_label("Powersave")
         self.d.set_label("Performance")
@@ -138,16 +135,11 @@ class Main:
             self.d.set_label("[Performance]")
         if self.current_mode=="xperformance":
             self.e.set_label("[Extreme Performance]")
-        if self.win_opened:    
-            self.mode.set_label("Current mode: "+self.current_mode)
-            self.scale_event_enable = False
-            self.scale.set_value(self.profiles.index(self.current_mode)+1)
-            self.scale_event_enable = True
 
-    def scale_event(self,widget):
+    def scale_event(self,x,y):
         if not self.scale_event_enable:
             return
-        value=int(widget.get_value())-1
+        value=int(self.scale.get_value())-1
         if value == 0:
             self.xpowersave_event(None)
         elif value == 1:
@@ -161,43 +153,28 @@ class Main:
 
 
     def xpowersave_event(self,widget):
-        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
-            self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="xpowersave"
-        self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
-        self.set_backlight(20)
+        self.run("pkexec python3 /usr/lib/pardus/power-manager/setprofile.py 20 xpowersave")
         self.update_ui()
 
     def powersave_event(self,widget):
-        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
-            self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="powersave"
-        self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
-        self.set_backlight(40)
+        self.run("pkexec python3 /usr/lib/pardus/power-manager/setprofile.py 40 powersave")
         self.update_ui()
 
     def balanced_event(self,widget):
-        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
-            self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="balanced"
-        self.set_backlight(60)
-        self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
+        self.run("pkexec python3 /usr/lib/pardus/power-manager/setprofile.py 60 balanced")
         self.update_ui()
 
     def performance_event(self,widget):
-        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
-            self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="performance"
-        self.set_backlight(80)
-        self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
+        self.run("pkexec python3 /usr/lib/pardus/power-manager/setprofile.py 80 performance")
         self.update_ui()
 
     def xperformance_event(self,widget):
-        if os.path.exists("/etc/tlp.d/99-pardus.conf"):
-            self.run("rm -f /etc/tlp.d/99-pardus.conf")
         self.current_mode="xperformance"
-        self.set_backlight(100)
-        self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
+        self.run("pkexec python3 /usr/lib/pardus/power-manager/setprofile.py 100 xperformance")
         self.update_ui()
 
     def right_click_event(self, icon, button, time):
@@ -233,7 +210,7 @@ class Main:
         quit.connect("activate", Gtk.main_quit)
         self.menu.append(quit)
 
-        self.update_ui()
+        self.update_menu()
         self.menu.show_all()
 
         self.menu.popup(None, None, None, self.status_icon, button, time)

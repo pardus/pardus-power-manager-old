@@ -31,6 +31,7 @@ class Main:
         self.xperformance=self.builder.get_object("Xperformance")
         self.mode=self.builder.get_object("mode")
         self.scale = self.builder.get_object("scale")
+        self.modeset = self.builder.get_object("modeset")
         adjustment = self.builder.get_object("adjustment1")
 
         adjustment.set_lower(1.0)
@@ -51,6 +52,7 @@ class Main:
         self.performance.connect("clicked",self.performance_event)
         self.xperformance.connect("clicked",self.xperformance_event)
         self.scale.connect("value-changed",self.scale_event)
+        self.modeset.connect("clicked",self.modeset_event)
 
     def start(self):
         self.window.show_all()
@@ -69,6 +71,17 @@ class Main:
             )
             dialog.run()
             dialog.destroy()
+
+
+    def modeset_event(self,widget):
+        nb=self.builder.get_object("notebook")
+        cur_page=nb.get_current_page()
+        if cur_page == 0:
+            nb.set_current_page(1)
+            widget.set_label("Basic")
+        else:
+            nb.set_current_page(0)
+            widget.set_label("Core")
 
     def set_backlight(self,percent=100):
         for i in os.listdir("/sys/class/backlight/"):

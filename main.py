@@ -15,6 +15,13 @@ class Main:
     def __init__(self):
         self.profiles=["xpowersave","powersave","balanced","performance","xperformance"]
         self.builder=Gtk.Builder()
+        self.status_icon = Gtk.StatusIcon()
+        self.status_icon.set_from_stock(Gtk.STOCK_HOME)
+        self.status_icon.connect("popup-menu", self.right_click_event)
+        self.win_opened=False
+
+
+    def create_win(self):
         os.chdir("/usr/lib/pardus/power-manager/")
         cssProvider = Gtk.CssProvider()
         cssProvider.load_from_path("main.css")
@@ -33,19 +40,18 @@ class Main:
         self.scale = self.builder.get_object("scale")
         self.modeset = self.builder.get_object("modeset")
         adjustment = self.builder.get_object("adjustment1")
+        self.window.connect("destroy",self.stop)
 
         adjustment.set_lower(1.0)
         adjustment.set_upper(5.0)
         adjustment.set_step_increment(1.0)
 
         self.scale.set_draw_value(True)
-
         self.scale_event_enable=False
         self.signal_connect()
         self.update_ui()
 
     def signal_connect(self):
-        self.window.connect("destroy",Gtk.main_quit)
         self.powersave.connect("clicked",self.powersave_event)
         self.xpowersave.connect("clicked",self.xpowersave_event)
         self.balanced.connect("clicked",self.balanced_event)
@@ -54,7 +60,16 @@ class Main:
         self.scale.connect("value-changed",self.scale_event)
         self.modeset.connect("clicked",self.modeset_event)
 
-    def start(self):
+
+    def stop(self,window):
+        self.win_opened=False
+        self.window.hide()
+
+    def start(self,widget):
+        if self.win_opened:
+            return
+        self.create_win()
+        self.win_opened=True
         self.window.show_all()
 
     def run(self,cmd):
@@ -156,6 +171,50 @@ class Main:
         self.run("ln -s ../../usr/lib/pardus/power-manager/tlp/{}.conf /etc/tlp.d/99-pardus.conf".format(self.current_mode))
         self.update_ui()
 
+    def right_click_event(self, icon, button, time):
+        self.menu = Gtk.Menu()
+
+        show = Gtk.MenuItem()
+        show.set_label("Open Settings")
+        show.connect("activate", self.start)
+        self.menu.append(show)
+
+
+        a = Gtk.MenuItem()
+        a.set_label("Extreme Powersave")
+        a.connect("activate", self.xpowersave_event)
+        self.menu.append(a)
+
+        b = Gtk.MenuItem()
+        b.set_label("Powersave")
+        b.connect("activate", self.powersave_event)
+        self.menu.append(b)
+
+        c = Gtk.MenuItem()
+        c.set_label("Balanced")
+        c.connect("activate", self.balanced_event)
+        self.menu.append(c)
+
+        d = Gtk.MenuItem()
+        d.set_label("Performance")
+        d.connect("activate", self.performance_event)
+        self.menu.append(d)
+
+        e = Gtk.MenuItem()
+        e.set_label("Extreme Performance")
+        e.connect("activate", self.xperformance_event)
+        self.menu.append(e)
+
+        quit = Gtk.MenuItem()
+        quit.set_label("Quit")
+        quit.connect("activate", Gtk.main_quit)
+        self.menu.append(quit)
+
+        self.menu.show_all()
+
+        self.menu.popup(None, None, None, self.status_icon, button, time)
+
+
 Gtk.init()
-Main().start()
+Main()
 Gtk.main()

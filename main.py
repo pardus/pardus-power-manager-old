@@ -5,6 +5,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version("GdkPixbuf", "2.0")
 from gi.repository import GLib, Gio, Gtk, Gdk
+
 try:
     import socket
 
@@ -231,5 +232,7 @@ class Main:
 
 
 Gtk.init()
-Main()
+m=Main()
+if "show" in sys.argv:
+    m.start(None)
 Gtk.main()

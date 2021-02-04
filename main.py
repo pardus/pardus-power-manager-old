@@ -9,6 +9,17 @@ gi.require_version('Gtk', '3.0')
 gi.require_version("GdkPixbuf", "2.0")
 from gi.repository import GLib, Gio, Gtk, Gdk
 
+try:
+    import socket
+
+    s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    s.bind('\0pardus-power-manager_gateway_notify_lock')
+except socket.error as e:
+    error_code = e.args[0]
+    error_string = e.args[1]
+    print("Process already running (%d:%s ). Exiting" % (error_code, error_string))
+    sys.exit(0)
+
 
 class Main:
 
@@ -110,10 +121,28 @@ class Main:
             self.current_mode=os.readlink("/etc/tlp.d/99-pardus.conf").split("/")[-1].split(".")[0]
         else:
             self.current_mode="balanced"
-        self.mode.set_label("Current mode: "+self.current_mode)
-        self.scale_event_enable = False
-        self.scale.set_value(self.profiles.index(self.current_mode)+1)
-        self.scale_event_enable = True
+
+        self.a.set_label("Extreme Powersave")
+        self.b.set_label("Powersave")
+        self.d.set_label("Performance")
+        self.c.set_label("Balanced")
+        self.e.set_label("Extreme Performance")
+
+        if self.current_mode=="xpowersave":
+            self.a.set_label("[Extreme Powersave]")
+        if self.current_mode=="powersave":
+            self.b.set_label("[Powersave]")
+        if self.current_mode=="balanced":
+            self.c.set_label("[Balanced]")
+        if self.current_mode=="performance":
+            self.d.set_label("[Performance]")
+        if self.current_mode=="xperformance":
+            self.e.set_label("[Extreme Performance]")
+        if self.win_opened:    
+            self.mode.set_label("Current mode: "+self.current_mode)
+            self.scale_event_enable = False
+            self.scale.set_value(self.profiles.index(self.current_mode)+1)
+            self.scale_event_enable = True
 
     def scale_event(self,widget):
         if not self.scale_event_enable:
@@ -179,37 +208,32 @@ class Main:
         show.connect("activate", self.start)
         self.menu.append(show)
 
+        self.a = Gtk.MenuItem()
+        self.a.connect("activate", self.xpowersave_event)
+        self.menu.append(self.a)
 
-        a = Gtk.MenuItem()
-        a.set_label("Extreme Powersave")
-        a.connect("activate", self.xpowersave_event)
-        self.menu.append(a)
+        self.b = Gtk.MenuItem()
+        self.b.connect("activate", self.powersave_event)
+        self.menu.append(self.b)
 
-        b = Gtk.MenuItem()
-        b.set_label("Powersave")
-        b.connect("activate", self.powersave_event)
-        self.menu.append(b)
+        self.c = Gtk.MenuItem()
+        self.c.connect("activate", self.balanced_event)
+        self.menu.append(self.c)
 
-        c = Gtk.MenuItem()
-        c.set_label("Balanced")
-        c.connect("activate", self.balanced_event)
-        self.menu.append(c)
+        self.d = Gtk.MenuItem()
+        self.d.connect("activate", self.performance_event)
+        self.menu.append(self.d)
 
-        d = Gtk.MenuItem()
-        d.set_label("Performance")
-        d.connect("activate", self.performance_event)
-        self.menu.append(d)
-
-        e = Gtk.MenuItem()
-        e.set_label("Extreme Performance")
-        e.connect("activate", self.xperformance_event)
-        self.menu.append(e)
+        self.e = Gtk.MenuItem()
+        self.e.connect("activate", self.xperformance_event)
+        self.menu.append(self.e)
 
         quit = Gtk.MenuItem()
         quit.set_label("Quit")
         quit.connect("activate", Gtk.main_quit)
         self.menu.append(quit)
 
+        self.update_ui()
         self.menu.show_all()
 
         self.menu.popup(None, None, None, self.status_icon, button, time)

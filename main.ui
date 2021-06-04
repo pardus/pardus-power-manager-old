@@ -249,7 +249,7 @@ powersave</property>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="pixbuf">Extremeperformance.svg</property>
+                                <property name="pixbuf">xperformance.svg</property>
                                 <property name="pixel-size">64</property>
                               </object>
                               <packing>

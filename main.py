@@ -32,7 +32,7 @@ class Main:
         self.profiles=["xpowersave","powersave","balanced","performance","xperformance"]
         self.builder=Gtk.Builder()
         self.status_icon = Gtk.StatusIcon()
-        self.status_icon.set_from_stock(Gtk.STOCK_HOME)
+        self.status_icon.set_from_file("/usr/lib/pardus/power-manager/icon.svg")
         self.status_icon.connect("popup-menu", self.right_click_event)
         self.win_opened=False
         if os.path.exists("/etc/tlp.d/99-pardus.conf"):

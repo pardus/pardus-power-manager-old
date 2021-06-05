@@ -1,5 +1,31 @@
-pardus-power-manager (0.1.0) unstable; urgency=medium
+pardus-power-manager (0.1.0~alpha1) unstable; urgency=medium
 
-  * Initial commit
+  [ Ali Rıza KESKİN ]
+  * graphical fix
+  * application launcher
+  * really bad icons added (icons will replace good ones)
+  * pkexec policy & debian build fix
+  * fix layout
+  * tlpx
+  * current status and tlp conf changes
+  * scale switch added
+  * add new profiles
+  * GtkScale event
+  * block non-root user
+  * error dialog added
+  * backlight change
+  * layout fixes and second tab
+  * ui fix and remove core button (actually move unaccessible page)
+  * ui update
+  * ui fix
+  * uu
+  * trayicon menu update
+  * pkexec
+  * polkit fix
+  * submenu for power
+  * window show
+  * aasdasd
+  * icons update
+  * fix icon
 
- -- Your Name <ali.riza.keskin@pardus.org.tr>  Mon, 01 Feb 2021 12:36:44 +0000
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Sat, 05 Jun 2021 10:47:57 +0000

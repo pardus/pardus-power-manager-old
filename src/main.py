@@ -6,6 +6,9 @@ gi.require_version('Gtk', '3.0')
 gi.require_version("GdkPixbuf", "2.0")
 from gi.repository import GLib, Gio, Gtk, Gdk
 
+import gettext
+gettext.install("power-manager", "/usr/share/locale")
+
 try:
     import socket
 
@@ -66,6 +69,16 @@ class Main:
         adjustment.set_lower(1.0)
         adjustment.set_upper(5.0)
         adjustment.set_step_increment(1.0)
+        
+        #self.window.set_resizable(False)
+        # locale
+        self.builder.get_object("label_eps").set_label(_("Extreme Powersave"))
+        self.builder.get_object("label_eps").set_line_wrap(True)
+        self.builder.get_object("label_ps").set_label(_("Powersave"))
+        self.builder.get_object("label_b").set_label(_("Balanced"))
+        self.builder.get_object("label_pf").set_label(_("Performance"))
+        self.builder.get_object("label_epf").set_label(_("Extreme Performance"))
+        
 
         self.scale.set_draw_value(True)
         self.scale_event_enable=False
@@ -114,35 +127,35 @@ class Main:
         cur_page=nb.get_current_page()
         if cur_page == 0:
             nb.set_current_page(1)
-            widget.set_label("Basic")
+            widget.set_label(_("Basic"))
         else:
             nb.set_current_page(0)
-            widget.set_label("Core")
+            widget.set_label(_("Core"))
 
         
     def update_ui(self):
-            self.mode.set_label("Current mode: "+self.current_mode)
+            self.mode.set_label(_("Current mode: ")+self.current_mode)
             self.scale_event_enable = False
             self.scale.set_value(self.profiles.index(self.current_mode)+1)
             self.scale_event_enable = True
       
     def update_menu(self):
-        self.a.set_label("Extreme Powersave")
-        self.b.set_label("Powersave")
-        self.d.set_label("Performance")
-        self.c.set_label("Balanced")
-        self.e.set_label("Extreme Performance")
+        self.a.set_label(_("Extreme Powersave"))
+        self.b.set_label(_("Powersave"))
+        self.d.set_label(_("Performance"))
+        self.c.set_label(_("Balanced"))
+        self.e.set_label(_("Extreme Performance"))
 
         if self.current_mode=="xpowersave":
-            self.a.set_label("[Extreme Powersave]")
+            self.a.set_label("[{}]".format(_("Extreme Powersave")))
         if self.current_mode=="powersave":
-            self.b.set_label("[Powersave]")
+            self.b.set_label("[{}]".format(_("Powersave")))
         if self.current_mode=="balanced":
-            self.c.set_label("[Balanced]")
+            self.c.set_label("[{}]".format(_("Balanced")))
         if self.current_mode=="performance":
-            self.d.set_label("[Performance]")
+            self.d.set_label("[{}]".format(_("Performance")))
         if self.current_mode=="xperformance":
-            self.e.set_label("[Extreme Performance]")
+            self.e.set_label("[{}]".format(_("Extreme Performance")))
 
     def scale_event(self,widget):
         if not self.scale_event_enable:
@@ -189,14 +202,14 @@ class Main:
         self.menu = Gtk.Menu()
 
         show = Gtk.MenuItem()
-        show.set_label("View")
+        show.set_label(_("View"))
         show.connect("activate", self.start)
         self.menu.append(show)
 
         menu_profile=Gtk.MenuItem()
         self.menu.append(menu_profile)
         self.submenu_profile=Gtk.Menu()
-        menu_profile.set_label("Power")
+        menu_profile.set_label(_("Power"))
         menu_profile.set_submenu(self.submenu_profile)
 
 
@@ -221,7 +234,7 @@ class Main:
         self.submenu_profile.append(self.e)
 
         quit = Gtk.MenuItem()
-        quit.set_label("Quit")
+        quit.set_label(_("Quit"))
         quit.connect("activate", Gtk.main_quit)
         self.menu.append(quit)
 

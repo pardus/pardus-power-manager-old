@@ -1,32 +1,35 @@
 #!/usr/bin/python3
 import os
-import sys, subprocess, requests
+import sys, subprocess, requests, threading
 import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version("GdkPixbuf", "2.0")
 from gi.repository import GLib, Gio, Gtk, Gdk
+from gi.repository import GObject as gobject
 
 import gettext
 gettext.install("power-manager", "/usr/share/locale")
 
-try:
-    import socket
+def asynchronous(func):
+    def wrapper(*args, **kwargs):
+        thread = threading.Thread(target=func, args=args, kwargs=kwargs)
+        thread.daemon = True
+        thread.start()
+        return thread
+    return wrapper
 
-    s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    s.bind('\0pardus-power-manager_gateway_notify_lock')
-except socket.error as e:
-    error_code = e.args[0]
-    error_string = e.args[1]
-    dialog = Gtk.MessageDialog(
-                transient_for=Gtk.Window(),
-                flags=0,
-                message_type=Gtk.MessageType.INFO,
-                buttons=Gtk.ButtonsType.OK,
-                text="Process already running in background.",
-            )
-    dialog.run()
-    dialog.destroy()
-    sys.exit(0)
+@asynchronous
+def read_node():
+    while True:
+        os.system("cat /tmp/.power-manager")
+        m.start(None)
+        
+import dbus
+import dbus.service
+import dbus.mainloop.glib
+
+
+
 
 
 class Main:
@@ -121,6 +124,8 @@ class Main:
             dialog.run()
             dialog.destroy()
 
+    def quit(self,widget):
+        sys.exit(0)
 
     def modeset_event(self,widget):
         nb=self.builder.get_object("notebook")
@@ -235,7 +240,7 @@ class Main:
 
         quit = Gtk.MenuItem()
         quit.set_label(_("Quit"))
-        quit.connect("activate", Gtk.main_quit)
+        quit.connect("activate", self.quit)
         self.menu.append(quit)
 
         self.update_menu()
@@ -246,6 +251,39 @@ class Main:
 
 Gtk.init()
 m=Main()
-if "show" in sys.argv:
-    m.start(None)
+
+class Service(dbus.service.Object):
+   def __init__(self, message):
+      self._message = message
+
+   def run(self):
+      dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
+      bus_name = dbus.service.BusName("org.pardus.powermanager", dbus.SessionBus())
+      dbus.service.Object.__init__(self, bus_name, "/org/pardus/powermanager")
+      self._loop = GLib.MainLoop()
+      self._loop.run()
+
+   @dbus.service.method("org.pardus.powermanager.show", in_signature='', out_signature='')
+   def show(self):
+      m.start(None)
+
+class Client():
+   def __init__(self):
+      bus = dbus.SessionBus()
+      service = bus.get_object('org.pardus.powermanager', "/org/pardus/powermanager")
+      self.show = service.get_dbus_method('show', 'org.pardus.powermanager.show')
+
+   def run(self):
+      self.show()
+
+
+try:
+    import socket
+    s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    s.bind('\0pardus-power-manager_gateway_notify_lock')
+    service=Service("Pardus Power Manager").run()
+except socket.error as e:
+    client=Client().run()
+    sys.exit(0)
+
 Gtk.main()

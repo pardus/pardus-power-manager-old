@@ -84,10 +84,11 @@
 powersave</property>
                                 <property name="justify">center</property>
                                 <property name="wrap">True</property>
+                                <property name="width-chars">5</property>
                               </object>
                               <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -131,10 +132,11 @@ powersave</property>
                                 <property name="label" translatable="yes">powersave</property>
                                 <property name="justify">center</property>
                                 <property name="wrap">True</property>
+                                <property name="width-chars">5</property>
                               </object>
                               <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -178,10 +180,11 @@ powersave</property>
                                 <property name="label" translatable="yes">balanced</property>
                                 <property name="justify">center</property>
                                 <property name="wrap">True</property>
+                                <property name="width-chars">5</property>
                               </object>
                               <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -225,10 +228,11 @@ powersave</property>
                                 <property name="label" translatable="yes">performance</property>
                                 <property name="justify">center</property>
                                 <property name="wrap">True</property>
+                                <property name="width-chars">5</property>
                               </object>
                               <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -273,10 +277,11 @@ powersave</property>
 performance</property>
                                 <property name="justify">center</property>
                                 <property name="wrap">True</property>
+                                <property name="width-chars">5</property>
                               </object>
                               <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>

@@ -6,6 +6,7 @@ gi.require_version('Gtk', '3.0')
 gi.require_version("GdkPixbuf", "2.0")
 from gi.repository import GLib, Gio, Gtk, Gdk
 from gi.repository import GObject as gobject
+import cpu
 
 import gettext
 gettext.install("power-manager", "/usr/share/locale")
@@ -87,6 +88,7 @@ class Main:
         self.scale_event_enable=False
         self.signal_connect()
         self.update_ui()
+        self.cpu_init()
 
     def signal_connect(self):
         self.powersave.connect("clicked",self.powersave_event)
@@ -95,8 +97,6 @@ class Main:
         self.performance.connect("clicked",self.performance_event)
         self.xperformance.connect("clicked",self.xperformance_event)
         self.scale.connect("value-changed",self.scale_event)
-        self.modeset.connect("clicked",self.modeset_event)
-
 
     def stop(self,window):
         self.win_opened=False
@@ -127,22 +127,13 @@ class Main:
     def quit(self,widget):
         sys.exit(0)
 
-    def modeset_event(self,widget):
-        nb=self.builder.get_object("notebook")
-        cur_page=nb.get_current_page()
-        if cur_page == 0:
-            nb.set_current_page(1)
-            widget.set_label(_("Basic"))
-        else:
-            nb.set_current_page(0)
-            widget.set_label(_("Core"))
-
         
     def update_ui(self):
-            self.mode.set_label(_("Current mode: ")+self.current_mode)
-            self.scale_event_enable = False
-            self.scale.set_value(self.profiles.index(self.current_mode)+1)
-            self.scale_event_enable = True
+        self.mode.set_label(_("Current mode: ")+self.current_mode)
+        self.scale_event_enable = False
+        self.scale.set_value(self.profiles.index(self.current_mode)+1)
+        self.scale_event_enable = True
+        
       
     def update_menu(self):
         self.a.set_label(_("Extreme Powersave"))
@@ -161,6 +152,16 @@ class Main:
             self.d.set_label("[{}]".format(_("Performance")))
         if self.current_mode=="xperformance":
             self.e.set_label("[{}]".format(_("Extreme Performance")))
+
+    def cpu_init(self):
+        i=0
+        while i<cpu.get_cpu_count():
+            box=cpu.create_cpu_box(i)
+            i+=1
+            if i%2 == 0:
+                self.builder.get_object("cpubox1").pack_start(box,False,0,0)
+            else:
+                self.builder.get_object("cpubox2").pack_start(box,False,0,0)
 
     def scale_event(self,widget):
         if not self.scale_event_enable:

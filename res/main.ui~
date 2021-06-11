@@ -339,30 +339,50 @@ performance</property>
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow">
+              <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="can-focus">True</property>
+                <property name="can-focus">False</property>
+                <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkViewport">
+                  <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="homogeneous">True</property>
                     <child>
-                      <object class="GtkBox" id="core_box">
+                      <object class="GtkComboBox" id="governor_box">
+                        <property name="width-request">150</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="valign">center</property>
+                        <property name="margin-left">5</property>
+                        <property name="margin-right">5</property>
                         <property name="margin-start">5</property>
                         <property name="margin-end">5</property>
-                        <property name="margin-top">13</property>
-                        <property name="margin-bottom">13</property>
-                        <property name="homogeneous">True</property>
+                        <property name="margin-top">5</property>
+                        <property name="margin-bottom">5</property>
                         <child>
-                          <object class="GtkBox" id="cpubox1">
+                          <object class="GtkCellRendererText"/>
+                          <attributes>
+                            <attribute name="text">0</attribute>
+                          </attributes>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <child>
+                          <object class="GtkSwitch">
                             <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <child>
-                              <placeholder/>
-                            </child>
+                            <property name="can-focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -371,13 +391,10 @@ performance</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkBox" id="cpubox2">
+                          <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <child>
-                              <placeholder/>
-                            </child>
+                            <property name="label" translatable="yes">Turbo boost</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -386,8 +403,76 @@ performance</property>
                           </packing>
                         </child>
                       </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
                     </child>
                   </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <child>
+                      <object class="GtkViewport">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <child>
+                          <object class="GtkBox" id="core_box">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="margin-start">5</property>
+                            <property name="margin-end">5</property>
+                            <property name="margin-top">13</property>
+                            <property name="margin-bottom">13</property>
+                            <property name="homogeneous">True</property>
+                            <child>
+                              <object class="GtkBox" id="cpubox1">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkBox" id="cpubox2">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
                 </child>
               </object>
               <packing>
@@ -475,9 +560,28 @@ performance</property>
     <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
     <child>
+      <object class="GtkImage">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="margin-start">5</property>
+        <property name="margin-end">5</property>
+        <property name="margin-top">5</property>
+        <property name="margin-bottom">5</property>
+        <property name="pixbuf">../cpu.svg</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="halign">center</property>
         <property name="valign">center</property>
         <child>
           <object class="GtkSwitch" id="cpu_status">
@@ -498,21 +602,12 @@ performance</property>
           </packing>
         </child>
         <child>
-          <object class="GtkComboBox" id="governor_box">
-            <property name="width-request">150</property>
+          <object class="GtkLabel" id="cpu_label">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="valign">center</property>
             <property name="margin-start">5</property>
             <property name="margin-end">5</property>
-            <property name="margin-top">5</property>
-            <property name="margin-bottom">5</property>
-            <child>
-              <object class="GtkCellRendererText"/>
-              <attributes>
-                <attribute name="text">0</attribute>
-              </attributes>
-            </child>
+            <property name="label" translatable="yes">CPU0</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -520,41 +615,11 @@ performance</property>
             <property name="position">1</property>
           </packing>
         </child>
-        <child>
-          <object class="GtkImage">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
-            <property name="margin-start">5</property>
-            <property name="margin-end">5</property>
-            <property name="margin-top">5</property>
-            <property name="margin-bottom">5</property>
-            <property name="pixbuf">../cpu.svg</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-      </object>
-      <packing>
-        <property name="expand">True</property>
-        <property name="fill">True</property>
-        <property name="position">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="cpu_label">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="label" translatable="yes">CPU0</property>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">1</property>
+        <property name="position">2</property>
       </packing>
     </child>
   </object>

@@ -165,36 +165,51 @@ class Main:
                 self.builder.get_object("cpubox1").pack_start(box,False,0,0)
             else:
                 self.builder.get_object("cpubox2").pack_start(box,False,0,0)
+        
+
+        def build_combo():
+            liststore = Gtk.ListStore(str)
+            i=k=0
+            current=cpu.get_cpu_governor(0)
+            for g in cpu.get_available_governors(0):
+                if len(g.strip()) > 0:
+                    liststore.append([g])
+                if g == current:
+                    k=i
+                i+=1
+            self.builder.get_object("governor_box").set_model(liststore)
+            self.builder.get_object("governor_box").set_active(k)
+
+        def combo_action(widget):
+            model=widget.get_model()
+            active=widget.get_active()
+            governor=model[active][0]
+            if governor != cpu.get_cpu_governor(0):
+                self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py governor "+governor)
+                build_combo()
+            
+        build_combo()
+        self.builder.get_object("governor_box").connect("changed",combo_action)
 
     def create_cpu_box(self,core=0):
         builder=Gtk.Builder()
         builder.add_from_file("main.ui")
         box=builder.get_object("cpu_box")
         builder.get_object("cpu_label").set_text("CPU"+str(core))
-        if core == 0:
-            builder.get_object("cpu_status")
-        liststore = Gtk.ListStore(str)
-        i=k=0
-        current=cpu.get_cpu_governor(core)
-        for g in cpu.get_available_governors(core):
-            if len(g.strip()) > 0:
-                liststore.append([g])
-            if g == current:
-                k=i
-            print(current)
-            i+=1
-        cell = Gtk.CellRendererText()
-        builder.get_object("governor_box").add_attribute(cell, 'text', 0)
-        builder.get_object("governor_box").set_model(liststore)
-        builder.get_object("governor_box").set_active(k)
+        def switch_event(widget,gparam):
+            if widget.get_active():
+                self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py cpu "+str(core)+" 0")
+            else:
+                self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py cpu "+str(core)+" 1")
+            if widget.get_active() == cpu.is_cpu_enabled(core):
+                builder.get_object("cpu_status").set_active(cpu.is_cpu_enabled(core))
 
-        def combo_action(widget):
-            model=widget.get_model()
-            active=widget.get_active()
-            governor=model[active][0]
-            self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py "+str(core)+" "+governor)
-            
-        builder.get_object("governor_box").connect("changed",combo_action)
+        if core == 0:
+            builder.get_object("cpu_status").set_sensitive(False)
+            builder.get_object("cpu_status").set_active(True)
+        else:
+            builder.get_object("cpu_status").set_active(cpu.is_cpu_enabled(core))
+            builder.get_object("cpu_status").connect("state-set",switch_event)
         return box
 
     def scale_event(self,widget):

@@ -155,13 +155,21 @@ class Main:
 
     def cpu_init(self):
         i=0
-        while i<cpu.get_cpu_count():
-            box=cpu.create_cpu_box(i)
+        while i<cpu.cpucount():
+            box=self.create_cpu_box(i)
             i+=1
             if i%2 == 0:
                 self.builder.get_object("cpubox1").pack_start(box,False,0,0)
             else:
                 self.builder.get_object("cpubox2").pack_start(box,False,0,0)
+
+    def create_cpu_box(self,core=0):
+        builder=Gtk.Builder()
+        os.chdir("/usr/lib/pardus/power-manager/")
+        builder.add_from_file("main.ui")
+        box=builder.get_object("cpu_box")
+        builder.get_object("cpu_label").set_text("CPU"+str(core))
+        return box
 
     def scale_event(self,widget):
         if not self.scale_event_enable:

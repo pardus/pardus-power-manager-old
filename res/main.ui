@@ -20,7 +20,7 @@
           <object class="GtkNotebook" id="notebook">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
-            <property name="show-border">False</property>
+            <property name="scrollable">True</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
@@ -342,7 +342,6 @@ performance</property>
               <object class="GtkScrolledWindow">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
-                <property name="shadow-type">in</property>
                 <child>
                   <object class="GtkViewport">
                     <property name="visible">True</property>
@@ -422,7 +421,6 @@ performance</property>
               <object class="GtkSeparator">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="margin-top">13</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -472,20 +470,6 @@ performance</property>
       </object>
     </child>
   </object>
-  <object class="GtkListStore" id="liststore1">
-    <columns>
-      <!-- column-name governor -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">performance</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">powersave</col>
-      </row>
-    </data>
-  </object>
   <object class="GtkBox" id="cpu_box">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
@@ -496,7 +480,7 @@ performance</property>
         <property name="can-focus">False</property>
         <property name="valign">center</property>
         <child>
-          <object class="GtkSwitch">
+          <object class="GtkSwitch" id="cpu_status">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="halign">center</property>
@@ -523,7 +507,6 @@ performance</property>
             <property name="margin-end">5</property>
             <property name="margin-top">5</property>
             <property name="margin-bottom">5</property>
-            <property name="model">liststore1</property>
             <child>
               <object class="GtkCellRendererText"/>
               <attributes>
@@ -532,7 +515,7 @@ performance</property>
             </child>
           </object>
           <packing>
-            <property name="expand">True</property>
+            <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">1</property>
           </packing>

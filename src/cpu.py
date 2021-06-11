@@ -23,9 +23,9 @@ def change_cpu_status(core,status):
         return False
     f=open("/sys/devices/system/cpu/cpu"+str(core)+"/online","w")
     if status:
-        f.write(1)
+        f.write("1")
     else:
-        f.write(0)
+        f.write("0")
     return True
 
 def is_turbo_boost_enabled():
@@ -48,9 +48,14 @@ def change_turbo_boost_status(status):
         elif os.path.exists("/sys/devices/system/cpu/intel_pstate/no_turbo"):
             open("/sys/devices/system/cpu/intel_pstate/no_turbo","w").write("1")
 
-def get_cpu_governor(core):
-    return open("/sys/devices/system/cpu/cpu"+str(core)+"/cpufreq/scaling_governor","r").read()
+def get_available_governors(core=0):
+    f=open("/sys/devices/system/cpu/cpu"+str(core)+"/cpufreq/scaling_available_governors").read().strip()
+    return f.split(" ")
+    
 
-def get_cpu_governor(core,governor):
+def get_cpu_governor(core=0):
+    return open("/sys/devices/system/cpu/cpu"+str(core)+"/cpufreq/scaling_governor","r").read().strip()
+
+def change_cpu_governor(core,governor):
     open("/sys/devices/system/cpu/cpu"+str(core)+"/cpufreq/scaling_governor","w").write(governor)
 

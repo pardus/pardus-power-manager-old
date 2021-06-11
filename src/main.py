@@ -50,7 +50,10 @@ class Main:
 
 
     def create_win(self):
-        os.chdir("/usr/lib/pardus/power-manager/")
+        if not os.path.exists("../res/main.ui"):
+            os.chdir("/usr/lib/pardus/power-manager/")
+        else:
+            os.chdir("../res")
         cssProvider = Gtk.CssProvider()
         cssProvider.load_from_path("main.css")
         self.builder.add_from_file("main.ui")
@@ -158,17 +161,40 @@ class Main:
         while i<cpu.cpucount():
             box=self.create_cpu_box(i)
             i+=1
-            if i%2 == 0:
+            if i%2 == 1:
                 self.builder.get_object("cpubox1").pack_start(box,False,0,0)
             else:
                 self.builder.get_object("cpubox2").pack_start(box,False,0,0)
 
     def create_cpu_box(self,core=0):
         builder=Gtk.Builder()
-        os.chdir("/usr/lib/pardus/power-manager/")
         builder.add_from_file("main.ui")
         box=builder.get_object("cpu_box")
         builder.get_object("cpu_label").set_text("CPU"+str(core))
+        if core == 0:
+            builder.get_object("cpu_status")
+        liststore = Gtk.ListStore(str)
+        i=k=0
+        current=cpu.get_cpu_governor(core)
+        for g in cpu.get_available_governors(core):
+            if len(g.strip()) > 0:
+                liststore.append([g])
+            if g == current:
+                k=i
+            print(current)
+            i+=1
+        cell = Gtk.CellRendererText()
+        builder.get_object("governor_box").add_attribute(cell, 'text', 0)
+        builder.get_object("governor_box").set_model(liststore)
+        builder.get_object("governor_box").set_active(k)
+
+        def combo_action(widget):
+            model=widget.get_model()
+            active=widget.get_active()
+            governor=model[active][0]
+            self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py "+str(core)+" "+governor)
+            
+        builder.get_object("governor_box").connect("changed",combo_action)
         return box
 
     def scale_event(self,widget):

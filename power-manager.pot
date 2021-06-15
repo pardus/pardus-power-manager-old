@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-07 15:24+0300\n"
+"POT-Creation-Date: 2021-06-15 13:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,58 +17,42 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/main.py:74
-msgid ""
-"Extreme\n"
-"Powersave"
-msgstr ""
-
-#: src/main.py:76 src/main.py:143 src/main.py:151
-msgid "Powersave"
-msgstr ""
-
-#: src/main.py:77 src/main.py:145 src/main.py:153
-msgid "Balanced"
-msgstr ""
-
-#: src/main.py:78 src/main.py:144 src/main.py:155
-msgid "Performance"
-msgstr ""
-
-#: src/main.py:79
-msgid ""
-"Extreme\n"
-"Performance"
-msgstr ""
-
-#: src/main.py:129
-msgid "Basic"
-msgstr ""
-
-#: src/main.py:132
-msgid "Core"
-msgstr ""
-
-#: src/main.py:136
-msgid "Current mode: "
-msgstr ""
-
-#: src/main.py:142 src/main.py:149
+#: src/main.py:92 src/main.py:153 src/main.py:160
 msgid "Extreme Powersave"
 msgstr ""
 
-#: src/main.py:146 src/main.py:157
+#: src/main.py:94 src/main.py:154 src/main.py:162
+msgid "Powersave"
+msgstr ""
+
+#: src/main.py:95 src/main.py:156 src/main.py:164
+msgid "Balanced"
+msgstr ""
+
+#: src/main.py:96 src/main.py:155 src/main.py:166
+msgid "Performance"
+msgstr ""
+
+#: src/main.py:97 src/main.py:157 src/main.py:168
 msgid "Extreme Performance"
 msgstr ""
 
-#: src/main.py:204
+#: src/main.py:105
+msgid "Pardus Power Manager"
+msgstr ""
+
+#: src/main.py:146
+msgid "Current mode: "
+msgstr ""
+
+#: src/main.py:271
 msgid "View"
 msgstr ""
 
-#: src/main.py:211
+#: src/main.py:278
 msgid "Power"
 msgstr ""
 
-#: src/main.py:236
+#: src/main.py:303
 msgid "Quit"
 msgstr ""

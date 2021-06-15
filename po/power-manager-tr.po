@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-07 15:24+0300\n"
+"POT-Creation-Date: 2021-06-15 13:09+0000\n"
 "PO-Revision-Date: 2021-06-04 15:58+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,55 +18,56 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: src/main.py:76 src/main.py:143 src/main.py:151
-msgid "Powersave"
-msgstr "Güç tasarrufu"
-
-#: src/main.py:77 src/main.py:145 src/main.py:153
-msgid "Balanced"
-msgstr "Dengeli"
-
-#: src/main.py:78 src/main.py:144 src/main.py:155
-msgid "Performance"
-msgstr "Hızlı"
-
-#: src/main.py:79
-#, fuzzy
-msgid ""
-"Extreme\n"
-"Performance"
-msgstr ""
-"Yüksek\n"
-"Hızlı"
-
-#: src/main.py:129
-msgid "Basic"
-msgstr "Basit"
-
-#: src/main.py:132
-msgid "Core"
-msgstr "Çekirdek"
-
-#: src/main.py:136
-msgid "Current mode: "
-msgstr "Şu anki mod: "
-
-#: src/main.py:142 src/main.py:149
+#: src/main.py:92 src/main.py:153 src/main.py:160
 msgid "Extreme Powersave"
 msgstr "Yüksek güç tasarrufu"
 
-#: src/main.py:146 src/main.py:157
+#: src/main.py:94 src/main.py:154 src/main.py:162
+msgid "Powersave"
+msgstr "Güç tasarrufu"
+
+#: src/main.py:95 src/main.py:156 src/main.py:164
+msgid "Balanced"
+msgstr "Dengeli"
+
+#: src/main.py:96 src/main.py:155 src/main.py:166
+msgid "Performance"
+msgstr "Hızlı"
+
+#: src/main.py:97 src/main.py:157 src/main.py:168
 msgid "Extreme Performance"
 msgstr "Yüksek hızlı"
 
-#: src/main.py:204
+#: src/main.py:105
+msgid "Pardus Power Manager"
+msgstr "Pardus Güç Yöneticisi"
+
+#: src/main.py:146
+msgid "Current mode: "
+msgstr "Şu anki mod: "
+
+#: src/main.py:271
 msgid "View"
 msgstr "Görüntüle"
 
-#: src/main.py:211
+#: src/main.py:278
 msgid "Power"
 msgstr "Güç"
 
-#: src/main.py:236
+#: src/main.py:303
 msgid "Quit"
 msgstr "Çıkış"
+
+#, fuzzy
+#~ msgid ""
+#~ "Extreme\n"
+#~ "Performance"
+#~ msgstr ""
+#~ "Yüksek\n"
+#~ "Hızlı"
+
+#~ msgid "Basic"
+#~ msgstr "Basit"
+
+#~ msgid "Core"
+#~ msgstr "Çekirdek"

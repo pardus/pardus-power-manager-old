@@ -102,6 +102,7 @@ class Main:
         self.signal_connect()
         self.update_ui()
         self.cpu_init()
+        self.builder.get_object("window_title").set_text(_("Pardus Power Manager"))
 
     def signal_connect(self):
         self.powersave.connect("clicked",self.powersave_event)

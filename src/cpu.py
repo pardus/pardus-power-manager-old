@@ -49,13 +49,22 @@ def change_turbo_boost_status(status):
             open("/sys/devices/system/cpu/intel_pstate/no_turbo","w").write("1")
 
 def get_available_governors(core=0):
-    f=open("/sys/devices/system/cpu/cpu"+str(core)+"/cpufreq/scaling_available_governors").read().strip()
-    return f.split(" ")
+    if os.path.exists("/sys/devices/system/cpu/cpu"+str(core)+"/cpufreq/scaling_available_governors"):
+        f=open("/sys/devices/system/cpu/cpu"+str(core)+"/cpufreq/scaling_available_governors").read().strip()
+        return f.split(" ")
+    else:
+        return (" ")
     
 
 def get_cpu_governor(core=0):
-    return open("/sys/devices/system/cpu/cpu"+str(core)+"/cpufreq/scaling_governor","r").read().strip()
+    if os.path.exists("/sys/devices/system/cpu/cpu"+str(core)+"/cpufreq/scaling_governor"):
+        return open("/sys/devices/system/cpu/cpu"+str(core)+"/cpufreq/scaling_governor","r").read().strip()
+    else:
+        return ""
 
 def change_cpu_governor(core,governor):
-    open("/sys/devices/system/cpu/cpu"+str(core)+"/cpufreq/scaling_governor","w").write(governor)
+    if os.path.exists("/sys/devices/system/cpu/cpu"+str(core)+"/cpufreq/scaling_governor"):
+        open("/sys/devices/system/cpu/cpu"+str(core)+"/cpufreq/scaling_governor","w").write(governor)
+    else:
+        return
 

@@ -47,7 +47,17 @@ class Main:
         else:
             self.current_mode="balanced"
 
-
+    def get_mode_name(self,mode):
+        if self.current_mode=="xpowersave":
+            return "Extreme Powersave"
+        if self.current_mode=="powersave":
+            return "Powersave"
+        if self.current_mode=="balanced":
+            return "Balanced"
+        if self.current_mode=="performance":
+            return "Performance"
+        if self.current_mode=="xperformance":
+            return "Extreme Performance"
 
     def create_win(self):
         if not os.path.exists("../res/main.ui"):
@@ -132,7 +142,7 @@ class Main:
 
         
     def update_ui(self):
-        self.mode.set_label(_("Current mode: ")+self.current_mode)
+        self.mode.set_label(_("Current mode: ")+_(self.get_mode_name(self.current_mode)))
         self.scale_event_enable = False
         self.scale.set_value(self.profiles.index(self.current_mode)+1)
         self.scale_event_enable = True

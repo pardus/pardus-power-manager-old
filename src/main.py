@@ -121,7 +121,7 @@ class Main:
             return
         self.create_win()
         self.win_opened=True
-        self.window.show_all()
+        self.window.show()
 
     def run(self,cmd):
         if os.system(cmd) != 0:
@@ -172,10 +172,14 @@ class Main:
         while i<cpu.cpucount():
             box=self.create_cpu_box(i)
             i+=1
-            if i%2 == 1:
+            if i%4 == 1:
                 self.builder.get_object("cpubox1").pack_start(box,False,0,0)
-            else:
+            elif i%4 == 2:
                 self.builder.get_object("cpubox2").pack_start(box,False,0,0)
+            elif i%4 == 3:
+                self.builder.get_object("cpubox3").pack_start(box,False,0,0)
+            else:
+                self.builder.get_object("cpubox4").pack_start(box,False,0,0)
         
 
         def build_combo():
@@ -207,20 +211,31 @@ class Main:
         builder.add_from_file("main.ui")
         box=builder.get_object("cpu_box")
         builder.get_object("cpu_label").set_text("CPU"+str(core))
-        def switch_event(widget,gparam):
-            if widget.get_active():
-                self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py cpu "+str(core)+" 0")
-            else:
-                self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py cpu "+str(core)+" 1")
-            if widget.get_active() == cpu.is_cpu_enabled(core):
-                builder.get_object("cpu_status").set_active(cpu.is_cpu_enabled(core))
+        ebut=builder.get_object("cpu_enabled")
+        dbut=builder.get_object("cpu_disabled")
+
+        def disable_core(widget):
+            self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py cpu "+str(core)+" 0")
+            if not cpu.is_cpu_enabled(core):
+                ebut.hide()
+                dbut.show_all()
+
+        def enable_core(widget):
+            self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py cpu "+str(core)+" 1")
+            if cpu.is_cpu_enabled(core):
+                ebut.show_all()
+                dbut.hide()
 
         if core == 0:
-            builder.get_object("cpu_status").set_sensitive(False)
-            builder.get_object("cpu_status").set_active(True)
+            builder.get_object("cpu_enabled").set_sensitive(False)
+        if cpu.is_cpu_enabled(core):
+            ebut.show_all()
+            dbut.hide()
         else:
-            builder.get_object("cpu_status").set_active(cpu.is_cpu_enabled(core))
-            builder.get_object("cpu_status").connect("state-set",switch_event)
+            ebut.hide()
+            dbut.show_all()
+        ebut.connect("clicked",disable_core)
+        dbut.connect("clicked",enable_core)
         return box
 
     def scale_event(self,widget):

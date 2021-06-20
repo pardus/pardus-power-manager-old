@@ -1,3 +1,21 @@
+pardus-power-manager (0.1.0~alpha2) unstable; urgency=medium
+
+  [ Ali Rıza KESKİN ]
+  * translate and source code layout change
+  * dbus call added
+  * cpu tab begin
+  * cpu module rewritten
+  * governot settings
+  * cpu enable disable fix
+  * tanslation fix
+  * fallback for virtual machines
+  * update for release
+  * new cpu tab complated but turboboost button
+  * new cpu tab complated but turboboost button
+  * fix cpuctl
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Sun, 20 Jun 2021 14:59:29 +0300
+
 pardus-power-manager (0.1.0~alpha1) unstable; urgency=medium
 
   [ Ali Rıza KESKİN ]

@@ -46,6 +46,7 @@ class Main:
             self.current_mode=os.readlink("/etc/tlp.d/99-pardus.conf").split("/")[-1].split(".")[0]
         else:
             self.current_mode="balanced"
+        self.status_icon.connect("activate",self.start)
 
     def get_mode_name(self,mode):
         if self.current_mode=="xpowersave":
@@ -168,7 +169,29 @@ class Main:
             self.e.set_label("[{}]".format(_("Extreme Performance")))
 
     def cpu_init(self):
+        if not os.path.exists("/sys/devices/system/cpu/cpufreq/boost") and \
+           not os.path.exists("/sys/devices/system/cpu/intel_pstate/no_turbo"):
+            self.builder.get_object("turboboost_box").hide()
+        def enable_turbo(widget):
+            self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py turbo 1")
+            turbo_button_action()
+        def disable_turbo(widget):
+            self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py turbo 0")
+            turbo_button_action()
+        def turbo_button_action():
+            if cpu.is_turbo_boost_enabled():
+                self.builder.get_object("tboff").hide()
+                self.builder.get_object("tbon").show_all()
+            else:
+                self.builder.get_object("tbon").hide()
+                self.builder.get_object("tboff").show_all()
+        turbo_button_action()
         i=0
+        
+        self.builder.get_object("tboff").connect("clicked",enable_turbo)
+        self.builder.get_object("tbon").connect("clicked",disable_turbo)
+        self.builder.get_object("tboff").set_label(_("off"))
+        self.builder.get_object("tbon").set_label(_("on"))
         while i<cpu.cpucount():
             box=self.create_cpu_box(i)
             i+=1

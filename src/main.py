@@ -7,6 +7,7 @@ gi.require_version("GdkPixbuf", "2.0")
 from gi.repository import GLib, Gio, Gtk, Gdk
 from gi.repository import GObject as gobject
 import cpu
+VERSION="0.1.0"
 
 import gettext
 gettext.install("power-manager", "/usr/share/locale")
@@ -126,6 +127,7 @@ class Main:
             b=Gtk.Builder()
             b.add_from_file("main.ui")
             win=b.get_object("dialog_about")
+            win.set_version(VERSION)
             win.show_all()
             self.builder.get_object("about_menu").popdown()
             

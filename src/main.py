@@ -39,7 +39,10 @@ class Main:
         self.profiles=["xpowersave","powersave","balanced","performance","xperformance"]
         self.builder=Gtk.Builder()
         self.status_icon = Gtk.StatusIcon()
-        self.status_icon.set_from_file("/usr/lib/pardus/power-manager/icon.svg")
+        try:
+            self.status_icon.set_from_file("/usr/lib/pardus/power-manager/icon.svg")
+        except:
+            pass
         self.status_icon.connect("popup-menu", self.right_click_event)
         self.win_opened=False
         if os.path.exists("/etc/tlp.d/99-pardus.conf"):
@@ -96,6 +99,8 @@ class Main:
         self.builder.get_object("label_b").set_label(_("Balanced"))
         self.builder.get_object("label_pf").set_label(_("Performance"))
         self.builder.get_object("label_epf").set_label(_("Extreme Performance"))
+        self.builder.get_object("show_basic").set_label(_("Basic"))
+        self.builder.get_object("show_core").set_label(_("Core"))
         
 
         self.scale.set_draw_value(True)
@@ -104,6 +109,18 @@ class Main:
         self.update_ui()
         self.cpu_init()
         self.builder.get_object("window_title").set_text(_("Pardus Power Manager"))
+        
+        def basic_clicked(widget):
+            self.builder.get_object("show_basic").hide()
+            self.builder.get_object("show_core").show()
+            self.builder.get_object("notebook").set_current_page(0)
+        def core_clicked(widget):
+            self.builder.get_object("show_basic").show()
+            self.builder.get_object("show_core").hide()
+            self.builder.get_object("notebook").set_current_page(1)
+        self.builder.get_object("show_basic").connect("clicked",basic_clicked)
+        self.builder.get_object("show_core").connect("clicked",core_clicked)
+        basic_clicked(None)
 
     def signal_connect(self):
         self.powersave.connect("clicked",self.powersave_event)

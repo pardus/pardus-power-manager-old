@@ -32,11 +32,11 @@ msgstr "Dengeli"
 
 #: src/main.py:100 src/main.py:173 src/main.py:184
 msgid "Performance"
-msgstr "Hızlı"
+msgstr "Performans"
 
 #: src/main.py:101 src/main.py:175 src/main.py:186
 msgid "Extreme Performance"
-msgstr "Yüksek hızlı"
+msgstr "Yüksek performans"
 
 #: src/main.py:102
 msgid "Basic"
@@ -80,4 +80,4 @@ msgstr "Çıkış"
 #~ "Performance"
 #~ msgstr ""
 #~ "Yüksek\n"
-#~ "Hızlı"
+#~ "Performans"

@@ -613,7 +613,9 @@ performance</property>
               <object class="GtkImage">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="icon-name">dialog-information</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="pixbuf">icon.svg</property>
               </object>
             </child>
           </object>
@@ -771,7 +773,7 @@ performance</property>
     <property name="website">https://www.pardus.org.tr</property>
     <property name="authors">Ali Rıza Keskin</property>
     <property name="translator-credits">Ali Rıza Keskin</property>
-    <property name="logo">../icon.svg</property>
+    <property name="logo">icon.svg</property>
     <property name="license-type">gpl-3-0</property>
     <child internal-child="vbox">
       <object class="GtkBox">

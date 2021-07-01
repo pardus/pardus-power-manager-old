@@ -598,24 +598,24 @@ performance</property>
       </object>
     </child>
     <child type="titlebar">
-      <object class="GtkHeaderBar">
+      <object class="GtkHeaderBar" id="window_title">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="title" translatable="yes">Pardus Power Manager</property>
         <property name="spacing">0</property>
         <property name="show-close-button">True</property>
-        <child type="title">
-          <object class="GtkLabel" id="window_title">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="label" translatable="yes">Pardus Power Manager</property>
-          </object>
-        </child>
         <child>
           <object class="GtkButton" id="about_button">
-            <property name="label" translatable="yes">...</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">dialog-information</property>
+              </object>
+            </child>
           </object>
         </child>
       </object>

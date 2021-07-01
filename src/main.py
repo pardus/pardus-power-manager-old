@@ -111,16 +111,23 @@ class Main:
         self.builder.get_object("window_title").set_text(_("Pardus Power Manager"))
         
         def basic_clicked(widget):
-            self.builder.get_object("show_basic").hide()
-            self.builder.get_object("show_core").show()
             self.builder.get_object("notebook").set_current_page(0)
+            self.builder.get_object("about_menu").popdown()
         def core_clicked(widget):
-            self.builder.get_object("show_basic").show()
-            self.builder.get_object("show_core").hide()
             self.builder.get_object("notebook").set_current_page(1)
+            self.builder.get_object("about_menu").popdown()
+        def show_about_menu(widget):
+            self.builder.get_object("about_menu").popup()
+        def about_clicked(widget):
+            b=Gtk.Builder()
+            b.add_from_file("main.ui")
+            win=b.get_object("dialog_about")
+            win.show_all()
         self.builder.get_object("show_basic").connect("clicked",basic_clicked)
         self.builder.get_object("show_core").connect("clicked",core_clicked)
+        self.builder.get_object("about").connect("clicked",about_clicked)
         basic_clicked(None)
+        self.builder.get_object("about_button").connect("clicked",show_about_menu)
 
     def signal_connect(self):
         self.powersave.connect("clicked",self.powersave_event)

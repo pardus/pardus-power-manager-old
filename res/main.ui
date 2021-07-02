@@ -766,7 +766,7 @@ performance</property>
     <property name="resizable">False</property>
     <property name="icon">icon.svg</property>
     <property name="type-hint">dialog</property>
-    <property name="program-name">Pardus Power Manager</property>
+    <property name="program-name" translatable="yes">Pardus Power Manager</property>
     <property name="version">0.1.0~Beta1</property>
     <property name="copyright">© 2021 Pardus</property>
     <property name="comments" translatable="yes">Control your power settings</property>

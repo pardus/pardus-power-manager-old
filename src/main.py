@@ -39,6 +39,7 @@ class Main:
     def __init__(self):
         self.profiles=["xpowersave","powersave","balanced","performance","xperformance"]
         self.builder=Gtk.Builder()
+        self.builder.set_translation_domain("power-manager")
         self.status_icon = Gtk.StatusIcon()
         try:
             self.status_icon.set_from_file("/usr/lib/pardus/power-manager/icon.svg")
@@ -125,9 +126,11 @@ class Main:
             self.builder.get_object("about_menu").popup()
         def about_clicked(widget):
             b=Gtk.Builder()
+            b.set_translation_domain("power-manager")
             b.add_from_file("main.ui")
             win=b.get_object("dialog_about")
             win.set_version(VERSION)
+            win.set_name(_("Pardus Power Manager"))
             win.show_all()
             self.builder.get_object("about_menu").popdown()
             

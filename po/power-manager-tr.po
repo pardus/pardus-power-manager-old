@@ -84,7 +84,9 @@ msgstr "Şu anki mod: "
 msgid ""
 "Extreme\n"
 "powersave"
-msgstr "Yüksek güç tasarrufu"
+msgstr ""
+"Extreme\n"
+"powersave"
 
 #: res/main.ui:134
 #, fuzzy

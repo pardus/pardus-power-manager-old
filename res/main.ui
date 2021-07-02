@@ -9,8 +9,8 @@
   </object>
   <object class="GtkWindow" id="window">
     <property name="can-focus">False</property>
-    <property name="default-width">700</property>
-    <property name="default-height">300</property>
+    <property name="resizable">False</property>
+    <property name="window-position">center</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
@@ -28,11 +28,12 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="orientation">vertical</property>
-                <property name="homogeneous">True</property>
                 <child>
                   <object class="GtkLabel" id="mode">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="margin-top">25</property>
+                    <property name="margin-bottom">25</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">Current Mode: balanced</property>
@@ -65,10 +66,12 @@
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="orientation">vertical</property>
+                            <property name="spacing">5</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
+                                <property name="margin-bottom">5</property>
                                 <property name="pixbuf">xpowersave.svg</property>
                                 <property name="pixel-size">64</property>
                               </object>
@@ -86,7 +89,8 @@
 powersave</property>
                                 <property name="justify">center</property>
                                 <property name="wrap">True</property>
-                                <property name="width-chars">5</property>
+                                <property name="width-chars">10</property>
+                                <property name="max-width-chars">10</property>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -114,10 +118,12 @@ powersave</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="orientation">vertical</property>
+                            <property name="spacing">5</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
+                                <property name="margin-bottom">5</property>
                                 <property name="pixbuf">powersave.svg</property>
                                 <property name="pixel-size">64</property>
                               </object>
@@ -134,7 +140,8 @@ powersave</property>
                                 <property name="label" translatable="yes">powersave</property>
                                 <property name="justify">center</property>
                                 <property name="wrap">True</property>
-                                <property name="width-chars">5</property>
+                                <property name="width-chars">10</property>
+                                <property name="max-width-chars">10</property>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -162,6 +169,7 @@ powersave</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="orientation">vertical</property>
+                            <property name="spacing">5</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -182,7 +190,8 @@ powersave</property>
                                 <property name="label" translatable="yes">balanced</property>
                                 <property name="justify">center</property>
                                 <property name="wrap">True</property>
-                                <property name="width-chars">5</property>
+                                <property name="width-chars">10</property>
+                                <property name="max-width-chars">10</property>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -210,6 +219,7 @@ powersave</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="orientation">vertical</property>
+                            <property name="spacing">5</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -230,7 +240,8 @@ powersave</property>
                                 <property name="label" translatable="yes">performance</property>
                                 <property name="justify">center</property>
                                 <property name="wrap">True</property>
-                                <property name="width-chars">5</property>
+                                <property name="width-chars">10</property>
+                                <property name="max-width-chars">10</property>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -258,6 +269,7 @@ powersave</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="orientation">vertical</property>
+                            <property name="spacing">5</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -279,7 +291,8 @@ powersave</property>
 performance</property>
                                 <property name="justify">center</property>
                                 <property name="wrap">True</property>
-                                <property name="width-chars">5</property>
+                                <property name="width-chars">10</property>
+                                <property name="max-width-chars">10</property>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -764,9 +777,10 @@ performance</property>
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">About</property>
     <property name="resizable">False</property>
+    <property name="window-position">center</property>
     <property name="icon">icon.svg</property>
     <property name="type-hint">dialog</property>
-    <property name="program-name" translatable="yes">Pardus Power Manager</property>
+    <property name="program-name">Pardus Power Manager</property>
     <property name="version">0.1.0~Beta1</property>
     <property name="copyright">© 2021 Pardus</property>
     <property name="comments" translatable="yes">Control your power settings</property>

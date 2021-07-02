@@ -4,7 +4,8 @@ build:
 	make -C po build
 
 pot:
-	xgettext --language=Python --keyword=_ --output=power-manager.pot src/*.py
+	xgettext -o power-manager.pot --from-code="utf-8" src/*.py res/*.ui
+	make -C po merge
 
 install:
 	mkdir -p $(DESTDIR)/usr/bin || true

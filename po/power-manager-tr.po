@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 09:25+0000\n"
+"POT-Creation-Date: 2021-07-02 09:27+0000\n"
 "PO-Revision-Date: 2021-06-04 15:58+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -46,7 +46,7 @@ msgstr "Basit"
 msgid "Core"
 msgstr "Çekirdek"
 
-#: src/main.py:113 src/main.py:133 res/main.ui:604
+#: src/main.py:113 src/main.py:133 res/main.ui:604 res/main.ui:769
 msgid "Pardus Power Manager"
 msgstr "Pardus Güç Yöneticisi"
 

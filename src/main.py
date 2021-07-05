@@ -38,8 +38,7 @@ class Main:
 
     def __init__(self):
         self.profiles=["xpowersave","powersave","balanced","performance","xperformance"]
-        self.builder=Gtk.Builder()
-        self.builder.set_translation_domain("power-manager")
+        
         self.status_icon = Gtk.StatusIcon()
         try:
             self.status_icon.set_from_file("/usr/lib/pardus/power-manager/icon.svg")
@@ -66,6 +65,8 @@ class Main:
             return "Extreme Performance"
 
     def create_win(self):
+        self.builder=Gtk.Builder()
+        self.builder.set_translation_domain("power-manager")
         if not os.path.exists("../res/main.ui"):
             os.chdir("/usr/lib/pardus/power-manager/")
         else:
@@ -382,9 +383,8 @@ class Main:
 
         self.menu.popup(None, None, None, self.status_icon, button, time)
 
-
-Gtk.init()
 m=Main()
+Gtk.init()
 
 class Service(dbus.service.Object):
    def __init__(self, message):
@@ -399,6 +399,7 @@ class Service(dbus.service.Object):
 
    @dbus.service.method("org.pardus.powermanager.show", in_signature='', out_signature='')
    def show(self):
+      m=Main()
       m.start(None)
 
 class Client():

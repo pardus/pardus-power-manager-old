@@ -399,7 +399,6 @@ class Service(dbus.service.Object):
 
    @dbus.service.method("org.pardus.powermanager.show", in_signature='', out_signature='')
    def show(self):
-      m=Main()
       m.start(None)
 
 class Client():

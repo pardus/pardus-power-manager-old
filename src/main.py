@@ -42,11 +42,6 @@ class Main:
                          "balanced", "performance", "xperformance"]
 
         self.status_icon = Gtk.StatusIcon()
-        try:
-            self.status_icon.set_from_file(
-                "/usr/lib/pardus/power-manager/icon.svg")
-        except:
-            pass
         self.status_icon.connect("popup-menu", self.right_click_event)
         self.win_opened = False
         if os.path.exists("/etc/tlp.d/99-pardus.conf"):
@@ -55,6 +50,16 @@ class Main:
         else:
             self.current_mode = "balanced"
         self.status_icon.connect("activate", self.start)
+        self.update_status_icon(self.current_mode)
+
+
+    def update_status_icon(self,name="icon"):
+        try:
+            self.status_icon.set_from_file(
+                "/usr/lib/pardus/power-manager/status_"+name+".svg")
+        except:
+            pass
+    
 
     def get_mode_name(self, mode):
         if self.current_mode == "xpowersave":
@@ -193,6 +198,7 @@ class Main:
         self.scale_event_enable = False
         self.scale.set_value(self.profiles.index(self.current_mode)+1)
         self.scale_event_enable = True
+        self.update_status_icon(self.current_mode)
 
     def update_menu(self):
         self.a.set_label(_("Extreme Powersave"))

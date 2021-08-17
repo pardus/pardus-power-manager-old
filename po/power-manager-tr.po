@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 09:27+0000\n"
+"POT-Creation-Date: 2021-07-07 09:42+0000\n"
 "PO-Revision-Date: 2021-06-04 15:58+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,68 +18,68 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: src/main.py:98 src/main.py:189 src/main.py:196
+#: src/main.py:99 src/main.py:190 src/main.py:197
 msgid "Extreme Powersave"
 msgstr "Yüksek güç tasarrufu"
 
-#: src/main.py:100 src/main.py:190 src/main.py:198
+#: src/main.py:101 src/main.py:191 src/main.py:199
 msgid "Powersave"
 msgstr "Güç tasarrufu"
 
-#: src/main.py:101 src/main.py:192 src/main.py:200
+#: src/main.py:102 src/main.py:193 src/main.py:201
 msgid "Balanced"
 msgstr "Dengeli"
 
-#: src/main.py:102 src/main.py:191 src/main.py:202
+#: src/main.py:103 src/main.py:192 src/main.py:203
 msgid "Performance"
 msgstr "Performans"
 
-#: src/main.py:103 src/main.py:193 src/main.py:204
+#: src/main.py:104 src/main.py:194 src/main.py:205
 msgid "Extreme Performance"
 msgstr "Yüksek performans"
 
-#: src/main.py:104 res/main.ui:333 res/main.ui:636
+#: src/main.py:105 res/main.ui:346 res/main.ui:649
 msgid "Basic"
 msgstr "Basit"
 
-#: src/main.py:105 res/main.ui:541 res/main.ui:650
+#: src/main.py:106 res/main.ui:554 res/main.ui:663
 msgid "Core"
 msgstr "Çekirdek"
 
-#: src/main.py:113 src/main.py:133 res/main.ui:604 res/main.ui:769
+#: src/main.py:114 src/main.py:134 res/main.ui:617
 msgid "Pardus Power Manager"
 msgstr "Pardus Güç Yöneticisi"
 
-#: src/main.py:182
+#: src/main.py:183
 msgid "Current mode: "
 msgstr "Şu anki mod: "
 
-#: src/main.py:228 res/main.ui:418
+#: src/main.py:229 res/main.ui:431
 msgid "off"
 msgstr "kapalı"
 
-#: src/main.py:229 res/main.ui:404
+#: src/main.py:230 res/main.ui:417
 msgid "on"
 msgstr "açık"
 
-#: src/main.py:344
+#: src/main.py:345
 msgid "View"
 msgstr "Görüntüle"
 
-#: src/main.py:351
+#: src/main.py:352
 msgid "Power"
 msgstr "Güç"
 
-#: src/main.py:376
+#: src/main.py:377
 msgid "Quit"
 msgstr "Çıkış"
 
-#: res/main.ui:38
+#: res/main.ui:39
 #, fuzzy
 msgid "Current Mode: balanced"
 msgstr "Şu anki mod: "
 
-#: res/main.ui:85
+#: res/main.ui:88
 #, fuzzy
 msgid ""
 "Extreme\n"
@@ -88,22 +88,22 @@ msgstr ""
 "Extreme\n"
 "powersave"
 
-#: res/main.ui:134
+#: res/main.ui:140
 #, fuzzy
 msgid "powersave"
 msgstr "Güç tasarrufu"
 
-#: res/main.ui:182
+#: res/main.ui:190
 #, fuzzy
 msgid "balanced"
 msgstr "Dengeli"
 
-#: res/main.ui:230
+#: res/main.ui:240
 #, fuzzy
 msgid "performance"
 msgstr "Performans"
 
-#: res/main.ui:278
+#: res/main.ui:290
 #, fuzzy
 msgid ""
 "Extreme\n"
@@ -112,26 +112,26 @@ msgstr ""
 "Yüksek\n"
 "Performans"
 
-#: res/main.ui:354
+#: res/main.ui:367
 msgid "Governor:"
 msgstr "Governor:"
 
-#: res/main.ui:393
+#: res/main.ui:406
 msgid "Turbo boost:"
 msgstr "Turbo boost:"
 
-#: res/main.ui:577
+#: res/main.ui:590
 msgid "TÜBİTAK ULAKBİM | 2021"
 msgstr "TÜBİTAK ULAKBİM | 2021"
 
-#: res/main.ui:664 res/main.ui:765
+#: res/main.ui:677 res/main.ui:778
 msgid "About"
 msgstr "Hakkında"
 
-#: res/main.ui:754
+#: res/main.ui:767
 msgid "CPU0"
 msgstr "CPU0"
 
-#: res/main.ui:772
+#: res/main.ui:786
 msgid "Control your power settings"
 msgstr "Güç ayarlarınızı kontrol edin"

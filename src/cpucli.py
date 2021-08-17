@@ -2,9 +2,9 @@
 import sys
 import cpu
 if sys.argv[1] == "governor":
-    for i in range(0,cpu.cpucount()):
-        cpu.change_cpu_governor(i,sys.argv[2])
+    for i in range(0, cpu.cpucount()):
+        cpu.change_cpu_governor(i, sys.argv[2])
 elif sys.argv[1] == "turbo":
-    cpu.change_turbo_boost_status(sys.argv[2]=="1")
+    cpu.change_turbo_boost_status(sys.argv[2] == "1")
 elif sys.argv[1] == "cpu":
-    cpu.change_cpu_status(sys.argv[2],sys.argv[3]=="1")
+    cpu.change_cpu_status(sys.argv[2], sys.argv[3] == "1")

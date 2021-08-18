@@ -55,8 +55,16 @@ class Main:
 
     def update_status_icon(self,name="icon"):
         try:
-            self.status_icon.set_from_file(
-                "/usr/lib/pardus/power-manager/status_"+name+".svg")
+            if name == "xpowersave":
+                self.status_icon.set_from_icon_name("pardus-pm-mode1")
+            elif name == "powersave":
+                self.status_icon.set_from_icon_name("pardus-pm-mode2")
+            elif name == "balanced":
+                self.status_icon.set_from_icon_name("pardus-pm-mode3")
+            elif name == "performance":
+                self.status_icon.set_from_icon_name("pardus-pm-mode4")
+            elif name == "xperformance":
+                self.status_icon.set_from_icon_name("pardus-pm-mode5")
         except:
             pass
     

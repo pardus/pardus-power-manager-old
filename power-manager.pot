@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-07 09:42+0000\n"
+"POT-Creation-Date: 2021-08-18 06:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,59 +17,63 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/main.py:99 src/main.py:190 src/main.py:197
+#: src/main.py:116 src/main.py:212 src/main.py:219
 msgid "Extreme Powersave"
 msgstr ""
 
-#: src/main.py:101 src/main.py:191 src/main.py:199
+#: src/main.py:118 src/main.py:213 src/main.py:221
 msgid "Powersave"
 msgstr ""
 
-#: src/main.py:102 src/main.py:193 src/main.py:201
+#: src/main.py:119 src/main.py:215 src/main.py:223
 msgid "Balanced"
 msgstr ""
 
-#: src/main.py:103 src/main.py:192 src/main.py:203
+#: src/main.py:120 src/main.py:214 src/main.py:225
 msgid "Performance"
 msgstr ""
 
-#: src/main.py:104 src/main.py:194 src/main.py:205
+#: src/main.py:122 src/main.py:216 src/main.py:227
 msgid "Extreme Performance"
 msgstr ""
 
-#: src/main.py:105 res/main.ui:346 res/main.ui:649
+#: src/main.py:123 res/main.ui:346 res/main.ui:649
 msgid "Basic"
 msgstr ""
 
-#: src/main.py:106 res/main.ui:554 res/main.ui:663
+#: src/main.py:124 res/main.ui:554 res/main.ui:663
 msgid "Core"
 msgstr ""
 
-#: src/main.py:114 src/main.py:134 res/main.ui:617
+#: src/main.py:132 src/main.py:155 res/main.ui:617
 msgid "Pardus Power Manager"
 msgstr ""
 
-#: src/main.py:183
+#: src/main.py:204
 msgid "Current mode: "
 msgstr ""
 
-#: src/main.py:229 res/main.ui:431
+#: src/main.py:254 res/main.ui:431
 msgid "off"
 msgstr ""
 
-#: src/main.py:230 res/main.ui:417
+#: src/main.py:255 res/main.ui:417
 msgid "on"
 msgstr ""
 
-#: src/main.py:345
+#: src/main.py:380
 msgid "View"
 msgstr ""
 
-#: src/main.py:352
+#: src/main.py:387
 msgid "Power"
 msgstr ""
 
-#: src/main.py:377
+#: src/main.py:411
+msgid "Clear cache"
+msgstr ""
+
+#: src/main.py:416
 msgid "Quit"
 msgstr ""
 

@@ -342,29 +342,36 @@ class Main:
 
     def xpowersave_event(self, widget):
         self.current_mode = "xpowersave"
-        self.run("pkexec /usr/lib/pardus/power-manager/setprofile.py 20 xpowersave")
+        self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py profile 20 xpowersave")
         self.update_ui()
 
     def powersave_event(self, widget):
         self.current_mode = "powersave"
-        self.run("pkexec /usr/lib/pardus/power-manager/setprofile.py 40 powersave")
+        self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py profile 40 powersave")
         self.update_ui()
 
     def balanced_event(self, widget):
         self.current_mode = "balanced"
-        self.run("pkexec /usr/lib/pardus/power-manager/setprofile.py 60 balanced")
+        self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py profile 60 balanced")
         self.update_ui()
 
     def performance_event(self, widget):
         self.current_mode = "performance"
-        self.run("pkexec /usr/lib/pardus/power-manager/setprofile.py 80 performance")
+        self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py profile 80 performance")
         self.update_ui()
 
     def xperformance_event(self, widget):
         self.current_mode = "xperformance"
         self.run(
-            "pkexec /usr/lib/pardus/power-manager/setprofile.py 100 xperformance")
+            "pkexec /usr/lib/pardus/power-manager/cpucli.py profile 100 xperformance")
         self.update_ui()
+
+    def clear(self,w):
+        os.system("rm -rf ~/.cache")
+        os.system("rm -rf ~/.thumbnails")
+        self.run(
+            "pkexec /usr/lib/pardus/power-manager/cpucli.py clear")
+        
 
     def right_click_event(self, icon, button, time):
         self.menu = Gtk.Menu()
@@ -400,11 +407,16 @@ class Main:
         self.e.connect("activate", self.xperformance_event)
         self.submenu_profile.append(self.e)
 
+        clear = Gtk.MenuItem()
+        clear.set_label(_("Clear cache"))
+        clear.connect("activate", self.clear)
+        self.menu.append(clear)
+
         quit = Gtk.MenuItem()
         quit.set_label(_("Quit"))
         quit.connect("activate", self.quit)
         self.menu.append(quit)
-
+        
         self.update_menu()
         self.menu.show_all()
 

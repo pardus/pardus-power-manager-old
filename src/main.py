@@ -344,25 +344,30 @@ class Main:
     def xpowersave_event(self, widget):
         self.current_mode = "xpowersave"
         self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py profile 20 xpowersave")
+        self.update_status_icon(self.current_mode)
         self.update_ui()
 
     def powersave_event(self, widget):
         self.current_mode = "powersave"
         self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py profile 40 powersave")
+        self.update_status_icon(self.current_mode)
         self.update_ui()
 
     def balanced_event(self, widget):
         self.current_mode = "balanced"
         self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py profile 60 balanced")
+        self.update_status_icon(self.current_mode)
         self.update_ui()
 
     def performance_event(self, widget):
         self.current_mode = "performance"
         self.run("pkexec /usr/lib/pardus/power-manager/cpucli.py profile 80 performance")
+        self.update_status_icon(self.current_mode)
         self.update_ui()
 
     def xperformance_event(self, widget):
         self.current_mode = "xperformance"
+        self.update_status_icon(self.current_mode)
         self.run(
             "pkexec /usr/lib/pardus/power-manager/cpucli.py profile 100 xperformance")
         self.update_ui()

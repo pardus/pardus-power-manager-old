@@ -416,7 +416,7 @@ class Main:
         clear = Gtk.MenuItem()
         clear.set_label(_("Clear cache"))
         clear.connect("activate", self.clear)
-        self.menu.append(clear)
+        #self.menu.append(clear)
 
         quit = Gtk.MenuItem()
         quit.set_label(_("Quit"))

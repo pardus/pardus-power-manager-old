@@ -1,3 +1,28 @@
+pardus-power-manager (0.1.0~beta2) unstable; urgency=medium
+
+  [ Ali Rıza KESKİN ]
+  * builder object move to create_win
+  * fix unused line
+  * pep8 fixes
+  * status icons created (must replaced new ones)
+  * icons to hicolor and renamed
+  * cpucli polkit fix and clear cache
+  * fix missing part
+  * update status icons
+  * icons update
+  * status icons update (fallback)
+  * fix
+  * icons called by name
+  * disable clear cache from menu
+
+  [ Fatih Altun ]
+  * Update icons
+
+  [ Ali Rıza KESKİN ]
+  * fix makefile
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Fri, 20 Aug 2021 12:18:06 +0300
+
 pardus-power-manager (0.1.0~beta1) unstable; urgency=medium
 
   [ Ali Rıza KESKİN ]

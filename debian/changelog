@@ -1,3 +1,33 @@
+pardus-power-manager (0.1.0~beta1) unstable; urgency=medium
+
+  [ Ali Rıza KESKİN ]
+  * translate and source code layout change
+  * dbus call added
+  * cpu tab begin
+  * cpu module rewritten
+  * governot settings
+  * cpu enable disable fix
+  * tanslation fix
+  * fallback for virtual machines
+  * update for release
+  * new cpu tab complated but turboboost button
+  * new cpu tab complated but turboboost button
+  * fix cpuctl
+  * turbo boost button and trayicon actiavte signal
+  * notebook tabe hide and create headerbar button for change mode
+  * popever menu added
+  * popever menu added
+  * update menu
+  * Fix gui and icon size
+  * Çeviri
+  * version number is set from code
+  * language and msgmerge
+  * translation done
+  * translation done
+  * resize bug fix
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Fri, 02 Jul 2021 18:49:39 +0300
+
 pardus-power-manager (0.1.0~alpha1) unstable; urgency=medium
 
   [ Ali Rıza KESKİN ]

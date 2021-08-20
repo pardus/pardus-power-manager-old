@@ -43,12 +43,21 @@
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="Layer_1" />
+     inkscape:current-layer="Layer_1"
+     inkscape:document-rotation="0" />
   <defs
      id="defs4">
     <style
        id="style2">.cls-1{opacity:0.5;}.cls-2{fill:#b5b5b5;}</style>
   </defs>
+  <rect
+     style="fill:#ffffff;stroke-width:11.4197;stroke-linecap:round"
+     id="rect835"
+     width="54.124428"
+     height="53.309502"
+     x="4.9377866"
+     y="5.3452482"
+     ry="7.2779746" />
   <path
      d="M57.2,40.7a2,2,0,0,1-2-2V16.1a2,2,0,1,1,3.9,0V38.7A2,2,0,0,1,57.2,40.7Z"
      id="path6" />

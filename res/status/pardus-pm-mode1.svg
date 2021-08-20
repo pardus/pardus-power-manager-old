@@ -39,16 +39,25 @@
      showgrid="false"
      inkscape:zoom="8.1206794"
      inkscape:cx="16.977855"
-     inkscape:cy="22.965072"
+     inkscape:cy="24.422325"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="Layer_1" />
+     inkscape:current-layer="Layer_1"
+     inkscape:document-rotation="0" />
   <defs
      id="defs4">
     <style
        id="style2">.cls-1{opacity:0.5;}.cls-2{fill:#b5b5b5;}</style>
   </defs>
+  <rect
+     style="fill:#ffffff;stroke-width:11.4243;stroke-linecap:round"
+     id="rect835"
+     width="53.248051"
+     height="54.229862"
+     x="5.3759737"
+     y="4.8850689"
+     ry="7.403625" />
   <g
      class="cls-1"
      id="g8"

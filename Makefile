@@ -14,10 +14,12 @@ install:
 	mkdir -p $(DESTDIR)/usr/share/polkit-1/actions || true
 	mkdir -p $(DESTDIR)/usr/lib/pardus/power-manager/tlp || true
 	mkdir -p $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/ || true
-	mkdir -p $(DESTDIR)/usr/share/icons/hicolor/symbolic/actions/
-	for dir in data po res src tlp-conf ; do \
-	    make -C $$dir install ;\
-	done
+	mkdir -p $(DESTDIR)/usr/share/icons/hicolor/scalable/actions/ || true
+	make -C data install
+	make -C po install
+	make -C res install
+	make -C tlp-conf install
+	make -C src install
 
 clean:
 	make -C po clean

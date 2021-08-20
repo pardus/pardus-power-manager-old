@@ -72,8 +72,8 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="margin-bottom">5</property>
-                                <property name="pixbuf">xpowersave.svg</property>
                                 <property name="pixel-size">64</property>
+                                <property name="icon-name">pm-xpowersave</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -124,8 +124,8 @@ powersave</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="margin-bottom">5</property>
-                                <property name="pixbuf">powersave.svg</property>
                                 <property name="pixel-size">64</property>
+                                <property name="icon-name">pm-powersave</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -174,8 +174,8 @@ powersave</property>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="pixbuf">balanced.svg</property>
                                 <property name="pixel-size">64</property>
+                                <property name="icon-name">pm-balanced</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -224,8 +224,8 @@ powersave</property>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="pixbuf">performance.svg</property>
                                 <property name="pixel-size">64</property>
+                                <property name="icon-name">pm-performance</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -274,8 +274,8 @@ powersave</property>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="pixbuf">xperformance.svg</property>
                                 <property name="pixel-size">64</property>
+                                <property name="icon-name">pm-xperformance</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>

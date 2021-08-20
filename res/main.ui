@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.37.0 -->
+<!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkAdjustment" id="adjustment1">
@@ -73,7 +73,7 @@
                                 <property name="can-focus">False</property>
                                 <property name="margin-bottom">5</property>
                                 <property name="pixel-size">64</property>
-                                <property name="icon-name">pm-xpowersave</property>
+                                <property name="icon-name">pardus-pm-mode1</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -125,7 +125,7 @@ powersave</property>
                                 <property name="can-focus">False</property>
                                 <property name="margin-bottom">5</property>
                                 <property name="pixel-size">64</property>
-                                <property name="icon-name">pm-powersave</property>
+                                <property name="icon-name">pardus-pm-mode2</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -175,7 +175,7 @@ powersave</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="pixel-size">64</property>
-                                <property name="icon-name">pm-balanced</property>
+                                <property name="icon-name">pardus-pm-mode3</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -225,7 +225,7 @@ powersave</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="pixel-size">64</property>
-                                <property name="icon-name">pm-performance</property>
+                                <property name="icon-name">pardus-pm-mode4</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -275,7 +275,7 @@ powersave</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="pixel-size">64</property>
-                                <property name="icon-name">pm-xperformance</property>
+                                <property name="icon-name">pardus-pm-mode5</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -628,7 +628,7 @@ performance</property>
                 <property name="can-focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="pixbuf">icon.svg</property>
+                <property name="icon-name">pardus-power-manager</property>
               </object>
             </child>
           </object>
@@ -787,7 +787,7 @@ performance</property>
     <property name="website">https://www.pardus.org.tr</property>
     <property name="authors">Ali Rıza Keskin</property>
     <property name="translator-credits">Ali Rıza Keskin</property>
-    <property name="logo">icon.svg</property>
+    <property name="logo-icon-name">pardus-power-manager</property>
     <property name="license-type">gpl-3-0</property>
     <child internal-child="vbox">
       <object class="GtkBox">

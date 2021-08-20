@@ -225,6 +225,7 @@ class Main:
             self.d.set_label("[{}]".format(_("Performance")))
         if self.current_mode == "xperformance":
             self.e.set_label("[{}]".format(_("Extreme Performance")))
+        self.update_status_icon(self.current_mode)
 
     def cpu_init(self):
         if not os.path.exists("/sys/devices/system/cpu/cpufreq/boost") and \

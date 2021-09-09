@@ -54,17 +54,21 @@ class Main:
 
 
     def update_status_icon(self,name="icon"):
+        u=""
+        if "XDG_SESSION_DESKTOP" in os.environ:
+            if os.environ["XDG_SESSION_DESKTOP"] == "gnome":
+                u+="-symbolic"
         try:
             if name == "xpowersave":
-                self.status_icon.set_from_icon_name("pardus-pm-mode1")
+                self.status_icon.set_from_icon_name("pardus-pm-mode1"+u)
             elif name == "powersave":
-                self.status_icon.set_from_icon_name("pardus-pm-mode2")
+                self.status_icon.set_from_icon_name("pardus-pm-mode2"+u)
             elif name == "balanced":
-                self.status_icon.set_from_icon_name("pardus-pm-mode3")
+                self.status_icon.set_from_icon_name("pardus-pm-mode3"+u)
             elif name == "performance":
-                self.status_icon.set_from_icon_name("pardus-pm-mode4")
+                self.status_icon.set_from_icon_name("pardus-pm-mode4"+u)
             elif name == "xperformance":
-                self.status_icon.set_from_icon_name("pardus-pm-mode5")
+                self.status_icon.set_from_icon_name("pardus-pm-mode5"+u)
         except:
             pass
     
@@ -201,11 +205,12 @@ class Main:
         sys.exit(0)
 
     def update_ui(self):
-        self.mode.set_label(_("Current mode: ") +
-                            _(self.get_mode_name(self.current_mode)))
-        self.scale_event_enable = False
-        self.scale.set_value(self.profiles.index(self.current_mode)+1)
-        self.scale_event_enable = True
+        if self.mode:
+            self.mode.set_label(_("Current mode: ") +
+                                _(self.get_mode_name(self.current_mode)))
+            self.scale_event_enable = False
+            self.scale.set_value(self.profiles.index(self.current_mode)+1)
+            self.scale_event_enable = True
         self.update_status_icon(self.current_mode)
 
     def update_menu(self):

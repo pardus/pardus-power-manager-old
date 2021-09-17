@@ -11,6 +11,7 @@ Architecture: all
 Depends: ${misc:Depends},
          libc6,
          python3 (>=3.5),
+         tlp,
          python3-gi
 Description: Pardus power manager.
  Pardus power manager.

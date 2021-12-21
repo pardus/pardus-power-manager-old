@@ -1,2 +1,3 @@
 install:
-	cp ./* $(DESTDIR)/usr/lib/pardus/power-manager/tlp
+	mkdir -p $(DESTDIR)/usr/share/pardus/power-manager/tlp
+	cp ./* $(DESTDIR)/usr/share/pardus/power-manager/tlp

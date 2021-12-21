@@ -1,0 +1,2 @@
+SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="0",RUN+="/usr/share/pardus/power-manager/src/udev-trigger.py --on-bat"
+SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="1",RUN+="/usr/share/pardus/power-manager/src/udev-trigger.py --on-ac"

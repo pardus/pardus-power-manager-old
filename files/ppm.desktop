@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pardus Power Manager
+Name[tr]=Pardus Güç Yöneticisi
+Comment=Power management tools for pardus
+Comment[tr]=Pardus için güç yönetim aracı
+Exec=pkexec /usr/share/pardus/power-manager/src/main.py
+Icon=pardus-power-manager
+Terminal=False
+Type=Application
+Categories=Application;System;

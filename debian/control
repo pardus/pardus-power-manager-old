@@ -12,6 +12,9 @@ Depends: ${misc:Depends},
          libc6,
          python3 (>=3.5),
          tlp,
-         python3-gi
+         python3-gi,
+         python3-dbus,
+         python3-setproctitle,
+         python3-psutil
 Description: Pardus power manager.
  Pardus power manager.

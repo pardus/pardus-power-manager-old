@@ -11,7 +11,7 @@
 <allow_inactive>yes</allow_inactive>
 <allow_active>yes</allow_active>
 </defaults>
-<annotate key="org.freedesktop.policykit.exec.path">/usr/lib/pardus/power-manager/cpucli.py</annotate>
+<annotate key="org.freedesktop.policykit.exec.path">/usr/share/pardus/power-manager/src/main.py</annotate>
 <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
 </action>
 </policyconfig>

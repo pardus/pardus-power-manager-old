@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pardus Power Manager
+Name[tr]=Pardus Güç Yöneticisi
+Comment=Power management tools for pardus
+Comment[tr]=Pardus için güç yönetim aracı
+Exec=pardus-power-manager --autostart
+Icon=pardus-power-manager
+Terminal=False
+Type=Application
+Categories=Application;System;

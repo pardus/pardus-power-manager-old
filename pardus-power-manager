@@ -1,0 +1,2 @@
+#!/bin/bash
+exec pkexec /usr/share/pardus/power-manager/src/main.py $@

@@ -1,6 +1,6 @@
 #!/bin/bash
 rm -f /etc/tlp.d/99-pardus.conf || true
 rm -f /etc/xdg/autostart/pardus-power-manager.desktop || true
-ln -s ../../usr/share/pardus/power-manager/tlp/balanced.conf /etc/tlp.d/99-pardus.conf || true
-ln -s ../../../usr/share/pardus/power-manager/ppm-autostart.desktop /etc/xdg/autostart/ppm-autostart.desktop || true
-ln -s ../../../usr/share/pardus/power-manager/udev.rules /lib/udev/rules.d/99-ppm.rules || true
+ln -s /usr/share/pardus/power-manager/tlp/balanced.conf /etc/tlp.d/99-pardus.conf || true
+ln -s /usr/share/pardus/power-manager/ppm-autostart.desktop /etc/xdg/autostart/ppm-autostart.desktop || true
+ln -s /usr/share/pardus/power-manager/udev.rules /lib/udev/rules.d/99-ppm.rules || true

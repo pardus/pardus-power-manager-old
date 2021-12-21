@@ -80,7 +80,8 @@ if __name__ == "__main__":
     if not os.path.exists("/etc/xdg/autostart/ppm-autostart.desktop"):
         config.set("is-app-active","true")
         os.symlink("/usr/share/pardus/power-manager/ppm-autostart.desktop","/etc/xdg/autostart/ppm-autostart.desktop")
-        os.symlink("/usr/share/pardus/power-manager/udev.rules","/lib/udev/rules.d/99-ppm.rules")
+        if not os.path.exists("/lib/udev/rules.d/99-ppm.rules"):
+            os.symlink("/usr/share/pardus/power-manager/udev.rules","/lib/udev/rules.d/99-ppm.rules")
 
     # Dbus server and client for single instange window.
     # /run/ppm fifo file used by gui.

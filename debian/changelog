@@ -1,8 +1,19 @@
 pardus-power-manager (0.1.1~beta1) unstable; urgency=medium
 
+  [ Ali Riza KESKIN ]
+  * fix about dialog translation
+  * fix symlink exists bug
+  * fix broken symlink
+  * big update
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Tue, 21 Dec 2021 14:48:23 +0300
+
+pardus-power-manager (0.1.0~beta3) unstable; urgency=medium
+
   [ Ali Rıza KESKİN ]
-  * Rewritten
- -- Fatih Altun <fatih.altun@pardus.org.tr>  Fri, 20 Aug 2021 12:18:06 +0300  
+  * fix cpu-icon
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Fri, 20 Aug 2021 22:01:14 +0300
 
 pardus-power-manager (0.1.0~beta2) unstable; urgency=medium
 

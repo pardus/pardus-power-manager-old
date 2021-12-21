@@ -240,7 +240,7 @@ class MainWindow:
         b.add_from_file(os.path.dirname(os.path.abspath(__file__)) + "/../ui/MainWindow.glade")
         win = b.get_object("dialog_about")
         win.set_version(VERSION)
-        win.set_name(_("Pardus Power Manager"))
+        win.set_program_name(_("Pardus Power Manager"))
         win.show_all()
 
 

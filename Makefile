@@ -22,7 +22,12 @@ install:
 	install pardus-power-manager $(DESTDIR)/usr/bin/pardus-power-manager
 	install files/ppm.policy $(DESTDIR)/usr/share/polkit-1/actions
 	install files/pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/
-	install files/pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-gnome.svg
+	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-gnome.svg
+	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode1.svg
+	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode2.svg
+	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode3.svg
+	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode4.svg
+	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode5.svg
 	make -C po install DESTDIR=$(DESTDIR)
 clean:
 	make -C po clean

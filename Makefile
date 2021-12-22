@@ -16,19 +16,19 @@ install:
 	mkdir -p $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/
 	chmod +x src/*
 	make -C tlp-conf install
+	make -C po install
 	cp -prfv src ui files/* $(DESTDIR)/usr/share/pardus/power-manager
 	install files/ppm.conf $(DESTDIR)/etc/pardus
 	install files/ppm.desktop $(DESTDIR)/usr/share/applications/
 	install pardus-power-manager $(DESTDIR)/usr/bin/pardus-power-manager
 	install files/ppm.policy $(DESTDIR)/usr/share/polkit-1/actions
 	install files/pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/
-	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-gnome.svg
-	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode1.svg
-	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode2.svg
-	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode3.svg
-	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode4.svg
-	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode5.svg
-	make -C po install DESTDIR=$(DESTDIR)
+	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-gnome.svg || true
+	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode1.svg || true
+	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode2.svg || true
+	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode3.svg || true
+	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode4.svg || true
+	ln -s pardus-pm.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/pardus-pm-mode5.svg || true
 clean:
 	make -C po clean
 	find -type f | grep "pyc" | xargs rm -fv || true

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-21 12:00+0300\n"
+"POT-Creation-Date: 2021-12-22 17:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,20 +17,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/MainWindow.py:37 src/MainWindow.py:243 ui/MainWindow.glade:782
+#: src/MainWindow.py:37 src/MainWindow.py:243 ui/MainWindow.glade:744
 msgid "Pardus Power Manager"
 msgstr ""
 
-#: src/StatusIcon.py:37
+#: src/StatusIcon.py:39
 msgid "View"
 msgstr ""
 
-#: src/StatusIcon.py:44
+#: src/StatusIcon.py:46
 msgid "Power"
 msgstr ""
 
-#: src/StatusIcon.py:60
+#: src/StatusIcon.py:62
 msgid "Settings"
+msgstr ""
+
+#: src/main.py:60
+msgid "Your computer does not need power management."
 msgstr ""
 
 #: ui/MainWindow.glade:7
@@ -41,57 +45,49 @@ msgstr ""
 msgid "Control your power settings"
 msgstr ""
 
-#: ui/MainWindow.glade:82
-msgid "Power Mode"
-msgstr ""
-
-#: ui/MainWindow.glade:132
+#: ui/MainWindow.glade:119
 msgid ""
 "Extreme\n"
 "Power Save"
 msgstr ""
 
-#: ui/MainWindow.glade:189
+#: ui/MainWindow.glade:176
 msgid "Power Save"
 msgstr ""
 
-#: ui/MainWindow.glade:244 ui/MainWindow.glade:653 ui/MainWindow.glade:697
+#: ui/MainWindow.glade:231 ui/MainWindow.glade:615 ui/MainWindow.glade:659
 msgid "Balanced"
 msgstr ""
 
-#: ui/MainWindow.glade:300 ui/MainWindow.glade:654 ui/MainWindow.glade:698
+#: ui/MainWindow.glade:287 ui/MainWindow.glade:616 ui/MainWindow.glade:660
 msgid "Performance"
 msgstr ""
 
-#: ui/MainWindow.glade:356
+#: ui/MainWindow.glade:343
 msgid ""
 "Extreme\n"
 "Performance"
 msgstr ""
 
-#: ui/MainWindow.glade:406
-msgid "Brightness"
-msgstr ""
-
-#: ui/MainWindow.glade:442
+#: ui/MainWindow.glade:404
 msgid "main"
 msgstr ""
 
-#: ui/MainWindow.glade:479
+#: ui/MainWindow.glade:441
 msgid ""
 "<span color='red'>Status:</span> <span color='green'>Service is active,</"
 "span> <span color='blue'>application runs automatically at startup.</span>"
 msgstr ""
 
-#: ui/MainWindow.glade:499
+#: ui/MainWindow.glade:461
 msgid "Application, Service and Autostart"
 msgstr ""
 
-#: ui/MainWindow.glade:509
+#: ui/MainWindow.glade:471
 msgid "DISABLE"
 msgstr ""
 
-#: ui/MainWindow.glade:539
+#: ui/MainWindow.glade:501
 msgid ""
 "( This operation set power maneger profile to standard. Pardus Power Manager "
 "doesn't effect your computer any more. If you run Pardus Power Manager "
@@ -99,38 +95,38 @@ msgid ""
 "startup. )"
 msgstr ""
 
-#: ui/MainWindow.glade:557
+#: ui/MainWindow.glade:519
 msgid "Limit battery level %80 for battery life"
 msgstr ""
 
-#: ui/MainWindow.glade:594
+#: ui/MainWindow.glade:556
 msgid "Change power profile when AC plug/unplug event"
 msgstr ""
 
-#: ui/MainWindow.glade:637
+#: ui/MainWindow.glade:599
 msgid "Power profile on AC"
 msgstr ""
 
-#: ui/MainWindow.glade:651 ui/MainWindow.glade:695
+#: ui/MainWindow.glade:613 ui/MainWindow.glade:657
 msgid "Extreme Powersave"
 msgstr ""
 
-#: ui/MainWindow.glade:652 ui/MainWindow.glade:696
+#: ui/MainWindow.glade:614 ui/MainWindow.glade:658
 msgid "Powersave"
 msgstr ""
 
-#: ui/MainWindow.glade:655 ui/MainWindow.glade:699
+#: ui/MainWindow.glade:617 ui/MainWindow.glade:661
 msgid "Extreme Performance"
 msgstr ""
 
-#: ui/MainWindow.glade:681
+#: ui/MainWindow.glade:643
 msgid "Power profile on battery"
 msgstr ""
 
-#: ui/MainWindow.glade:737
+#: ui/MainWindow.glade:699
 msgid "settings"
 msgstr ""
 
-#: ui/MainWindow.glade:765
+#: ui/MainWindow.glade:727
 msgid "TÜBİTAK ULAKBİM | 2021"
 msgstr ""

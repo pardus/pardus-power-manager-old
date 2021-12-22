@@ -14,6 +14,7 @@ import config
 config = config.config()
 
 import tools.profile
+import tools.backlight
 
 # Translation Constants:
 APPNAME = "pardus-power-manager"
@@ -29,7 +30,8 @@ class StatusIcon:
         self.status_icon.connect("popup-menu", self.right_click_event)
         self.update_status_icon()
         self.window = None
-        
+        self.brightness_array = [10, 30, 55, 75, 100]
+
         # Popup menu
         self.menu = Gtk.Menu()
 
@@ -60,7 +62,7 @@ class StatusIcon:
         quit.set_label(_("Settings"))
         quit.connect("activate", self.exit)
         self.menu.append(quit)
-        
+
         self.menu.show_all()
         Gtk.main()
 
@@ -91,6 +93,10 @@ class StatusIcon:
 
     def set_profile_and_update(self,profile_id):
         tools.profile.set_profile(profile_id)
+        for device in tools.backlight.get_devices():
+            percent = tools.backlight.get_max_brightness(device)/100
+            brightness_value = self.brightness_array[profile_id]*percent
+            tools.backlight.set_brightness(device,brightness_value)
         if os.path.exists("/run/ppm") and self.window:
             f = open("/run/ppm","w")
             f.write(str(profile_id))
@@ -101,7 +107,7 @@ class StatusIcon:
         if not os.path.exists("/run/ppm"):
             self.window = MainWindow()
             self.window.Window.present()
-        
+
     def right_click_event(self, icon, button, time):
         power_names = ["Extreme Powersave", "Powersave", "Balanced", "Performance", "Extreme Performance"]
         for i in range(5):
@@ -110,7 +116,7 @@ class StatusIcon:
         self.menu_profiles[current_profile_id].set_label("["+_(power_names[current_profile_id])+"]")
         self.menu.popup(None, None, None, self.status_icon, button, time)
         self.update_status_icon()
-        
+
     def exit(self,widget):
         if not os.path.exists("/run/ppm"):
             self.window = MainWindow()

@@ -260,5 +260,7 @@ class MainWindow:
             self.app_wakeup = True
             self.power_mode = tools.profile.get_current_profile()
             self.ui_power_button_array[self.power_mode].set_active(True)
+            devices_backlight_percent = self.brightness_array[self.power_mode]
+            self.ui_gtk_scale.set_value(devices_backlight_percent)
             self.app_wakeup = False
 

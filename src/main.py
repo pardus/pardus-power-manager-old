@@ -57,11 +57,15 @@ if __name__ == "__main__":
     elif not tools.detect.is_laptop():
         tools.profile.set_service_status(False) # Disable service
         if "--autostart" not in sys.argv:
-            dialog = Gtk.MessageDialog(Gtk.Window(), 
-                Gtk.DialogFlags.MODAL,
-                Gtk.MessageType.INFO,
-                Gtk.ButtonsType.OK,
-                ("Your computer dont need power management."))
+            error_message=_("Your computer does not need power management.")
+            dialog = Gtk.MessageDialog(
+                transient_for=None,
+                flags=0,
+                message_type=Gtk.MessageType.INFO,
+                buttons=Gtk.ButtonsType.OK,
+                text=error_message,
+            )
+            print(error_message,file=sys.stderr)
             dialog.run()
             dialog.destroy()
         sys.exit(0) # exit application

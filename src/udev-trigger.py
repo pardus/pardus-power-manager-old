@@ -30,7 +30,13 @@ if os.path.exists("/run/ppm"):
     f.write(os.environ["POWER_SUPPLY_ONLINE"])
     f.close()
 
-import time
-open("/var/log/ppm.log","a").write("{} {}\n".format(os.environ["POWER_SUPPLY_ONLINE"],time.time()))
+import datetime
+date = datetime.datetime.now()
+
+open("/var/log/ppm.log","a").write("EVENT=udev-trigger POWER_SUPPLY_ONLINE={0} DATE={1} PROFILE={2}\n".format(
+         os.environ["POWER_SUPPLY_ONLINE"],
+         date,
+         profile)
+    )
 sys.exit(0)
 

@@ -16,6 +16,8 @@ config = config.config()
 import tools.profile
 import tools.backlight
 
+import datetime
+
 # Translation Constants:
 APPNAME = "pardus-power-manager"
 TRANSLATIONS_PATH = "/usr/share/locale"
@@ -97,6 +99,13 @@ class StatusIcon:
             percent = tools.backlight.get_max_brightness(device)/100
             brightness_value = self.brightness_array[profile_id]*percent
             tools.backlight.set_brightness(device,brightness_value)
+
+        date = datetime.datetime.now()
+
+        open("/var/log/ppm.log","a").write("EVENT=status-icon DATE={0} PROFILE={1}\n".format(
+            date,
+            profile_id)
+        )
         if os.path.exists("/run/ppm") and self.window:
             f = open("/run/ppm","w")
             f.write(str(profile_id))

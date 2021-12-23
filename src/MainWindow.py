@@ -11,6 +11,8 @@ import tools.profile
 import gettext
 from tools.utils import asynchronous
 
+import datetime
+
 import config
 config = config.config()
 
@@ -166,26 +168,31 @@ class MainWindow:
         if(toggle_button.get_active()):
             tools.profile.set_profile(0)
             self.set_slider_value(self.brightness_array[0])
+            self.write_log(0)
 
     def ui_radio_button_m2_toggled(self, toggle_button):
         if(toggle_button.get_active()):
             tools.profile.set_profile(1)
             self.set_slider_value(self.brightness_array[1])
+            self.write_log(1)
 
     def ui_radio_button_m3_toggled(self, toggle_button):
         if(toggle_button.get_active()):
             tools.profile.set_profile(2)
             self.set_slider_value(self.brightness_array[2])
+            self.write_log(2)
 
     def ui_radio_button_m4_toggled(self, toggle_button):
         if(toggle_button.get_active()):
             tools.profile.set_profile(3)
             self.set_slider_value(self.brightness_array[3])
+            self.write_log(3)
 
     def ui_radio_button_m5_toggled(self, toggle_button):
         if(toggle_button.get_active()):
             tools.profile.set_profile(4)
             self.set_slider_value(self.brightness_array[4])
+            self.write_log(4)
 
 
     ##################################################################################
@@ -239,6 +246,13 @@ class MainWindow:
         win.show_all()
 
 
+    def write_log(self,profile):
+        date = datetime.datetime.now()
+
+        open("/var/log/ppm.log","a").write("EVENT=mainwindow DATE={0} PROFILE={1}\n".format(
+            date,
+            profile)
+        )
 
     ##################################################################################
     # Ui update fifo trigger

@@ -1,3 +1,4 @@
 .mo
 res/main.ui~
-
+__pycache__/
+*.pyc

@@ -95,6 +95,7 @@ if __name__ == "__main__":
         s.bind('\0pardus-power-manager_gateway_notify_lock')
         if os.path.exists("/run/ppm"):
             os.unlink("/run/ppm")
+        
         service = Service("Pardus Power Manager").run()
     except:
         client = Client().run()

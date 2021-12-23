@@ -1,3 +1,24 @@
+pardus-power-manager (0.1.1~beta3) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * fix for pardus-software and hicolor fallback icons
+  * backlight level changed AC plug & unplug
+  * makefile fix
+  * error message translation
+  * async profile/backlight set and fix toggle buttons
+  * add gitignore
+  * better logging
+  * logging fix
+  * logging fix
+  * ac online status function
+  * better logging
+  * main-window log name fix
+  * CTRL-C kill signal bug fixed
+  * fix AC connect status
+  * fix suspend mode fifo not found error
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Thu, 23 Dec 2021 17:13:56 +0300
+
 pardus-power-manager (0.1.1~beta2) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]

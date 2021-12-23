@@ -46,6 +46,8 @@ def get_service_status():
 def get_ac_online():
     if not os.path.exists("/sys/class/power_supply/"):
         return True
+    if len(os.listdir("/sys/class/power_supply/")) == 0:
+        return True
     for device in os.listdir("/sys/class/power_supply/"):
         if os.path.exists("/sys/class/power_supply/{}/online".format(device)):
             if "1" in readfile("/sys/class/power_supply/{}/online".format(device)):

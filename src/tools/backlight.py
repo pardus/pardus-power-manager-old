@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import os
-from tools.utils import readfile
+from tools.utils import readfile, asynchronous
+import time
 
 class backlight_devices:
     def __init__(self):
@@ -18,10 +19,10 @@ def get_brightness(device_name):
     fd = readfile("/sys/class/backlight/{}/brightness".format(device_name))
     return int(fd)
 
+@asynchronous
 def set_brightness(device_name,value):
     fd = open("/sys/class/backlight/{}/brightness".format(device_name),"w")
     fd.write(str(int(value)))
     fd.flush()
     fd.close()
-
 

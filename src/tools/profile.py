@@ -1,6 +1,8 @@
 import os
 import dbus
 
+from tools.utils import asynchronous, readfile
+
 def is_support_charge_limit():
     """Charge level limit support"""
     for bat in os.listdir("/sys/class/power_supply/"):
@@ -41,7 +43,18 @@ def get_service_status():
     )
     return manager.GetUnitFileState("tlp.service") == "enabled"
 
+def get_ac_online():
+    if not os.path.exists("/sys/class/power_supply/"):
+        return True
+    if len(os.listdir("/sys/class/power_supply/")) == 0:
+        return True
+    for device in os.listdir("/sys/class/power_supply/"):
+        if os.path.exists("/sys/class/power_supply/{}/online".format(device)):
+            if "1" in readfile("/sys/class/power_supply/{}/online".format(device)):
+                return True
+    return False
 
+@asynchronous
 def set_profile(profile_id):
     """Replace profile symlink"""
     all_profiles = ["xpowersave", "powersave", "balanced", "performance","xperformance"]
@@ -51,6 +64,7 @@ def set_profile(profile_id):
     os.symlink("../../usr/share/pardus/power-manager/tlp/{}.conf".format(profile),"/etc/tlp.d/99-pardus.conf")
     os.system("tlp start &>/dev/null &")
 
+@asynchronous
 def set_charge_limit(limit_status):
     """Replace charge level symlink"""
     if os.path.exists("/etc/tlp.d/99-charge.conf"):
@@ -71,6 +85,7 @@ def set_charge_limit(limit_status):
                 o.flush()
                 o.close()
     os.system("tlp start &>/dev/null &")
+
 
 def set_service_status(status):
     """Enable-disable tlp service with systemd-dbus"""

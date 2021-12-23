@@ -9,7 +9,9 @@ import subprocess
 import tools.backlight
 import tools.profile
 import gettext
-from tools.utils import asynchronous
+from tools.utils import readfile, asynchronous
+
+import datetime
 
 import config
 config = config.config()
@@ -143,6 +145,8 @@ class MainWindow:
 
     # When Slider Changed
     def on_ui_gtk_scale_value_changed(self,range):
+        if not self.app_wakeup:
+            return
         for i in self.backlight_devices:
             percent = i.max_brightness/100
             brightness_value = range.get_value()*percent
@@ -150,47 +154,45 @@ class MainWindow:
 
     # set slider value
     def set_slider_value(self, value):
+        self.app_wakeup = False
         for i in self.backlight_devices:
             percent = i.max_brightness/100
             brightness_value = value*percent
             tools.backlight.set_brightness(i.name, brightness_value)
             self.ui_gtk_scale.set_value(value)
+            self.app_wakeup = True
+
 
     # When Radio Button Clicked
     def ui_radio_button_m1_toggled(self, toggle_button):
         if(toggle_button.get_active()):
             tools.profile.set_profile(0)
-            if not self.app_wakeup:
-                self.set_slider_value(self.brightness_array[0])
-            self.app_wakeup = False
+            self.set_slider_value(self.brightness_array[0])
+            self.write_log(0)
 
     def ui_radio_button_m2_toggled(self, toggle_button):
         if(toggle_button.get_active()):
             tools.profile.set_profile(1)
-            if not self.app_wakeup:
-                self.set_slider_value(self.brightness_array[1])
-            self.app_wakeup = False
+            self.set_slider_value(self.brightness_array[1])
+            self.write_log(1)
 
     def ui_radio_button_m3_toggled(self, toggle_button):
         if(toggle_button.get_active()):
             tools.profile.set_profile(2)
-            if not self.app_wakeup:
-                self.set_slider_value(self.brightness_array[2])
-            self.app_wakeup = False
+            self.set_slider_value(self.brightness_array[2])
+            self.write_log(2)
 
     def ui_radio_button_m4_toggled(self, toggle_button):
         if(toggle_button.get_active()):
             tools.profile.set_profile(3)
-            if not self.app_wakeup:
-                self.set_slider_value(self.brightness_array[3])
-            self.app_wakeup = False
+            self.set_slider_value(self.brightness_array[3])
+            self.write_log(3)
 
     def ui_radio_button_m5_toggled(self, toggle_button):
         if(toggle_button.get_active()):
             tools.profile.set_profile(4)
-            if not self.app_wakeup:
-                self.set_slider_value(self.brightness_array[4])
-            self.app_wakeup = False
+            self.set_slider_value(self.brightness_array[4])
+            self.write_log(4)
 
 
     ##################################################################################
@@ -244,6 +246,14 @@ class MainWindow:
         win.show_all()
 
 
+    def write_log(self,profile):
+        date = datetime.datetime.now()
+
+        open("/var/log/ppm.log","a").write("EVENT=\"main-window\"\tPOWER_SUPPLY_ONLINE=\"{0}\"\tDATE=\"{1}\"\tPROFILE=\"{2}\"\n".format(
+            tools.profile.get_ac_online(),
+            date,
+            profile)
+        )
 
     ##################################################################################
     # Ui update fifo trigger
@@ -255,12 +265,12 @@ class MainWindow:
             if os.path.exists("/run/ppm"):
                 os.unlink("/run/ppm")
             os.mkfifo("/run/ppm",0o600)
-            open("/run/ppm","r").read()
+            readfile("/run/ppm")
             # Get power mode status
-            self.app_wakeup = True
+            self.app_wakeup = False
             self.power_mode = tools.profile.get_current_profile()
             self.ui_power_button_array[self.power_mode].set_active(True)
             devices_backlight_percent = self.brightness_array[self.power_mode]
             self.ui_gtk_scale.set_value(devices_backlight_percent)
-            self.app_wakeup = False
+            self.app_wakeup = True
 

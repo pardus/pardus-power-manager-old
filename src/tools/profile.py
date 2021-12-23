@@ -1,7 +1,7 @@
 import os
 import dbus
 
-from tools.utils import asynchronous
+from tools.utils import asynchronous, readfile
 
 def is_support_charge_limit():
     """Charge level limit support"""
@@ -42,6 +42,11 @@ def get_service_status():
         'org.freedesktop.systemd1.Manager'
     )
     return manager.GetUnitFileState("tlp.service") == "enabled"
+
+def get_ac_online():
+    if not os.path.exists("/sys/class/power_supply/AC/online"):
+        return True
+    return readfile("/sys/class/power_supply/AC/online") == str(1)
 
 @asynchronous
 def set_profile(profile_id):

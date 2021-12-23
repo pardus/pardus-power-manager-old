@@ -12,6 +12,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gio, GLib
 
 import setproctitle
+import signal
 
 import dbus
 import dbus.mainloop.glib
@@ -50,6 +51,9 @@ class Client():
     def run(self):
         self.show()
 
+def stop_signals(signum, frame):
+    sys.exit(0)
+
 if __name__ == "__main__":
     setproctitle.setproctitle("pardus-power-manager")
     if tools.detect.is_virtual_machine():
@@ -87,6 +91,8 @@ if __name__ == "__main__":
         if not os.path.exists("/lib/udev/rules.d/99-ppm.rules"):
             os.symlink("/usr/share/pardus/power-manager/udev.rules","/lib/udev/rules.d/99-ppm.rules")
 
+    signal.signal(signal.SIGINT, stop_signals)
+    signal.signal(signal.SIGTERM, stop_signals)
     # Dbus server and client for single instange window.
     # /run/ppm fifo file used by gui.
     try:
@@ -95,7 +101,6 @@ if __name__ == "__main__":
         s.bind('\0pardus-power-manager_gateway_notify_lock')
         if os.path.exists("/run/ppm"):
             os.unlink("/run/ppm")
-        
         service = Service("Pardus Power Manager").run()
     except:
         client = Client().run()

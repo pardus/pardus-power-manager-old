@@ -44,9 +44,13 @@ def get_service_status():
     return manager.GetUnitFileState("tlp.service") == "enabled"
 
 def get_ac_online():
-    if not os.path.exists("/sys/class/power_supply/AC/online"):
+    if not os.path.exists("/sys/class/power_supply/"):
         return True
-    return "1" in readfile("/sys/class/power_supply/AC/online")
+    for device in os.listdir("/sys/class/power_supply/"):
+        if os.path.exists("/sys/class/power_supply/{}/online".format(device)):
+            if "1" in readfile("/sys/class/power_supply/{}/online".format(device)):
+                return True
+    return False
 
 @asynchronous
 def set_profile(profile_id):

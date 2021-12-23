@@ -102,7 +102,7 @@ class StatusIcon:
 
         date = datetime.datetime.now()
 
-        open("/var/log/ppm.log","a").write("EVENT=status-icon DATE={0} PROFILE={1}\n".format(
+        open("/var/log/ppm.log","a").write("EVENT=\"status-icon\" DATE=\"{0}\" PROFILE=\"{1}}\"\n".format(
             date,
             profile_id)
         )

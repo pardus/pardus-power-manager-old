@@ -9,7 +9,7 @@ import subprocess
 import tools.backlight
 import tools.profile
 import gettext
-from tools.utils import asynchronous
+from tools.utils import readfile, asynchronous
 
 import datetime
 
@@ -265,7 +265,7 @@ class MainWindow:
             if os.path.exists("/run/ppm"):
                 os.unlink("/run/ppm")
             os.mkfifo("/run/ppm",0o600)
-            open("/run/ppm","r").read()
+            readfile("/run/ppm")
             # Get power mode status
             self.app_wakeup = False
             self.power_mode = tools.profile.get_current_profile()

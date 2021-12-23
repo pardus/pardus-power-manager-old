@@ -1,8 +1,11 @@
 import psutil
 import threading
+import os
 
-def readfile(file):
-    file = open(file,"r")
+def readfile(file_name):
+    if not os.path.exists(file_name):
+        return ""
+    file = open(file_name,"r")
     data = file.read()
     file.close()
     return data

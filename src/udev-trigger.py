@@ -12,7 +12,7 @@ if not tools.utils.checkIfProcessRunning("pardus-power-manager"):
     sys.exit(0)
 if config.get("udev-enabled","True").lower() != "true":
     exit(0)
-if os.environ["POWER_SUPPLY_ONLINE"] == "1":
+if tools.profile.get_ac_online():
     profile = config.get("ppm-mode-ac","3")
     tools.profile.set_profile(int(profile))
 else:
@@ -27,14 +27,14 @@ for device in tools.backlight.get_devices():
 
 if os.path.exists("/run/ppm"):
     f = open("/run/ppm","w")
-    f.write(os.environ["POWER_SUPPLY_ONLINE"])
+    f.write(profile)
     f.close()
 
 import datetime
 date = datetime.datetime.now()
 
-open("/var/log/ppm.log","a").write("EVENT=\"udev-trigger\" POWER_SUPPLY_ONLINE=\"{0}\" DATE=\"{1}\" PROFILE=\"{2}\"\n".format(
-         os.environ["POWER_SUPPLY_ONLINE"],
+open("/var/log/ppm.log","a").write("EVENT=\"udev-trigger\"\tPOWER_SUPPLY_ONLINE=\"{0}\"\tDATE=\"{1}\"\tPROFILE=\"{2}\"\n".format(
+         tools.profile.get_ac_online(),
          date,
          profile)
     )

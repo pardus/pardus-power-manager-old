@@ -249,7 +249,8 @@ class MainWindow:
     def write_log(self,profile):
         date = datetime.datetime.now()
 
-        open("/var/log/ppm.log","a").write("EVENT=\"mainwindow\" DATE=\"{0}\" PROFILE=\"{1}\"\n".format(
+        open("/var/log/ppm.log","a").write("EVENT=\"mainwindow\"\tPOWER_SUPPLY_ONLINE=\"{0}\"\tDATE=\"{1}\"\tPROFILE=\"{2}\"\n".format(
+            tools.profile.get_ac_online(),
             date,
             profile)
         )

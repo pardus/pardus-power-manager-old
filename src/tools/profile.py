@@ -46,7 +46,7 @@ def get_service_status():
 def get_ac_online():
     if not os.path.exists("/sys/class/power_supply/AC/online"):
         return True
-    return readfile("/sys/class/power_supply/AC/online") == str(1)
+    return "1" in readfile("/sys/class/power_supply/AC/online")
 
 @asynchronous
 def set_profile(profile_id):

@@ -95,11 +95,10 @@ class StatusIcon:
 
     def set_profile_and_update(self,profile_id):
         tools.profile.set_profile(profile_id)
-        if config.get("ui-brightness","True").lower() == "true":
-            for device in tools.backlight.get_devices():
-                percent = tools.backlight.get_max_brightness(device)/100
-                brightness_value = self.brightness_array[profile_id]*percent
-                tools.backlight.set_brightness(device,brightness_value)
+        for device in tools.backlight.get_devices():
+            percent = tools.backlight.get_max_brightness(device)/100
+            brightness_value = self.brightness_array[profile_id]*percent
+            tools.backlight.set_brightness(device,brightness_value)
 
         date = datetime.datetime.now()
 

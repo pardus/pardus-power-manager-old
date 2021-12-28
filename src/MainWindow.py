@@ -186,8 +186,7 @@ class MainWindow:
 
     def ui_radio_button_event(self,profile_id):
         tools.profile.set_profile(profile_id)
-        if config.get("ui-brightness","True").lower() == "true":
-            self.set_slider_value(self.brightness_array[profile_id])
+        self.set_slider_value(self.brightness_array[profile_id])
         self.write_log(profile_id)
 
 

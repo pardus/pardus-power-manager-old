@@ -31,7 +31,7 @@ else:
     profile = config.get("ppm-mode-battery","1")
     tools.profile.set_profile(int(profile))
 
-if config.get("udev-brightness","True").lower() != "true":
+if config.get("udev-brightness","True").lower() == "true":
     brightness_array = [10, 30, 55, 75, 100]
     for device in tools.backlight.get_devices():
         percent = tools.backlight.get_max_brightness(device)/100

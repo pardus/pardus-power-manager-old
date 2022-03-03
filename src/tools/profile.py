@@ -44,7 +44,6 @@ def get_service_status():
     return manager.GetUnitFileState("tlp.service") == "enabled"
 
 def get_ac_online():
-    ret = False
     if not os.path.exists("/sys/class/power_supply/"):
         return True
     if len(os.listdir("/sys/class/power_supply/")) == 0:

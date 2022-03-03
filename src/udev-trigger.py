@@ -7,6 +7,8 @@ import tools.utils
 import config
 config = config.config()
 
+import datetime
+date = datetime.datetime.now()
 
 if not tools.utils.checkIfProcessRunning("pardus-power-manager"):
     sys.exit(0)
@@ -15,13 +17,20 @@ if config.get("udev-enabled","True").lower() != "true":
     exit(0)
 
 ac_online = tools.profile.get_ac_online()
+log = open("/var/log/ppm.log","a")
 
 if os.path.exists("/run/ppm.last"):
     if str(ac_online) in tools.utils.readfile("/run/ppm.last"):
+        log.write("EVENT=\"ignore\"\tPOWER_SUPPLY_ONLINE=\"{0}\"\tDATE=\"{1}\"\tPROFILE=\"{2}\"\n".format(
+             ac_online,
+             date,
+             "-1")
+        )
+        log.flush()
         sys.exit(0)
 
 status=open("/run/ppm.last","w")
-status.write(str(ac_online))
+status.write(str(ac_online)+"\n")
 status.close()
 
 if ac_online:
@@ -43,13 +52,12 @@ if os.path.exists("/run/ppm"):
     f.write(profile)
     f.close()
 
-import datetime
-date = datetime.datetime.now()
 
-open("/var/log/ppm.log","a").write("EVENT=\"udev-trigger\"\tPOWER_SUPPLY_ONLINE=\"{0}\"\tDATE=\"{1}\"\tPROFILE=\"{2}\"\n".format(
+log.write("EVENT=\"udev-trigger\"\tPOWER_SUPPLY_ONLINE=\"{0}\"\tDATE=\"{1}\"\tPROFILE=\"{2}\"\n".format(
          ac_online,
          date,
          profile)
     )
+log.flush()
 sys.exit(0)
 

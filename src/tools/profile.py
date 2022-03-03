@@ -52,8 +52,8 @@ def get_ac_online():
     for device in os.listdir("/sys/class/power_supply/"):
         if os.path.exists("/sys/class/power_supply/{}/status".format(device)):
             if "discharging" in readfile("/sys/class/power_supply/{}/status".format(device)).lower():
-                return True
-    return False
+                return False
+    return True
 
 @asynchronous
 def set_profile(profile_id):

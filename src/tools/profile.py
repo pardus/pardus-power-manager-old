@@ -51,7 +51,7 @@ def get_ac_online():
         return True
     for device in os.listdir("/sys/class/power_supply/"):
         if os.path.exists("/sys/class/power_supply/{}/status".format(device)):
-            if "discharging" in readfile("/sys/class/power_supply/{}/status".format(device)):
+            if "discharging" in readfile("/sys/class/power_supply/{}/status".format(device)).lower():
                 return True
     return False
 

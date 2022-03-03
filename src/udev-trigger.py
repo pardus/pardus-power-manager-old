@@ -24,7 +24,7 @@ status=open("/run/ppm.last","w")
 status.write(str(ac_online))
 status.close()
 
-if tools.profile.get_ac_online():
+if ac_online:
     profile = config.get("ppm-mode-ac","3")
     tools.profile.set_profile(int(profile))
 else:
@@ -47,7 +47,7 @@ import datetime
 date = datetime.datetime.now()
 
 open("/var/log/ppm.log","a").write("EVENT=\"udev-trigger\"\tPOWER_SUPPLY_ONLINE=\"{0}\"\tDATE=\"{1}\"\tPROFILE=\"{2}\"\n".format(
-         tools.profile.get_ac_online(),
+         ac_online,
          date,
          profile)
     )

@@ -44,13 +44,14 @@ def get_service_status():
     return manager.GetUnitFileState("tlp.service") == "enabled"
 
 def get_ac_online():
+    ret = False
     if not os.path.exists("/sys/class/power_supply/"):
         return True
     if len(os.listdir("/sys/class/power_supply/")) == 0:
         return True
     for device in os.listdir("/sys/class/power_supply/"):
-        if os.path.exists("/sys/class/power_supply/{}/online".format(device)):
-            if "1" in readfile("/sys/class/power_supply/{}/online".format(device)):
+        if os.path.exists("/sys/class/power_supply/{}/status".format(device)):
+            if "discharging" in readfile("/sys/class/power_supply/{}/status".format(device)):
                 return True
     return False
 

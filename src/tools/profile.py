@@ -4,7 +4,7 @@ import dbus
 from tools.utils import asynchronous, readfile
 import datetime
 date = datetime.datetime.now()
-
+log = open("/var/log/ppm.log","a")
 def is_support_charge_limit():
     """Charge level limit support"""
     for bat in os.listdir("/sys/class/power_supply/"):
@@ -58,6 +58,7 @@ def get_ac_online():
                  date,
                  status)
             )
+            log.flush()
             if "discharging" in status:
                 return False
             elif "not charging" in status:

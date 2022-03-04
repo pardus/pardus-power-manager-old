@@ -52,7 +52,7 @@ def get_ac_online():
         return True
     for device in get_acpi_power_devices():
         if os.path.exists("/sys/class/power_supply/{}/status".format(device)):
-            status = readfile("/sys/class/power_supply/{}/status".format(device)).lower()
+            status = readfile("/sys/class/power_supply/{}/status".format(device)).lower().strip()
             log.write("EVENT=\"battery-status\"\tBATTERY_DEVICE=\"{0}\"\tDATE=\"{1}\"\tSTATUS=\"{2}\"\n".format(
                  device,
                  date,

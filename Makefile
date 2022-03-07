@@ -18,7 +18,7 @@ install:
 	make -C tlp-conf install
 	make -C po install
 	cp -prfv src ui files/* $(DESTDIR)/usr/share/pardus/power-manager
-	install files/ppm.conf $(DESTDIR)/etc/pardus
+	install files/ppm.conf $(DESTDIR)/usr/share/pardus/power-manager
 	install files/ppm.desktop $(DESTDIR)/usr/share/applications/
 	install pardus-power-manager $(DESTDIR)/usr/bin/pardus-power-manager
 	install files/ppm.policy $(DESTDIR)/usr/share/polkit-1/actions

@@ -166,33 +166,28 @@ class MainWindow:
     # When Radio Button Clicked
     def ui_radio_button_m1_toggled(self, toggle_button):
         if(toggle_button.get_active()):
-            tools.profile.set_profile(0)
-            self.set_slider_value(self.brightness_array[0])
-            self.write_log(0)
+            self.ui_radio_button_event(0)
 
     def ui_radio_button_m2_toggled(self, toggle_button):
         if(toggle_button.get_active()):
-            tools.profile.set_profile(1)
-            self.set_slider_value(self.brightness_array[1])
-            self.write_log(1)
+            self.ui_radio_button_event(1)
 
     def ui_radio_button_m3_toggled(self, toggle_button):
         if(toggle_button.get_active()):
-            tools.profile.set_profile(2)
-            self.set_slider_value(self.brightness_array[2])
-            self.write_log(2)
+            self.ui_radio_button_event(2)
 
     def ui_radio_button_m4_toggled(self, toggle_button):
         if(toggle_button.get_active()):
-            tools.profile.set_profile(3)
-            self.set_slider_value(self.brightness_array[3])
-            self.write_log(3)
+            self.ui_radio_button_event(3)
 
     def ui_radio_button_m5_toggled(self, toggle_button):
         if(toggle_button.get_active()):
-            tools.profile.set_profile(4)
-            self.set_slider_value(self.brightness_array[4])
-            self.write_log(4)
+            self.ui_radio_button_event(4)
+
+    def ui_radio_button_event(self,profile_id):
+        tools.profile.set_profile(profile_id)
+        self.set_slider_value(self.brightness_array[profile_id])
+        self.write_log(profile_id)
 
 
     ##################################################################################

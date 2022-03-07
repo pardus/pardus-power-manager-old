@@ -2,7 +2,9 @@ import os
 import dbus
 
 from tools.utils import asynchronous, readfile
-
+import datetime
+date = datetime.datetime.now()
+log = open("/var/log/ppm.log","a")
 def is_support_charge_limit():
     """Charge level limit support"""
     for bat in os.listdir("/sys/class/power_supply/"):
@@ -48,11 +50,37 @@ def get_ac_online():
         return True
     if len(os.listdir("/sys/class/power_supply/")) == 0:
         return True
-    for device in os.listdir("/sys/class/power_supply/"):
-        if os.path.exists("/sys/class/power_supply/{}/online".format(device)):
-            if "1" in readfile("/sys/class/power_supply/{}/online".format(device)):
+    for device in get_acpi_power_devices():
+        if os.path.exists("/sys/class/power_supply/{}/status".format(device)):
+            status = readfile("/sys/class/power_supply/{}/status".format(device)).lower().strip()
+            log.write("EVENT=\"battery-status\"\tBATTERY_DEVICE=\"{0}\"\tDATE=\"{1}\"\tSTATUS=\"{2}\"\n".format(
+                 device,
+                 date,
+                 status)
+            )
+            log.flush()
+            if "discharging" in status:
+                return False
+            elif "not charging" in status:
                 return True
-    return False
+            elif "charging" in status:
+                return True
+            elif "full" in status:
+                return True
+            elif "empty" in status:
+                return False
+            elif "unknown" in status:
+                return True
+    return True
+
+def get_acpi_power_devices():
+    devices = []
+    for interface in os.listdir("/sys/bus/acpi/devices/"):
+        acpi_device = "/sys/bus/acpi/devices/{}/power_supply".format(interface)
+        if os.path.exists(acpi_device):
+            for device in os.listdir(acpi_device):
+                devices.append(device)
+    return devices
 
 @asynchronous
 def set_profile(profile_id):

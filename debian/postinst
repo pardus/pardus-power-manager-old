@@ -5,3 +5,7 @@ ln -s /usr/share/pardus/power-manager/tlp/balanced.conf /etc/tlp.d/99-pardus.con
 ln -s /usr/share/pardus/power-manager/tlp/charge-full.conf /etc/tlp.d/99-charge.conf || true
 ln -s /usr/share/pardus/power-manager/ppm-autostart.desktop /etc/xdg/autostart/ppm-autostart.desktop || true
 ln -s /usr/share/pardus/power-manager/udev.rules /lib/udev/rules.d/99-ppm.rules || true
+if ! [[ -f "/etc/pardus/ppm.conf" ]]; then
+    mkdir -p "/etc/pardus"
+    cp "/usr/share/pardus/power-manager/ppm.conf"  "/etc/pardus/ppm.conf"
+fi

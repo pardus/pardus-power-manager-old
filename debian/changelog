@@ -1,3 +1,26 @@
+pardus-power-manager (0.1.1~beta4) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * udev trigger last status
+  * udev trigger brightness change config
+  * ui-brightness config
+  * ui-brightness config
+  * readme
+  * udev trigger fix try1
+  * udev trigger fix 2
+  * trigger fix 1
+  * trigger fix 2
+  * trigger fix 3
+  * trigger fix 4
+  * fix battery status
+  * battery status logger and change alogrithm
+  * config path changes
+  * balanced wifi powersave disable
+  * network powersave disabled all configs
+  * usb autosuspend disabled all config
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Wed, 09 Mar 2022 01:31:20 +0300
+
 pardus-power-manager (0.1.1~beta3) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]

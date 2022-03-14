@@ -19,8 +19,8 @@ if config.get("udev-enabled","True").lower() != "true":
 ac_online = tools.profile.get_ac_online()
 log = open("/var/log/ppm.log","a")
 
-if os.path.exists("/run/ppm.last"):
-    if str(ac_online) in tools.utils.readfile("/run/ppm.last"):
+if os.path.exists("/var/cache/ppm.last"):
+    if str(ac_online) in tools.utils.readfile("/var/cache/ppm.last"):
         log.write("EVENT=\"ignore\"\tPOWER_SUPPLY_ONLINE=\"{0}\"\tDATE=\"{1}\"\tPROFILE=\"{2}\"\n".format(
              ac_online,
              date,
@@ -29,7 +29,7 @@ if os.path.exists("/run/ppm.last"):
         log.flush()
         sys.exit(0)
 
-status=open("/run/ppm.last","w")
+status=open("/var/cache/ppm.last","w")
 status.write(str(ac_online)+"\n")
 status.close()
 

@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Pardus power manager\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-22 17:19+0300\n"
+"PO-Revision-Date: 2022-03-21 18:50+0000\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"Language-Team: Português <hugokarvalho@hotmail.com>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: src/MainWindow.py:37 src/MainWindow.py:243 ui/MainWindow.glade:744
+msgid "Pardus Power Manager"
+msgstr "Gestor de Energia Pardus"
+
+#: src/StatusIcon.py:39
+msgid "View"
+msgstr "Ver"
+
+#: src/StatusIcon.py:46
+msgid "Power"
+msgstr "Energia"
+
+#: src/StatusIcon.py:62
+msgid "Settings"
+msgstr "Definições"
+
+#: src/main.py:60
+msgid "Your computer does not need power management."
+msgstr "O seu computador não necessita de gestão de energia."
+
+#: ui/MainWindow.glade:7
+msgid "About"
+msgstr "Acerca"
+
+#: ui/MainWindow.glade:14
+msgid "Control your power settings"
+msgstr "Controle as suas definições de energia"
+
+#: ui/MainWindow.glade:119
+msgid ""
+"Extreme\n"
+"Power Save"
+msgstr ""
+"Poupança de Energia\n"
+"Extrema"
+
+#: ui/MainWindow.glade:176
+msgid "Power Save"
+msgstr "Poupança de Energia"
+
+#: ui/MainWindow.glade:231 ui/MainWindow.glade:615 ui/MainWindow.glade:659
+msgid "Balanced"
+msgstr "Equilibrado"
+
+#: ui/MainWindow.glade:287 ui/MainWindow.glade:616 ui/MainWindow.glade:660
+msgid "Performance"
+msgstr "Desempenho"
+
+#: ui/MainWindow.glade:343
+msgid ""
+"Extreme\n"
+"Performance"
+msgstr ""
+"Desempenho\n"
+"Extremo"
+
+#: ui/MainWindow.glade:404
+msgid "main"
+msgstr "principal"
+
+#: ui/MainWindow.glade:441
+msgid ""
+"<span color='red'>Status:</span> <span color='green'>Service is active,</"
+"span> <span color='blue'>application runs automatically at startup.</span>"
+msgstr ""
+"<span color='red'>Estado:</span> <span color='green'>Serviço ativo,</span> "
+"<span color='blue'>a aplicação é executada automaticamente no arranque.</"
+"span>"
+
+#: ui/MainWindow.glade:461
+msgid "Application, Service and Autostart"
+msgstr "Aplicação, Serviço e Início automático"
+
+#: ui/MainWindow.glade:471
+msgid "DISABLE"
+msgstr "DESATIVAR"
+
+#: ui/MainWindow.glade:501
+msgid ""
+"( This operation set power maneger profile to standard. Pardus Power Manager "
+"doesn't effect your computer any more. If you run Pardus Power Manager "
+"again, service becomes active and application runs automatically at "
+"startup. )"
+msgstr ""
+"( Esta operação define o perfil do gestor de energia como predefinido. O "
+"Gestor de Energia Pardus já não afeta o seu computador. Se executar "
+"novamente o Gestor de Energia Pardus, o serviço torna-se ativo e a aplicação "
+"é executada automaticamente no arranque. )"
+
+#: ui/MainWindow.glade:519
+msgid "Limit battery level %80 for battery life"
+msgstr "Limite o nível da bateria para %80 para melhorar a duração da bateria"
+
+#: ui/MainWindow.glade:556
+msgid "Change power profile when AC plug/unplug event"
+msgstr "Alterar o perfil de energia quando ligar/desligar da corrente"
+
+#: ui/MainWindow.glade:599
+msgid "Power profile on AC"
+msgstr "Perfil de energia ligado à corrente"
+
+#: ui/MainWindow.glade:613 ui/MainWindow.glade:657
+msgid "Extreme Powersave"
+msgstr "Poupança de Energia Extrema"
+
+#: ui/MainWindow.glade:614 ui/MainWindow.glade:658
+msgid "Powersave"
+msgstr "Poupança de Energia"
+
+#: ui/MainWindow.glade:617 ui/MainWindow.glade:661
+msgid "Extreme Performance"
+msgstr "Desempenho Extremo"
+
+#: ui/MainWindow.glade:643
+msgid "Power profile on battery"
+msgstr "Perfil de energia a bateria"
+
+#: ui/MainWindow.glade:699
+msgid "settings"
+msgstr "definições"
+
+#: ui/MainWindow.glade:727
+msgid "TÜBİTAK ULAKBİM | 2021"
+msgstr "TÜBİTAK ULAKBİM | 2021"

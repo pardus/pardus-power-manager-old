@@ -89,7 +89,7 @@ msgstr ""
 
 #: ui/MainWindow.glade:501
 msgid ""
-"( This operation set power maneger profile to standard. Pardus Power Manager "
+"( This operation set power manager profile to standard. Pardus Power Manager "
 "doesn't effect your computer any more. If you run Pardus Power Manager "
 "again, service becomes active and application runs automatically at "
 "startup. )"

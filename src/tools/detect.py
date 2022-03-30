@@ -19,6 +19,8 @@ def is_laptop():
     if os.path.isfile("/proc/apm"):
         type = open("/proc/apm","r").read().split(" ")[5]
         return type in ["0xff", "0x80"]
+    if os.system("laptop-detect") == 0:
+        return True
     return False
 
 

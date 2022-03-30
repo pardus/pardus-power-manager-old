@@ -10,6 +10,10 @@ def is_laptop():
     for dev in os.listdir("/sys/class/power_supply"):
         if "BAT" in dev:
             return True
+    if os.system("whic dmidecode &>/dev/null") == 0:
+        chassis_type = subprocess.getoutput("dmidecode --string chassis-type").strip()
+        if chassis_type in ["Notebook", "Portable", "Laptop", "Hand Held"]:
+            return True
     if os.path.exists("/proc/acpi/battery"):
         return True
     if os.path.isfile("/proc/apm"):

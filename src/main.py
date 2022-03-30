@@ -56,23 +56,27 @@ def stop_signals(signum, frame):
 
 if __name__ == "__main__":
     setproctitle.setproctitle("pardus-power-manager")
+    import config
+    config = config.config()
     if tools.detect.is_virtual_machine():
         print("Virtual machine detected!")
     elif not tools.detect.is_laptop():
         tools.profile.set_service_status(False) # Disable service
         if "--autostart" not in sys.argv:
-            error_message=_("Your computer does not need power management.")
-            dialog = Gtk.MessageDialog(
-                transient_for=None,
-                flags=0,
-                message_type=Gtk.MessageType.INFO,
-                buttons=Gtk.ButtonsType.OK,
-                text=error_message,
-            )
-            print(error_message,file=sys.stderr)
-            dialog.run()
-            dialog.destroy()
-        sys.exit(0) # exit application
+            # force enable application for some buggy laptops or testing
+            if config.get("force-enable-app","false").lower() != "true":
+                error_message=_("Your computer does not need power management.")
+                dialog = Gtk.MessageDialog(
+                    transient_for=None,
+                    flags=0,
+                    message_type=Gtk.MessageType.INFO,
+                    buttons=Gtk.ButtonsType.OK,
+                    text=error_message,
+                )
+                print(error_message,file=sys.stderr)
+                dialog.run()
+                dialog.destroy()
+            sys.exit(0) # exit application
     if tools.detect.is_live():
         tools.profile.set_profile(4) # extreme performance mode
     if tools.detect.is_docker() or tools.detect.is_chroot():
@@ -80,8 +84,7 @@ if __name__ == "__main__":
     if not tools.detect.is_root():
         sys.exit(0) # exit if non-root user.
 
-    import config
-    config = config.config()
+
     if config.get("is-app-active","true").lower() != "true":
         if "--autostart" in sys.argv:
             sys.exit(0)

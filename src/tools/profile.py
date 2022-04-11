@@ -23,6 +23,9 @@ def get_current_profile():
         return all_profiles.index(link)
     return 2
 
+def is_systemd_running():
+    readfile("/proc/1/comm").strip() == "systemd"
+
 def get_charge_limit():
     """Return change limit status"""
     if not os.path.exists("/etc/tlp.d/99-charge.conf"):
@@ -117,6 +120,8 @@ def set_charge_limit(limit_status):
 
 def set_service_status(status):
     """Enable-disable tlp service with systemd-dbus"""
+    if not is_systemd_running():
+        return False
     bus = dbus.SystemBus()
     systemd = bus.get_object(
         'org.freedesktop.systemd1',

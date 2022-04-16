@@ -10,7 +10,7 @@ def is_laptop():
     for dev in os.listdir("/sys/class/power_supply"):
         if "BAT" in dev:
             return True
-    if os.system("whic dmidecode &>/dev/null") == 0:
+    if which("dmidecode"):
         chassis_type = subprocess.getoutput("dmidecode --string chassis-type").strip()
         if chassis_type in ["Notebook", "Portable", "Laptop", "Hand Held"]:
             return True
@@ -23,6 +23,12 @@ def is_laptop():
         return True
     return False
 
+
+def which(command):
+    for dir in os.environ["PATH"].split(":"):
+        if os.path.isfile("{}/{}".format(dir,command)):
+            return "{}/{}".format(dir,command)
+    return None
 
 def is_live():
     return "boot=live" in readfile("/proc/cmdline")

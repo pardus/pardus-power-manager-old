@@ -45,11 +45,11 @@ msgstr "Yine de etkinleştirmek istiyor musunuz?"
 
 #: src/main.py:83
 msgid "No"
-msgstr ""
+msgstr "Hayır"
 
 #: src/main.py:84
 msgid "Yes"
-msgstr ""
+msgstr "Evet"
 
 #: ui/MainWindow.glade:7
 msgid "About"

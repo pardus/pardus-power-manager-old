@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-22 17:19+0300\n"
+"POT-Creation-Date: 2022-04-18 08:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,24 +17,36 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/MainWindow.py:37 src/MainWindow.py:243 ui/MainWindow.glade:744
+#: src/MainWindow.py:39 src/MainWindow.py:241 ui/MainWindow.glade:744
 msgid "Pardus Power Manager"
 msgstr ""
 
-#: src/StatusIcon.py:39
+#: src/StatusIcon.py:41
 msgid "View"
 msgstr ""
 
-#: src/StatusIcon.py:46
+#: src/StatusIcon.py:48
 msgid "Power"
 msgstr ""
 
-#: src/StatusIcon.py:62
+#: src/StatusIcon.py:64
 msgid "Settings"
 msgstr ""
 
-#: src/main.py:60
+#: src/main.py:74
 msgid "Your computer does not need power management."
+msgstr ""
+
+#: src/main.py:75
+msgid "Do you want to enable it anyway?"
+msgstr ""
+
+#: src/main.py:83
+msgid "No"
+msgstr ""
+
+#: src/main.py:84
+msgid "Yes"
 msgstr ""
 
 #: ui/MainWindow.glade:7
@@ -128,5 +140,5 @@ msgid "settings"
 msgstr ""
 
 #: ui/MainWindow.glade:727
-msgid "TÜBİTAK ULAKBİM | 2021"
+msgid "TÜBİTAK ULAKBİM | 2022"
 msgstr ""

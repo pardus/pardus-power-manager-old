@@ -1,4 +1,4 @@
-L=tr
+L=tr pt
 merge:
 	for lang in $(L) ; do \
 	    msgmerge power-manager-$$lang ../ppm.pot -o $$lang.po ; \

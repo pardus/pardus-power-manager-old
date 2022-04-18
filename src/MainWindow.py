@@ -213,6 +213,7 @@ class MainWindow:
             os.unlink("/lib/udev/rules.d/99-ppm.rules")
 
         config.set("is-app-active","false")
+        config.set("force-enable-app","false")
         sys.exit(0) # Exit application
 
     def ui_limit_battery_state_set(self, switch, state):

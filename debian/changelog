@@ -1,3 +1,21 @@
+pardus-power-manager (0.1.1~beta6) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * update translation source
+  * dmidecode added
+  * fallback laptop-detect method added
+  * force enable app config added
+  * check systemd-dbus available
+  * which function added for checking dmidecode command.
+  * force-enable question added for non-laptop
+  * service disable will reset force-enable settings
+  * translation update
+  * translation update
+  * dmidecode dependency fix
+  * fix postinstall replace user config
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Mon, 25 Apr 2022 15:38:56 +0300
+
 pardus-power-manager (0.1.1~beta5) unstable; urgency=medium
 
   [ Hugo Carvalho ]

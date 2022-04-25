@@ -16,7 +16,7 @@ Depends: ${misc:Depends},
          python3-dbus,
          python3-setproctitle,
          python3-psutil,
-         dmdicode,
+         dmidecode,
          laptop-detect
 Description: Pardus power manager.
  Pardus power manager.

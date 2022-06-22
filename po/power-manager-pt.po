@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pardus power manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-18 08:51+0000\n"
+"POT-Creation-Date: 2022-06-22 08:35+0300\n"
 "PO-Revision-Date: 2022-03-21 18:50+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Português <hugokarvalho@hotmail.com>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: src/MainWindow.py:39 src/MainWindow.py:241 ui/MainWindow.glade:744
+#: src/MainWindow.py:39 src/MainWindow.py:241 ui/MainWindow.glade:781
 msgid "Pardus Power Manager"
 msgstr "Gestor de Energia Pardus"
 
@@ -59,7 +59,12 @@ msgstr "Acerca"
 msgid "Control your power settings"
 msgstr "Controle as suas definições de energia"
 
-#: ui/MainWindow.glade:119
+#: ui/MainWindow.glade:87
+#, fuzzy
+msgid "Power Profile"
+msgstr "Perfil de energia ligado à corrente"
+
+#: ui/MainWindow.glade:137
 msgid ""
 "Extreme\n"
 "Power Save"
@@ -67,19 +72,19 @@ msgstr ""
 "Poupança de Energia\n"
 "Extrema"
 
-#: ui/MainWindow.glade:176
+#: ui/MainWindow.glade:194
 msgid "Power Save"
 msgstr "Poupança de Energia"
 
-#: ui/MainWindow.glade:231 ui/MainWindow.glade:615 ui/MainWindow.glade:659
+#: ui/MainWindow.glade:249 ui/MainWindow.glade:652 ui/MainWindow.glade:696
 msgid "Balanced"
 msgstr "Equilibrado"
 
-#: ui/MainWindow.glade:287 ui/MainWindow.glade:616 ui/MainWindow.glade:660
+#: ui/MainWindow.glade:305 ui/MainWindow.glade:653 ui/MainWindow.glade:697
 msgid "Performance"
 msgstr "Desempenho"
 
-#: ui/MainWindow.glade:343
+#: ui/MainWindow.glade:361
 msgid ""
 "Extreme\n"
 "Performance"
@@ -87,11 +92,15 @@ msgstr ""
 "Desempenho\n"
 "Extremo"
 
-#: ui/MainWindow.glade:404
+#: ui/MainWindow.glade:406
+msgid "Screen backlight"
+msgstr ""
+
+#: ui/MainWindow.glade:441
 msgid "main"
 msgstr "principal"
 
-#: ui/MainWindow.glade:441
+#: ui/MainWindow.glade:478
 msgid ""
 "<span color='red'>Status:</span> <span color='green'>Service is active,</"
 "span> <span color='blue'>application runs automatically at startup.</span>"
@@ -100,15 +109,15 @@ msgstr ""
 "<span color='blue'>a aplicação é executada automaticamente no arranque.</"
 "span>"
 
-#: ui/MainWindow.glade:461
+#: ui/MainWindow.glade:498
 msgid "Application, Service and Autostart"
 msgstr "Aplicação, Serviço e Início automático"
 
-#: ui/MainWindow.glade:471
+#: ui/MainWindow.glade:508
 msgid "DISABLE"
 msgstr "DESATIVAR"
 
-#: ui/MainWindow.glade:501
+#: ui/MainWindow.glade:538
 msgid ""
 "( This operation set power manager profile to standard. Pardus Power Manager "
 "doesn't effect your computer any more. If you run Pardus Power Manager "
@@ -120,38 +129,38 @@ msgstr ""
 "novamente o Gestor de Energia Pardus, o serviço torna-se ativo e a aplicação "
 "é executada automaticamente no arranque. )"
 
-#: ui/MainWindow.glade:519
+#: ui/MainWindow.glade:556
 msgid "Limit battery level %80 for battery life"
 msgstr "Limite o nível da bateria para %80 para melhorar a duração da bateria"
 
-#: ui/MainWindow.glade:556
+#: ui/MainWindow.glade:593
 msgid "Change power profile when AC plug/unplug event"
 msgstr "Alterar o perfil de energia quando ligar/desligar da corrente"
 
-#: ui/MainWindow.glade:599
+#: ui/MainWindow.glade:636
 msgid "Power profile on AC"
 msgstr "Perfil de energia ligado à corrente"
 
-#: ui/MainWindow.glade:613 ui/MainWindow.glade:657
+#: ui/MainWindow.glade:650 ui/MainWindow.glade:694
 msgid "Extreme Powersave"
 msgstr "Poupança de Energia Extrema"
 
-#: ui/MainWindow.glade:614 ui/MainWindow.glade:658
+#: ui/MainWindow.glade:651 ui/MainWindow.glade:695
 msgid "Powersave"
 msgstr "Poupança de Energia"
 
-#: ui/MainWindow.glade:617 ui/MainWindow.glade:661
+#: ui/MainWindow.glade:654 ui/MainWindow.glade:698
 msgid "Extreme Performance"
 msgstr "Desempenho Extremo"
 
-#: ui/MainWindow.glade:643
+#: ui/MainWindow.glade:680
 msgid "Power profile on battery"
 msgstr "Perfil de energia a bateria"
 
-#: ui/MainWindow.glade:699
+#: ui/MainWindow.glade:736
 msgid "settings"
 msgstr "definições"
 
-#: ui/MainWindow.glade:727
+#: ui/MainWindow.glade:764
 msgid "TÜBİTAK ULAKBİM | 2022"
 msgstr "TÜBİTAK ULAKBİM | 2022"

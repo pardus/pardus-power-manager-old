@@ -90,6 +90,8 @@ if __name__ == "__main__":
                     tools.profile.set_service_status(True)
                 else:
                     sys.exit(0) # exit application
+        elif config.get("force-enable-app","false").lower() != "true":
+            sys.exit(0)
 
 
 

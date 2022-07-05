@@ -66,7 +66,7 @@ if __name__ == "__main__":
         sys.exit(0) # exit if docker or chroot
     if not tools.detect.is_root():
         sys.exit(0) # exit if non-root user.
-    if not tools.detect.is_laptop():
+    if not tools.detect.is_laptop() and not tools.detect.is_virtual_machine():
         tools.profile.set_service_status(False) # Disable service
         if "--autostart" not in sys.argv:
             # force enable application for some buggy laptops or testing

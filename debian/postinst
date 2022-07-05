@@ -12,4 +12,11 @@ fi
 if [[ ! -f "/etc/pardus/ppm.conf" ]]; then
     mkdir -p "/etc/pardus"
     cp "/usr/share/pardus/power-manager/ppm.conf"  "/etc/pardus/ppm.conf"
+else
+    if grep "is-app-active = false" /etc/pardus/ppm.conf ; then
+        rm -f /lib/udev/rules.d/99-ppm.rules
+        rm -f /etc/xdg/autostart/pardus-power-manager.desktop
+        rm -f /etc/tlp.d/99-pardus.conf
+        rm -f /etc/tlp.d/99-charge.conf
+    fi
 fi

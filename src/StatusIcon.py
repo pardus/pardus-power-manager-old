@@ -65,6 +65,9 @@ class StatusIcon:
         quit.connect("activate", self.exit)
         self.menu.append(quit)
 
+        icons = Gtk.IconTheme.get_default()
+        icons.connect("changed",self.update_status_icon)
+
         self.menu.show_all()
         Gtk.main()
 
@@ -87,7 +90,7 @@ class StatusIcon:
     def menu_item_m5_activated(self,item):
         self.set_profile_and_update(4)
 
-    def update_status_icon(self):
+    def update_status_icon(self,a=None):
         self.status_icon.set_from_icon_name("pardus-pm")
         if checkIfProcessRunning("gnome-shell"):
             self.status_icon.set_from_icon_name("pardus-pm-gnome")

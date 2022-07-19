@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-05 14:08+0300\n"
+"POT-Creation-Date: 2022-07-19 11:34+0300\n"
 "PO-Revision-Date: 2021-12-21 12:16+0300\n"
 "Last-Translator: Yusuf Düzgün <yusuf.duzgun@pardus.org.tr>\n"
 "Language-Team: Turkish <gelistirici@pardus.org.tr>\n"
@@ -60,7 +60,7 @@ msgid "Control your power settings"
 msgstr "Güç ayarlarınızı kontrol edin"
 
 #: ui/MainWindow.glade:87
-msgid "Power Profile"
+msgid "Power profile"
 msgstr "Güç profili"
 
 #: ui/MainWindow.glade:137

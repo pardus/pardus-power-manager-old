@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pardus power manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-05 14:08+0300\n"
+"POT-Creation-Date: 2022-07-19 11:34+0300\n"
 "PO-Revision-Date: 2022-03-21 18:50+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Português <hugokarvalho@hotmail.com>\n"
@@ -60,9 +60,8 @@ msgid "Control your power settings"
 msgstr "Controle as suas definições de energia"
 
 #: ui/MainWindow.glade:87
-#, fuzzy
-msgid "Power Profile"
-msgstr "Perfil de energia ligado à corrente"
+msgid "Power profile"
+msgstr "Perfil de energia"
 
 #: ui/MainWindow.glade:137
 msgid ""

@@ -1,4 +1,5 @@
-.mo
+*.mo
 res/main.ui~
 __pycache__/
 *.pyc
+ui/MainWindow.glade~

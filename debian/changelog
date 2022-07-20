@@ -1,3 +1,15 @@
+pardus-power-manager (0.1.1~beta7) unstable; urgency=medium
+
+  [ aliriza ]
+  * fix enable on non-laptop bug
+  * fix service disable config remove issue
+  * virtual machine dialog fix
+  * transtalion fix
+  * reload icon theme changes
+  * fix minor gui bug
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Wed, 20 Jul 2022 15:48:24 +0300
+
 pardus-power-manager (0.1.1~beta6) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]

@@ -1,6 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
+# Portuguese translation for pardus-power-manager.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the pardus-power-manager package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Hugo Carvalho <hugokarvalho@hotmail.com>, 2022.
 #
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Pardus power manager\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-19 11:34+0300\n"
-"PO-Revision-Date: 2022-03-21 18:50+0000\n"
+"PO-Revision-Date: 2022-07-22 10:59+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Português <hugokarvalho@hotmail.com>\n"
 "Language: pt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: src/MainWindow.py:39 src/MainWindow.py:241 ui/MainWindow.glade:781
 msgid "Pardus Power Manager"
@@ -41,15 +41,15 @@ msgstr "O seu computador não necessita de gestão de energia."
 
 #: src/main.py:75
 msgid "Do you want to enable it anyway?"
-msgstr ""
+msgstr "Quer ativá-lo mesmo assim?"
 
 #: src/main.py:83
 msgid "No"
-msgstr ""
+msgstr "Não"
 
 #: src/main.py:84
 msgid "Yes"
-msgstr ""
+msgstr "Sim"
 
 #: ui/MainWindow.glade:7
 msgid "About"
@@ -93,7 +93,7 @@ msgstr ""
 
 #: ui/MainWindow.glade:406
 msgid "Screen brightness"
-msgstr ""
+msgstr "Brilho do ecrã"
 
 #: ui/MainWindow.glade:441
 msgid "main"

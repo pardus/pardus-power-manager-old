@@ -41,7 +41,7 @@ msgstr "O seu computador não necessita de gestão de energia."
 
 #: src/main.py:75
 msgid "Do you want to enable it anyway?"
-msgstr "Quer ativá-lo mesmo assim?"
+msgstr "Quer ativá-la mesmo assim?"
 
 #: src/main.py:83
 msgid "No"
@@ -57,7 +57,7 @@ msgstr "Acerca"
 
 #: ui/MainWindow.glade:14
 msgid "Control your power settings"
-msgstr "Controle as suas definições de energia"
+msgstr "Controle as definições de energia"
 
 #: ui/MainWindow.glade:87
 msgid "Power profile"

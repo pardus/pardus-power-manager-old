@@ -16,7 +16,10 @@ if not tools.utils.checkIfProcessRunning("pardus-power-manager"):
 if config.get("udev-enabled","True").lower() != "true":
     exit(0)
 
-ac_online = tools.profile.get_ac_online()
+ac_online = False
+if "--on-ac" in sys.argv:
+	ac_online = True
+
 log = open("/var/log/ppm.log","a")
 
 if os.path.exists("/var/cache/ppm.last"):

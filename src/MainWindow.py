@@ -116,17 +116,22 @@ class MainWindow:
 
         charge_limit = tools.profile.get_charge_limit()
         self.builder.get_object("ui_limit_battery").set_state(charge_limit)
-        power_names = ["xpowersave", "powersave", "balanced", "performance", "xperformance"]
-        mode_ac = power_names[int(config.get("ppm-mode-ac","3"))]
-        mode_bat = power_names[int(config.get("ppm-mode-battery","1"))]
+        mode_ac = config.get("ppm-mode-ac","3")
+        mode_bat = config.get("ppm-mode-battery","1")
+        low_battery_mode = config.get("low-battery-profile","0")
+        low_battery_threshold = config.get("low-battery-threshold", "20")
+        low_battery_state = config.get("low-battery-enabled", "true").lower() == "true"
         self.builder.get_object("ui_mode_battery").set_active_id(mode_bat)
         self.builder.get_object("ui_mode_ac").set_active_id(mode_ac)
-
-
+        self.builder.get_object("ui_low_battery_mode").set_active_id(low_battery_mode)
+        self.builder.get_object("ui_low_battery").set_state(low_battery_state)
+        self.builder.get_object("ui_low_battery_threshold").set_active_id(low_battery_threshold)
 
         udev_enabled = (config.get("udev-enabled","True").lower() == "true")
         self.builder.get_object("ui_udev_enabled").set_state(udev_enabled)
         self.builder.get_object("ui_udev_settings").set_sensitive(udev_enabled)
+        self.builder.get_object("ui_low_battery_mode").set_sensitive(low_battery_state)
+        self.builder.get_object("ui_low_battery_threshold").set_sensitive(low_battery_state)
 
         ##################################################################################
         ##################################################################################
@@ -223,13 +228,22 @@ class MainWindow:
         config.set("udev-enabled",str(state))
         self.builder.get_object("ui_udev_settings").set_sensitive(state)
 
+    def ui_low_battery_state_set(self, switch, state):
+        config.set("low-battery-enabled", str(state))
+        self.builder.get_object("ui_low_battery_mode").set_sensitive(state)
+        self.builder.get_object("ui_low_battery_threshold").set_sensitive(state)
+
+    def ui_low_profile_changed(self, combobox):
+        config.set("low-battery-profile",combobox.get_active_id())
+    
+    def ui_low_battery_threshold_changed(self, combobox):
+        config.set("low-battery-threshold",combobox.get_active_id())
+
     def ui_mode_battery_changed(self, combobox):
-        power_names = ["xpowersave", "powersave", "balanced", "performance", "xperformance"]
-        config.set("ppm-mode-battery",power_names.index(combobox.get_active_id()))
+        config.set("ppm-mode-battery",combobox.get_active_id())
 
     def ui_mode_ac_changed(self, combobox):
-        power_names = ["xpowersave", "powersave", "balanced", "performance", "xperformance"]
-        config.set("ppm-mode-ac",power_names.index(combobox.get_active_id()))
+        config.set("ppm-mode-ac",combobox.get_active_id())
 
 
     def ui_about_button_clicked(self,button):

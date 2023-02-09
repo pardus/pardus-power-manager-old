@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 -->
+<!-- Generated with glade 3.40.0 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
   <object class="GtkAboutDialog" id="dialog_about">
@@ -647,11 +647,11 @@ Performance</property>
                                         <property name="can-focus">False</property>
                                         <property name="active">3</property>
                                         <items>
-                                          <item id="xpowersave" translatable="yes">Extreme Powersave</item>
-                                          <item id="powersave" translatable="yes">Powersave</item>
-                                          <item id="balanced" translatable="yes">Balanced</item>
-                                          <item id="performance" translatable="yes">Performance</item>
-                                          <item id="xperformance" translatable="yes">Extreme Performance</item>
+                                          <item id="0" translatable="yes">Extreme Powersave</item>
+                                          <item id="1" translatable="yes">Powersave</item>
+                                          <item id="2" translatable="yes">Balanced</item>
+                                          <item id="3" translatable="yes">Performance</item>
+                                          <item id="4" translatable="yes">Extreme Performance</item>
                                         </items>
                                         <signal name="changed" handler="ui_mode_ac_changed" swapped="no"/>
                                       </object>
@@ -691,11 +691,11 @@ Performance</property>
                                         <property name="can-focus">False</property>
                                         <property name="active">1</property>
                                         <items>
-                                          <item id="xpowersave" translatable="yes">Extreme Powersave</item>
-                                          <item id="powersave" translatable="yes">Powersave</item>
-                                          <item id="balanced" translatable="yes">Balanced</item>
-                                          <item id="performance" translatable="yes">Performance</item>
-                                          <item id="xperformance" translatable="yes">Extreme Performance</item>
+                                          <item id="0" translatable="yes">Extreme Powersave</item>
+                                          <item id="1" translatable="yes">Powersave</item>
+                                          <item id="2" translatable="yes">Balanced</item>
+                                          <item id="3" translatable="yes">Performance</item>
+                                          <item id="4" translatable="yes">Extreme Performance</item>
                                         </items>
                                         <signal name="changed" handler="ui_mode_battery_changed" swapped="no"/>
                                       </object>
@@ -717,6 +717,133 @@ Performance</property>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
                                 <property name="position">4</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="label" translatable="yes">Change profile on low battery</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">True</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkSwitch" id="ui_low_battery">
+                                    <property name="name">charge_mode</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="active">True</property>
+                                    <signal name="state-set" handler="ui_low_battery_state_set" swapped="no"/>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">5</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="label" translatable="yes">Power profile on low battery</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">True</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkComboBoxText" id="ui_low_battery_mode">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="active">0</property>
+                                    <items>
+                                      <item id="0" translatable="yes">Extreme Powersave</item>
+                                      <item id="1" translatable="yes">Powersave</item>
+                                      <item id="2" translatable="yes">Balanced</item>
+                                      <item id="3" translatable="yes">Performance</item>
+                                      <item id="4" translatable="yes">Extreme Performance</item>
+                                    </items>
+                                    <signal name="changed" handler="ui_low_profile_changed" swapped="no"/>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">6</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">start</property>
+                                    <property name="label" translatable="yes">Low battery threshold</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">True</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkComboBoxText" id="ui_low_battery_threshold">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="active">0</property>
+                                    <items>
+                                      <item id="5" translatable="yes">5</item>
+                                      <item id="10" translatable="yes">10</item>
+                                      <item id="15" translatable="yes">15</item>
+                                      <item id="20" translatable="yes">20</item>
+                                      <item id="25" translatable="yes">25</item>
+                                      <item id="30" translatable="yes">30</item>
+                                    </items>
+                                    <signal name="changed" handler="ui_low_battery_threshold_changed" swapped="no"/>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">7</property>
                               </packing>
                             </child>
                           </object>

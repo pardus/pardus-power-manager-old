@@ -8,48 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-19 11:34+0300\n"
-"PO-Revision-Date: 2021-12-21 12:16+0300\n"
+"POT-Creation-Date: 2023-02-08 23:14+0300\n"
+"PO-Revision-Date: 2023-02-09 14:49+0300\n"
 "Last-Translator: Yusuf Düzgün <yusuf.duzgun@pardus.org.tr>\n"
 "Language-Team: Turkish <gelistirici@pardus.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 3.38.0\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-
-#: src/MainWindow.py:39 src/MainWindow.py:241 ui/MainWindow.glade:781
-msgid "Pardus Power Manager"
-msgstr "Pardus Güç Yöneticisi"
-
-#: src/StatusIcon.py:41
-msgid "View"
-msgstr "Göster"
-
-#: src/StatusIcon.py:48
-msgid "Power"
-msgstr "Güç"
-
-#: src/StatusIcon.py:64
-msgid "Settings"
-msgstr "Ayarlar"
-
-#: src/main.py:74
-msgid "Your computer does not need power management."
-msgstr "Bilgisayarınızın güç yönetimine ihtiyacı yoktur."
-
-#: src/main.py:75
-msgid "Do you want to enable it anyway?"
-msgstr "Yine de etkinleştirmek istiyor musunuz?"
-
-#: src/main.py:83
-msgid "No"
-msgstr "Hayır"
-
-#: src/main.py:84
-msgid "Yes"
-msgstr "Evet"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: ui/MainWindow.glade:7
 msgid "About"
@@ -76,10 +44,12 @@ msgid "Power Save"
 msgstr "Güç tasarrufu"
 
 #: ui/MainWindow.glade:249 ui/MainWindow.glade:652 ui/MainWindow.glade:696
+#: ui/MainWindow.glade:785
 msgid "Balanced"
 msgstr "Dengeli"
 
 #: ui/MainWindow.glade:305 ui/MainWindow.glade:653 ui/MainWindow.glade:697
+#: ui/MainWindow.glade:786
 msgid "Performance"
 msgstr "Performans"
 
@@ -139,15 +109,15 @@ msgstr "Fişe takıldığında veya çıkarıldığında güç profilini değiş
 msgid "Power profile on AC"
 msgstr "Fişe takılıyken güç profili"
 
-#: ui/MainWindow.glade:650 ui/MainWindow.glade:694
+#: ui/MainWindow.glade:650 ui/MainWindow.glade:694 ui/MainWindow.glade:783
 msgid "Extreme Powersave"
 msgstr "Yüksek Güç Tasarrufu"
 
-#: ui/MainWindow.glade:651 ui/MainWindow.glade:695
+#: ui/MainWindow.glade:651 ui/MainWindow.glade:695 ui/MainWindow.glade:784
 msgid "Powersave"
 msgstr "Güç Tasarrufu"
 
-#: ui/MainWindow.glade:654 ui/MainWindow.glade:698
+#: ui/MainWindow.glade:654 ui/MainWindow.glade:698 ui/MainWindow.glade:787
 msgid "Extreme Performance"
 msgstr "Yüksek Performans"
 
@@ -155,10 +125,71 @@ msgstr "Yüksek Performans"
 msgid "Power profile on battery"
 msgstr "Pildeyken güç profili"
 
-#: ui/MainWindow.glade:736
+#: ui/MainWindow.glade:731
+msgid "Change profile on low battery"
+msgstr "Pil seviyesi düşünce güç profilini değiştir"
+
+#: ui/MainWindow.glade:769
+msgid "Power profile on low battery"
+msgstr "Pil seviyesi düşükken güç profili"
+
+#: ui/MainWindow.glade:813
+msgid "Low battery threshold"
+msgstr "Pil seviyesi düşük sınırı"
+
+#: ui/MainWindow.glade:827
+msgid "5"
+msgstr "5"
+
+#: ui/MainWindow.glade:828
+msgid "10"
+msgstr "10"
+
+#: ui/MainWindow.glade:829
+msgid "15"
+msgstr "15"
+
+#: ui/MainWindow.glade:830
+msgid "20"
+msgstr "20"
+
+#: ui/MainWindow.glade:831
+msgid "25"
+msgstr "25"
+
+#: ui/MainWindow.glade:832
+msgid "30"
+msgstr "30"
+
+#: ui/MainWindow.glade:863
 msgid "settings"
 msgstr "ayarlar"
 
-#: ui/MainWindow.glade:764
+#: ui/MainWindow.glade:891
 msgid "TÜBİTAK ULAKBİM | 2022"
 msgstr "TÜBİTAK ULAKBİM | 2022"
+
+#: ui/MainWindow.glade:908
+msgid "Pardus Power Manager"
+msgstr "Pardus Güç Yöneticisi"
+
+#~ msgid "View"
+#~ msgstr "Göster"
+
+#~ msgid "Power"
+#~ msgstr "Güç"
+
+#~ msgid "Settings"
+#~ msgstr "Ayarlar"
+
+#~ msgid "Your computer does not need power management."
+#~ msgstr "Bilgisayarınızın güç yönetimine ihtiyacı yoktur."
+
+#~ msgid "Do you want to enable it anyway?"
+#~ msgstr "Yine de etkinleştirmek istiyor musunuz?"
+
+#~ msgid "No"
+#~ msgstr "Hayır"
+
+#~ msgid "Yes"
+#~ msgstr "Evet"

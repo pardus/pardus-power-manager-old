@@ -19,8 +19,6 @@ import dbus.mainloop.glib
 import dbus.service
 
 import time
-import threading
-import config
 
 class Service(dbus.service.Object):
     def __init__(self, message):
@@ -60,6 +58,7 @@ def stop_signals(signum, frame):
 
 if __name__ == "__main__":
     setproctitle.setproctitle("pardus-power-manager")
+    import config
     config = config.config()
     if tools.detect.is_virtual_machine():
         print("Virtual machine detected!")
@@ -101,7 +100,7 @@ if __name__ == "__main__":
             sys.exit(0)
     if not os.path.exists("/etc/xdg/autostart/ppm-autostart.desktop"):
         config.set("is-app-active","true")
-        # os.symlink("/usr/share/pardus/power-manager/ppm-autostart.desktop","/etc/xdg/autostart/ppm-autostart.desktop")
+        os.symlink("/usr/share/pardus/power-manager/ppm-autostart.desktop","/etc/xdg/autostart/ppm-autostart.desktop")
         if not os.path.exists("/lib/udev/rules.d/99-ppm.rules"):
             os.symlink("/usr/share/pardus/power-manager/udev.rules","/lib/udev/rules.d/99-ppm.rules")
     if config.get("low-battery-enabled", "true"):

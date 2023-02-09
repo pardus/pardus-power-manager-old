@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-08 23:14+0300\n"
+"POT-Creation-Date: 2023-02-09 18:45+0300\n"
 "PO-Revision-Date: 2023-02-09 14:49+0300\n"
 "Last-Translator: Yusuf Düzgün <yusuf.duzgun@pardus.org.tr>\n"
 "Language-Team: Turkish <gelistirici@pardus.org.tr>\n"
@@ -18,6 +18,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.1.1\n"
+
+#: src/main.py:76
+msgid "Your computer does not need power management."
+msgstr "Bilgisayarınızın güç yönetimine ihtiyacı yoktur."
+
+#: src/main.py:77
+msgid "Do you want to enable it anyway?"
+msgstr "Yine de etkinleştirmek istiyor musunuz?"
+
+#: src/main.py:85
+msgid "No"
+msgstr "Hayır"
+
+#: src/main.py:86
+msgid "Yes"
+msgstr "Evet"
+
+#: src/MainWindow.py:39 src/MainWindow.py:255 ui/MainWindow.glade:908
+msgid "Pardus Power Manager"
+msgstr "Pardus Güç Yöneticisi"
+
+#: src/StatusIcon.py:41
+msgid "View"
+msgstr "Göster"
+
+#: src/StatusIcon.py:48
+msgid "Power"
+msgstr "Güç"
+
+#: src/StatusIcon.py:64
+msgid "Settings"
+msgstr "Ayarlar"
 
 #: ui/MainWindow.glade:7
 msgid "About"
@@ -168,28 +200,3 @@ msgstr "ayarlar"
 #: ui/MainWindow.glade:891
 msgid "TÜBİTAK ULAKBİM | 2022"
 msgstr "TÜBİTAK ULAKBİM | 2022"
-
-#: ui/MainWindow.glade:908
-msgid "Pardus Power Manager"
-msgstr "Pardus Güç Yöneticisi"
-
-#~ msgid "View"
-#~ msgstr "Göster"
-
-#~ msgid "Power"
-#~ msgstr "Güç"
-
-#~ msgid "Settings"
-#~ msgstr "Ayarlar"
-
-#~ msgid "Your computer does not need power management."
-#~ msgstr "Bilgisayarınızın güç yönetimine ihtiyacı yoktur."
-
-#~ msgid "Do you want to enable it anyway?"
-#~ msgstr "Yine de etkinleştirmek istiyor musunuz?"
-
-#~ msgid "No"
-#~ msgstr "Hayır"
-
-#~ msgid "Yes"
-#~ msgstr "Evet"

@@ -68,7 +68,7 @@ if __name__ == "__main__":
         sys.exit(0) # exit if non-root user.
     if not tools.detect.is_laptop() and not tools.detect.is_virtual_machine():
         tools.profile.set_service_status(False) # Disable service
-        if "--autostart" not in sys.argv:
+        if "--gui" in sys.argv:
             # force enable application for some buggy laptops or testing
             if config.get("force-enable-app","false").lower() != "true":
                 error_message=_("Your computer does not need power management.")+ "\n"

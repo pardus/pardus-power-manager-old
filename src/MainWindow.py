@@ -153,8 +153,10 @@ class MainWindow:
             tools.backlight.set_brightness(i.name, brightness_value)
 
     # set slider value
-    def set_slider_value(self, value):
+    def set_slider_value(self, value, update_brightness = False):
         self.app_wakeup = False
+        if not update_brightness
+            return
         for i in self.backlight_devices:
             percent = i.max_brightness/100
             brightness_value = value*percent
@@ -265,8 +267,9 @@ class MainWindow:
             # Get power mode status
             self.app_wakeup = False
             self.power_mode = tools.profile.get_current_profile()
+            
             self.ui_power_button_array[self.power_mode].set_active(True)
             devices_backlight_percent = self.brightness_array[self.power_mode]
-            self.ui_gtk_scale.set_value(devices_backlight_percent)
+            self.set_slider_value(devices_backlight_percent, True)
             self.app_wakeup = True
 

@@ -15,8 +15,11 @@ if [[ ! -f "/etc/pardus/ppm.conf" ]]; then
 else
     if grep "is-app-active = false" /etc/pardus/ppm.conf ; then
         rm -f /lib/udev/rules.d/99-ppm.rules
-        rm -f /etc/xdg/autostart/pardus-power-manager.desktop
         rm -f /etc/tlp.d/99-pardus.conf
+        rm -f /etc/xdg/autostart/ppm-autostart.desktop
         rm -f /etc/tlp.d/99-charge.conf
     fi
+fi
+if [[ -f /etc/xdg/autostart/pardus-power-manager.desktop ]] ; then
+    rm -f /etc/xdg/autostart/pardus-power-manager.desktop
 fi

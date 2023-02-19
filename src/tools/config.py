@@ -32,5 +32,5 @@ def set_value(variable, value):
 def write_config():
     with open("/etc/pardus-power-manager.conf", "w") as config:
         config.write("[main]\n")
-        for variable, value in __VARS.values():
+        for variable, value in __VARS.items():
             config.write("{}={}\n".format(variable, value))

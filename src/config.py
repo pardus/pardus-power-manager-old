@@ -17,7 +17,11 @@ class config:
 
     def set(self,varialbe, value):
         self.config['PardusPowerManager'][varialbe] = str(value)
-        with open('/etc/pardus/ppm.conf', 'w') as configfile:
-            self.config.write(configfile)
+        try:
+            with open('/etc/pardus/ppm.conf', 'w') as configfile:
+                self.config.write(configfile)
+        except FileNotFoundError:
+            print("Uygulama yalnizca Pardus altinda calistirilabilir.")
+            exit(1)
 
 config()

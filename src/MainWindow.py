@@ -155,7 +155,7 @@ class MainWindow:
     # set slider value
     def set_slider_value(self, value, update_brightness = False):
         self.app_wakeup = False
-        if not update_brightness
+        if not update_brightness:
             return
         for i in self.backlight_devices:
             percent = i.max_brightness/100

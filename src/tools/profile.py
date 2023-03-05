@@ -4,7 +4,10 @@ import dbus
 from tools.utils import asynchronous, readfile
 import datetime
 date = datetime.datetime.now()
-log = open("/var/log/ppm.log","a")
+try:
+    log = open("/var/log/ppm.log","a")
+except PermissionError:
+    print("Erişim reddedildi. Root olarak deneyin.")
 def is_support_charge_limit():
     """Charge level limit support"""
     for bat in os.listdir("/sys/class/power_supply/"):

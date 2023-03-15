@@ -18,8 +18,6 @@ import dbus
 import dbus.mainloop.glib
 import dbus.service
 
-import time
-
 class Service(dbus.service.Object):
     def __init__(self, message):
         self._message = message

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pardus power manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-19 11:34+0300\n"
-"PO-Revision-Date: 2022-07-22 10:59+0100\n"
+"POT-Creation-Date: 2023-02-09 18:45+0300\n"
+"PO-Revision-Date: 2023-02-09 18:47+0300\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Português <hugokarvalho@hotmail.com>\n"
 "Language: pt\n"
@@ -19,7 +19,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.1.1\n"
 
-#: src/MainWindow.py:39 src/MainWindow.py:241 ui/MainWindow.glade:781
+#: src/main.py:76
+msgid "Your computer does not need power management."
+msgstr "O seu computador não necessita de gestão de energia."
+
+#: src/main.py:77
+msgid "Do you want to enable it anyway?"
+msgstr "Quer ativá-la mesmo assim?"
+
+#: src/main.py:85
+msgid "No"
+msgstr "Não"
+
+#: src/main.py:86
+msgid "Yes"
+msgstr "Sim"
+
+#: src/MainWindow.py:39 src/MainWindow.py:255 ui/MainWindow.glade:908
 msgid "Pardus Power Manager"
 msgstr "Gestor de Energia Pardus"
 
@@ -34,22 +50,6 @@ msgstr "Energia"
 #: src/StatusIcon.py:64
 msgid "Settings"
 msgstr "Definições"
-
-#: src/main.py:74
-msgid "Your computer does not need power management."
-msgstr "O seu computador não necessita de gestão de energia."
-
-#: src/main.py:75
-msgid "Do you want to enable it anyway?"
-msgstr "Quer ativá-la mesmo assim?"
-
-#: src/main.py:83
-msgid "No"
-msgstr "Não"
-
-#: src/main.py:84
-msgid "Yes"
-msgstr "Sim"
 
 #: ui/MainWindow.glade:7
 msgid "About"
@@ -76,10 +76,12 @@ msgid "Power Save"
 msgstr "Poupança de Energia"
 
 #: ui/MainWindow.glade:249 ui/MainWindow.glade:652 ui/MainWindow.glade:696
+#: ui/MainWindow.glade:785
 msgid "Balanced"
 msgstr "Equilibrado"
 
 #: ui/MainWindow.glade:305 ui/MainWindow.glade:653 ui/MainWindow.glade:697
+#: ui/MainWindow.glade:786
 msgid "Performance"
 msgstr "Desempenho"
 
@@ -140,15 +142,15 @@ msgstr "Alterar o perfil de energia quando ligar/desligar da corrente"
 msgid "Power profile on AC"
 msgstr "Perfil de energia ligado à corrente"
 
-#: ui/MainWindow.glade:650 ui/MainWindow.glade:694
+#: ui/MainWindow.glade:650 ui/MainWindow.glade:694 ui/MainWindow.glade:783
 msgid "Extreme Powersave"
 msgstr "Poupança de Energia Extrema"
 
-#: ui/MainWindow.glade:651 ui/MainWindow.glade:695
+#: ui/MainWindow.glade:651 ui/MainWindow.glade:695 ui/MainWindow.glade:784
 msgid "Powersave"
 msgstr "Poupança de Energia"
 
-#: ui/MainWindow.glade:654 ui/MainWindow.glade:698
+#: ui/MainWindow.glade:654 ui/MainWindow.glade:698 ui/MainWindow.glade:787
 msgid "Extreme Performance"
 msgstr "Desempenho Extremo"
 
@@ -156,10 +158,48 @@ msgstr "Desempenho Extremo"
 msgid "Power profile on battery"
 msgstr "Perfil de energia a bateria"
 
-#: ui/MainWindow.glade:736
+#: ui/MainWindow.glade:731
+#, fuzzy
+msgid "Change profile on low battery"
+msgstr "Perfil de energia a bateria"
+
+#: ui/MainWindow.glade:769
+#, fuzzy
+msgid "Power profile on low battery"
+msgstr "Perfil de energia a bateria"
+
+#: ui/MainWindow.glade:813
+msgid "Low battery threshold"
+msgstr ""
+
+#: ui/MainWindow.glade:827
+msgid "5"
+msgstr "5"
+
+#: ui/MainWindow.glade:828
+msgid "10"
+msgstr "10"
+
+#: ui/MainWindow.glade:829
+msgid "15"
+msgstr "15"
+
+#: ui/MainWindow.glade:830
+msgid "20"
+msgstr "20"
+
+#: ui/MainWindow.glade:831
+msgid "25"
+msgstr "25"
+
+#: ui/MainWindow.glade:832
+msgid "30"
+msgstr "30"
+
+#: ui/MainWindow.glade:863
 msgid "settings"
 msgstr "definições"
 
-#: ui/MainWindow.glade:764
+#: ui/MainWindow.glade:891
 msgid "TÜBİTAK ULAKBİM | 2022"
 msgstr "TÜBİTAK ULAKBİM | 2022"

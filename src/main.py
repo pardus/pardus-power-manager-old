@@ -93,8 +93,6 @@ if __name__ == "__main__":
         elif config.get("force-enable-app","false").lower() != "true":
             sys.exit(0)
 
-
-
     if config.get("is-app-active","true").lower() != "true":
         if "--autostart" in sys.argv:
             sys.exit(0)
@@ -103,7 +101,8 @@ if __name__ == "__main__":
         os.symlink("/usr/share/pardus/power-manager/ppm-autostart.desktop","/etc/xdg/autostart/ppm-autostart.desktop")
         if not os.path.exists("/lib/udev/rules.d/99-ppm.rules"):
             os.symlink("/usr/share/pardus/power-manager/udev.rules","/lib/udev/rules.d/99-ppm.rules")
-
+    if config.get("low-battery-enabled", "true"):
+        tools.profile.start_battery_control()
     signal.signal(signal.SIGINT, stop_signals)
     signal.signal(signal.SIGTERM, stop_signals)
     # Dbus server and client for single instange window.

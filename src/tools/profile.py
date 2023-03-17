@@ -1,8 +1,10 @@
 import os
 import dbus
-
+import config
 from tools.utils import asynchronous, readfile
 import datetime
+from gi.repository import GLib
+
 date = datetime.datetime.now()
 try:
     log = open("/var/log/ppm.log","a")
@@ -97,6 +99,23 @@ def set_profile(profile_id):
         os.unlink("/etc/tlp.d/99-pardus.conf")
     os.symlink("../../usr/share/pardus/power-manager/tlp/{}.conf".format(profile),"/etc/tlp.d/99-pardus.conf")
     os.system("tlp start &>/dev/null &")
+
+battery_path = next(filter(lambda x: x.startswith("BAT"), os.listdir("/sys/class/power_supply")))
+
+def control_battery():
+    current_config = config.config()
+    current_profile = get_current_profile()
+    is_enabled = current_config.get("low-battery-enabled", "true").lower()
+    if current_profile != 0 and is_enabled == "true":
+        battery_level = ""
+        with open("/sys/class/power_supply/"+battery_path+"/capacity","r") as f:
+            battery_level = f.read().strip()
+        if int(battery_level) <= int(current_config.get("low-battery-threshold","20")):
+            set_profile(int(current_config.get("low-battery-profile","0")))
+    return True
+
+def start_battery_control():
+    GLib.timeout_add(5000, control_battery)
 
 @asynchronous
 def set_charge_limit(limit_status):

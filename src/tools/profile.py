@@ -1,6 +1,5 @@
 import os
 import dbus
-import time
 import config
 from tools.utils import asynchronous, readfile
 import datetime
